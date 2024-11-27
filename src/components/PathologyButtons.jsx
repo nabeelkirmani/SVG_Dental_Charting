@@ -8,30 +8,32 @@ function PathologyButtons({
   subButtons,
 }) {
   const pathologyTypes = [
-    "Decay",
-    "Fracture",
-    "Tooth Wear",
-    "Discoloration",
-    "Apical",
-    "Development Disorder",
-    "Dentin",
-    "Enamel",
+    ["Decay", "Discoloration"],
+    ["Fracture", "Apical"],
+    ["Tooth Wear", "Development Disorder"],
+    ["Dentin", "Enamel"],
+    ["Cavitation", "No Cavitations"],
+    ["Pulp Involved", "Pulp not Involved"],
+    ["C1", "C2"],
+    ["C3", "C4"],
   ];
 
   return (
     <div className="pathology-section">
       <div className="pathology-buttons">
-        {pathologyTypes.map((pathology) => (
-          <button
-            key={pathology}
-            className={`pathology-button ${
-              selectedPathology === pathology ? "active" : ""
-            }`}
-            onClick={() => onPathologySelect(pathology)}
-          >
-            {pathology}
-          </button>
-        ))}
+        {pathologyTypes.map((row) =>
+          row.map((pathology) => (
+            <button
+              key={pathology}
+              className={`pathology-button ${
+                selectedPathology === pathology ? "active" : ""
+              }`}
+              onClick={() => onPathologySelect(pathology)}
+            >
+              {pathology}
+            </button>
+          ))
+        )}
       </div>
       {subButtons.length > 0 && (
         <div className="sub-buttons">

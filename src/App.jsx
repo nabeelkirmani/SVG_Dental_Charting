@@ -212,6 +212,11 @@ function App() {
             handleCanvasClick={handleCanvasClick}
             textareaRef={textareaRef}
           />
+          <div className="action-buttons">
+            <button className="monitor-button">MONITOR</button>
+            <button className="treat-button">TREAT</button>
+            <button className="save-button">SAVE</button>
+          </div>
         </div>
       </div>
     </div>

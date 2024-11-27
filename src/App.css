@@ -248,3 +248,86 @@
     padding: 6px 8px;
   }
 }
+
+/* Add to App.css */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.action-buttons button {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.action-buttons button:hover {
+  opacity: 0.9;
+}
+
+.monitor-button {
+  background-color: #ffd700;
+  color: #000;
+}
+
+.treat-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.save-button {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Update existing .pathology-buttons styling */
+.pathology-buttons button {
+  flex: 1;
+  padding: 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 0;
+  background-color: #6c757d;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pathology-buttons button.active {
+  background-color: #495057;
+}
+
+/* Add styles for right-aligned items */
+.pathology-buttons button:last-child {
+  margin-right: 0;
+}
+
+/* Update main-content padding */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0;
+  overflow-y: auto;
+}
+
+/* Add this to adjust the pathology section layout */
+.pathology-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.pathology-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0;
+  border-radius: 0;
+}
