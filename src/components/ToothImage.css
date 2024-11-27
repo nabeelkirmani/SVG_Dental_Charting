@@ -1,0 +1,122 @@
+/* src/components/ToothImage.css */
+
+.image-container {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 180px;
+  height: 532px;
+}
+
+.uploaded-image {
+  width: 180px;
+  height: 532px;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+}
+
+.overlay-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 532px;
+  cursor: crosshair;
+  z-index: 2;
+}
+
+.svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 532px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.svg-overlay path {
+  pointer-events: auto;
+}
+
+.svg-overlay path:hover {
+  opacity: 0.8;
+}
+
+.placeholder {
+  padding: 50px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  color: #999;
+  width: 180px;
+  height: 532px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.path-data-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.path-data-section label {
+  font-weight: bold;
+}
+
+.path-data-section textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+.path-data-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.copy-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.copy-button:hover {
+  background-color: #45a049;
+}
+
+.reset-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reset-button:hover {
+  background-color: #333;
+}

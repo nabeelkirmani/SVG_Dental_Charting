@@ -1,42 +1,250 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* src/App.css */
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar is separate component */
+
+.content-area {
+  display: flex;
+  flex: 1;
+  background-color: #fff;
+}
+
+.content-area .teeth-menu {
+  width: 60px;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-area .teeth-menu button {
+  flex: 1;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+}
+
+.content-area .teeth-menu button:hover {
+  background-color: #333;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Pathology Buttons Section */
+.pathology-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.pathology-buttons,
+.additional-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pathology-buttons button,
+.additional-buttons button {
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pathology-buttons button:hover,
+.additional-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.sub-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.sub-buttons button {
+  padding: 8px 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6c757d;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sub-buttons button:hover {
+  background-color: #5a6268;
+}
+
+/* ToothImage Styles */
+.image-container {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 180px;
+  height: 532px;
+}
+
+.uploaded-image {
+  width: 180px;
+  height: 532px;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+}
+
+.overlay-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 532px;
+  cursor: crosshair;
+  z-index: 2;
+}
+
+.svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 532px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.svg-overlay path {
+  pointer-events: auto;
+}
+
+.svg-overlay path:hover {
+  opacity: 0.8;
+}
+
+.placeholder {
+  padding: 50px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  color: #999;
+  width: 180px;
+  height: 532px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Path Data Section */
+.path-data-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.path-data-section label {
+  font-weight: bold;
+}
+
+.path-data-section textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+.path-data-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.copy-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.copy-button:hover {
+  background-color: #45a049;
+}
+
+.reset-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reset-button:hover {
+  background-color: #333;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .content-area {
+    flex-direction: row;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .main-content {
+    padding: 10px;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .teeth-menu {
+    width: 40px;
+  }
 
-.read-the-docs {
-  color: #888;
+  .pathology-buttons button,
+  .additional-buttons button {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .sub-buttons button {
+    font-size: 10px;
+    padding: 6px 8px;
+  }
 }

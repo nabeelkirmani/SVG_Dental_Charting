@@ -1,0 +1,18 @@
+/* src/components/Navbar.css */
+.navbar {
+  width: 80px;
+  background-color: #007bff;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.navbar-title {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-size: 16px;
+  margin: 0;
+}
