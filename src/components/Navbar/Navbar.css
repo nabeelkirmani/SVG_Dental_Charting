@@ -1,0 +1,15 @@
+/* src/components/Navbar/Navbar.css */
+.navbar {
+  width: 60px;
+  background: #2196f3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.navbar div {
+  color: white;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}

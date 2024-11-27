@@ -1,0 +1,22 @@
+/* src/components/MainButtons/MainButtons.css */
+.main-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.main-button {
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #2196f3;
+  transition: background 0.3s, color 0.3s;
+}
+
+.main-button.active {
+  background: #6c7a89;
+  color: white;
+  border: none;
+}

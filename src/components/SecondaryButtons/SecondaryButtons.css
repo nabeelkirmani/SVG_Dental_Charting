@@ -1,0 +1,50 @@
+/* src/components/SecondaryButtons/SecondaryButtons.css */
+.secondary-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.secondary-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.secondary-button {
+  padding: 1rem;
+  background: #6c7a89;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  text-align: left;
+  transition: background 0.3s, color 0.3s;
+}
+
+.secondary-button.active {
+  background: #fff;
+  color: #000;
+}
+
+.sub-menu {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.main-button {
+  padding: 0.5rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #2196f3;
+  transition: background 0.3s, color 0.3s;
+}
+
+.main-button.active {
+  background: #6c7a89;
+  color: white;
+  border: none;
+}

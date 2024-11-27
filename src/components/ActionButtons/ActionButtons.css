@@ -1,0 +1,33 @@
+/* src/components/ActionButtons/ActionButtons.css */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.action-button {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+
+.action-button:hover {
+  opacity: 0.8;
+}
+
+.monitor {
+  background: #f1c40f;
+}
+
+.treat {
+  background: #e74c3c;
+}
+
+.save {
+  background: #2196f3;
+}
