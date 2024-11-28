@@ -11,16 +11,20 @@ function ToothView() {
 
   useEffect(() => {
     try {
-      const img = toothImages[`tooth${selectedTooth}.png`];
-      setImageSrc(img.default);
+      const img = toothImages[`tooth${selectedTooth}`];
+      if (img) {
+        setImageSrc(img);
+      } else {
+        throw new Error("Image not found");
+      }
     } catch (error) {
-      console.error("Image not found:", error);
+      console.error("Image not found", error);
       setImageSrc("");
     }
   }, [selectedTooth]);
 
   const handlePathClick = (path) => {
-    // Future implementation for handling path clicks
+    // TODO: Future implementation for handling path clicks
     console.log("Path clicked:", path);
   };
 
@@ -28,11 +32,23 @@ function ToothView() {
     <div className="tooth-view">
       <div className="tooth-image">
         {imageSrc ? (
-          <img
-            src={imageSrc}
-            alt={`Tooth ${selectedTooth}`}
-            className="uploaded-image"
-          />
+          <>
+            <img
+              src={imageSrc}
+              alt={`Tooth ${selectedTooth}`}
+              className="uploaded-image-front-view"
+            />
+            <img
+              src={imageSrc}
+              alt={`Tooth ${selectedTooth}`}
+              className="uploaded-image-top-view"
+            />
+            <img
+              src={imageSrc}
+              alt={`Tooth ${selectedTooth}`}
+              className="uploaded-image-side-view"
+            />
+          </>
         ) : (
           <div className="no-image">Image not available</div>
         )}

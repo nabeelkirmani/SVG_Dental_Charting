@@ -6,9 +6,11 @@
   padding: 1rem 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
   font-size: 0.9rem;
   overflow-y: auto;
+  height: 100vh;
 }
 
 .tooth-numbers button {
@@ -25,7 +27,7 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .tooth-numbers {
     flex-direction: row;
     width: 100%;

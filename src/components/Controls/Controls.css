@@ -1,6 +1,15 @@
 /* src/components/Controls/Controls.css */
 .controls {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow-y: auto;
+}
+
+@media (max-width: 480px) {
+  .controls {
+    flex: none;
+    width: 100%;
+  }
 }

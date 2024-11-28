@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dental UI</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Arial, sans-serif;
+      }
+
+      body {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      .navbar {
+        width: 60px;
+        background: #2196f3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .tooth-numbers {
+        width: 50px;
+        background: #222;
+        color: white;
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 0.9rem;
+      }
+
+      .tooth-numbers button {
+        background: none;
+        border: none;
+        color: white;
+        padding: 0.3rem;
+        cursor: pointer;
+        width: 100%;
+        text-align: center;
+      }
+
+      .tooth-numbers button.active {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .main-content {
+        flex: 1;
+        display: flex;
+        padding: 1rem;
+        gap: 2rem;
+      }
+
+      .tooth-view {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .tooth-image {
+        height: 200px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .sub-buttons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+      }
+
+      .sub-button {
+        padding: 1rem;
+        background: #f5f5f5;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .sub-button.active {
+        background: #fff;
+        border: 1px solid #ddd;
+        color: #000;
+      }
+
+      .pathology {
+        flex: 1;
+      }
+
+      .main-buttons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .main-button {
+        padding: 1rem;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+        color: #2196f3;
+      }
+
+      .main-button.active {
+        background: #6c7a89;
+        color: white;
+        border: none;
+      }
+
+      .secondary-buttons {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .secondary-button {
+        padding: 1rem;
+        background: #6c7a89;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        color: white;
+        text-align: left;
+      }
+
+      .sub-menu {
+        margin-left: 2rem;
+        display: none;
+      }
+
+      .sub-menu.active {
+        display: grid;
+        gap: 0.5rem;
+      }
+
+      .action-buttons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .action-button {
+        padding: 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+      }
+
+      .monitor {
+        background: #f1c40f;
+      }
+
+      .treat {
+        background: #e74c3c;
+      }
+
+      .save {
+        background: #2196f3;
+      }
+
+      @media (max-width: 1024px) {
+        .main-content {
+          flex-direction: column;
+        }
+
+        .tooth-view {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .main-buttons {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div style="color: white; margin-bottom: 2rem">☰</div>
+    </nav>
+
+    <div class="tooth-numbers">
+      <button>18</button>
+      <button>17</button>
+      <button>16</button>
+      <button>15</button>
+      <button class="active">14</button>
+      <button>13</button>
+      <button>12</button>
+      <button>11</button>
+      <button>21</button>
+      <button>22</button>
+      <button>23</button>
+      <button>24</button>
+    </div>
+
+    <div class="main-content">
+      <div class="tooth-view">
+        <div class="tooth-image">Tooth Image 1</div>
+        <div class="tooth-image">Tooth Image 2</div>
+        <div class="tooth-image">Tooth Image 3</div>
+      </div>
+
+      <div class="sub-buttons">
+        <button class="sub-button">Cervical Buccal</button>
+        <button class="sub-button">Buccal</button>
+        <button class="sub-button">Mesial</button>
+        <button class="sub-button active">Incisal</button>
+        <button class="sub-button">Distal</button>
+        <button class="sub-button">Palatal</button>
+        <button class="sub-button">Cervical Palatal</button>
+        <button class="sub-button">Class 4 Mesial</button>
+        <button class="sub-button">Class 4 Distal</button>
+        <button class="sub-button">Buccal Surface</button>
+        <button class="sub-button">Palatal Surface</button>
+      </div>
+
+      <div class="pathology">
+        <div class="main-buttons">
+          <button class="main-button active">Decay</button>
+          <button class="main-button">Fracture</button>
+          <button class="main-button">Tooth Wear</button>
+          <button class="main-button">Discoloration</button>
+          <button class="main-button">Apical</button>
+          <button class="main-button">Development Disorder</button>
+        </div>
+
+        <div class="secondary-buttons">
+          <button class="secondary-button">Dentin</button>
+          <div class="sub-menu active">
+            <button class="main-button">Cavitation</button>
+            <button class="main-button">No Cavitation</button>
+          </div>
+
+          <button class="secondary-button">Enamel</button>
+        </div>
+
+        <div class="action-buttons">
+          <button class="action-button monitor">MONITOR</button>
+          <button class="action-button treat">TREAT</button>
+          <button class="action-button save">SAVE</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll(".main-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          document
+            .querySelectorAll(".main-button")
+            .forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+        });
+      });
+
+      document.querySelectorAll(".sub-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          document
+            .querySelectorAll(".sub-button")
+            .forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+        });
+      });
+
+      document.querySelectorAll(".secondary-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const subMenu = button.nextElementSibling;
+          document
+            .querySelectorAll(".sub-menu")
+            .forEach((menu) => menu.classList.remove("active"));
+          if (subMenu && subMenu.classList.contains("sub-menu")) {
+            subMenu.classList.toggle("active");
+          }
+        });
+      });
+
+      document.querySelectorAll(".tooth-numbers button").forEach((button) => {
+        button.addEventListener("click", () => {
+          document
+            .querySelectorAll(".tooth-numbers button")
+            .forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
