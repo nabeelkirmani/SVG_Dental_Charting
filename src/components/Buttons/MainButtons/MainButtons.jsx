@@ -1,4 +1,4 @@
-// src/components/MainButtons/MainButtons.jsx
+// src/components/Buttons/MainButtons/MainButtons.jsx
 import React, { useContext } from "react";
 import "./MainButtons.css";
 import { SelectionContext } from "../../../contexts/SelectionContext";

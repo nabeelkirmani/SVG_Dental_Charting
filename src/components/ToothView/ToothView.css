@@ -21,7 +21,7 @@
 .uploaded-image-front-view {
   padding: 1vh 0;
   height: 38vh;
-  object-fit: fill;
+  object-fit: scale-down;
   border-radius: 8px;
   border: 2px dashed #7f18a8;
 }
@@ -29,20 +29,12 @@
 .uploaded-image-top-view {
   padding: 1vh 0;
   height: 18vh;
-  object-fit: cover;
+  object-fit: fill;
   border-radius: 8px;
   border: 2px dashed #a87a18;
 }
 
-.uploaded-image-side-view {
-  padding: 1vh 0;
-  height: 38vh;
-  object-fit: scale-down;
-  border-radius: 8px;
-  border: 2px dashed #187aa8;
-}
-
-/* TODO: Map this with 3 images */
+/* TODO: Map this with 2 images */
 .no-image {
   height: 100%;
   display: flex;

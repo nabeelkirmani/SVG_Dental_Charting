@@ -1,4 +1,4 @@
-/* src/components/SubButtons/SubButtons.css */
+/* src/components/Buttons/SubButtons/SubButtons.css */
 .sub-buttons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -1,4 +1,4 @@
-// src/components/ActionButtons/ActionButtons.jsx
+// src/components/Buttons/ActionButtons/ActionButtons.jsx
 import React from "react";
 import "./ActionButtons.css";
 

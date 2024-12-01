@@ -1,4 +1,4 @@
-// src/components/SecondaryButtons/SecondaryButtons.jsx
+// src/components/Buttons/SecondaryButtons/SecondaryButtons.jsx
 import React, { useContext } from "react";
 import "./SecondaryButtons.css";
 import { SelectionContext } from "../../../contexts/SelectionContext";

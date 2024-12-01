@@ -1,4 +1,4 @@
-/* src/components/MainButtons/MainButtons.css */
+/* src/components/Buttons/MainButtons/MainButtons.css */
 .main-buttons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
