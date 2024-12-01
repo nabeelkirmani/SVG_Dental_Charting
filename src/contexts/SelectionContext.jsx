@@ -7,6 +7,7 @@ export const SelectionProvider = ({ children }) => {
   const [selectedTooth, setSelectedTooth] = useState(1);
   const [activeMainButton, setActiveMainButton] = useState(null);
   const [activeSecondary, setActiveSecondary] = useState(null);
+  const [activeSubButton, setActiveSubButton] = useState(null);
   const [activeCavitation, setActiveCavitation] = useState(null);
   const [activePulp, setActivePulp] = useState(null);
   const [activeClass, setActiveClass] = useState(null);
@@ -29,6 +30,10 @@ export const SelectionProvider = ({ children }) => {
     setActiveCavitation(null);
     setActivePulp(null);
     setActiveClass(null);
+  };
+
+  const handleSubButtonClick = (button) => {
+    setActiveSubButton((prev) => (prev === button ? null : button));
   };
 
   const handleCavitationClick = (cavitation) => {
@@ -56,6 +61,8 @@ export const SelectionProvider = ({ children }) => {
         activeSecondary,
         handleSecondaryClick,
         activeCavitation,
+        handleSubButtonClick,
+        activeSubButton,
         handleCavitationClick,
         activePulp,
         handlePulpClick,

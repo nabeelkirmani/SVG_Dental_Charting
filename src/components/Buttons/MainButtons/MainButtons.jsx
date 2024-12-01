@@ -1,7 +1,7 @@
 // src/components/MainButtons/MainButtons.jsx
 import React, { useContext } from "react";
 import "./MainButtons.css";
-import { SelectionContext } from "../../contexts/SelectionContext.jsx";
+import { SelectionContext } from "../../../contexts/SelectionContext";
 
 const mainButtonLabels = [
   "Decay",

@@ -31,11 +31,6 @@ body {
   display: flex;
   padding: 1rem;
   gap: 2rem;
-  height: 100vh;
-  position: relative;
-  justify-content: space-evenly;
-  flex-direction: row;
-  align-items: center;
 }
 
 /* TODO: For smaller screens */

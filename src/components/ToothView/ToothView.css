@@ -1,25 +1,21 @@
 /* src/components/ToothView/ToothView.css */
 .tooth-view {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
-}
-
-.tooth-image {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  /* position: relative; */
-  vertical-align: middle;
-  height: auto;
-  max-width: 100%;
-  overflow: visible;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #fff;
+  grid-template-columns: 3;
+  width: 300px;
+}
+
+.tooth-image {
+  padding: 1vh 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  flex-direction: column;
 }
 
 .uploaded-image-front-view {

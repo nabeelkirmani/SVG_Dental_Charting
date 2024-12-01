@@ -43,11 +43,6 @@ function ToothView() {
               alt={`Tooth ${selectedTooth}`}
               className="uploaded-image-top-view"
             />
-            <img
-              src={imageSrc}
-              alt={`Tooth ${selectedTooth}`}
-              className="uploaded-image-side-view"
-            />
           </>
         ) : (
           <div className="no-image">Image not available</div>

@@ -1,7 +1,7 @@
 // src/components/SecondaryButtons/SecondaryButtons.jsx
 import React, { useContext } from "react";
 import "./SecondaryButtons.css";
-import { SelectionContext } from "../../contexts/SelectionContext.jsx";
+import { SelectionContext } from "../../../contexts/SelectionContext";
 
 const secondaryLabels = ["Dentin", "Enamel"];
 const cavitationLabels = ["Cavitation", "No Cavitation"];
