@@ -1,6 +1,6 @@
 // src/components/Buttons/SecondaryButtons/SecondaryButtons.scss
 @use "sass:color";
-@import "../../../styles/variables";
+@use "../../../styles/variables";
 
 .secondary-buttons {
   display: flex;
@@ -15,21 +15,21 @@
       padding: 10px 15px;
       font-size: 14px;
       border: none;
-      border-radius: $border-radius;
-      background-color: $secondary-color;
-      color: $white-color;
+      border-radius: variables.$border-radius;
+      background-color: variables.$secondary-color;
+      color: variables.$white-color;
       cursor: pointer;
-      transition: background-color $transition-duration;
+      transition: background-color variables.$transition-duration;
       width: 100%;
 
       &.active {
-        background: $white-color;
-        color: $dark-color;
+        background: variables.$white-color;
+        color: variables.$dark-color;
       }
 
       &:hover {
         background-color: color.adjust(
-          $secondary-color,
+          variables.$secondary-color,
           $lightness: -5%,
           $space: hsl
         );
@@ -45,17 +45,17 @@
 
       .main-button {
         padding: 0.5rem;
-        background: $white-color;
+        background: variables.$white-color;
         border: 1px solid #ddd;
         border-radius: 4px;
         cursor: pointer;
-        color: $info-color;
-        transition: background $transition-duration, color $transition-duration;
+        color: variables.$info-color;
+        transition: background variables.$transition-duration, color variables.$transition-duration;
         width: 100%;
 
         &.active {
           background: #6c7a89;
-          color: $white-color;
+          color: variables.$white-color;
           border: none;
         }
       }

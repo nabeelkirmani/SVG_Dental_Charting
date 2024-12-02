@@ -1,6 +1,6 @@
 // src/components/Buttons/MainButtons/MainButtons.scss
 @use "sass:color";
-@import "../../../styles/variables";
+@use "../../../styles/variables";
 
 .main-buttons {
   display: grid;
@@ -11,16 +11,16 @@
     padding: 10px 15px;
     font-size: 14px;
     border: none;
-    border-radius: $border-radius;
-    background-color: $primary-color;
-    color: $white-color;
+    border-radius: variables.$border-radius;
+    background-color: variables.$primary-color;
+    color: variables.$white-color;
     cursor: pointer;
-    transition: background-color $transition-duration;
+    transition: background-color variables.$transition-duration;
     width: 100%;
 
     &:hover {
       background-color: color.adjust(
-        $primary-color,
+        variables.$primary-color,
         $lightness: -10%,
         $space: hsl
       );
@@ -28,7 +28,7 @@
 
     &.active {
       background: #6c7a89;
-      color: $white-color;
+      color: variables.$white-color;
       border: none;
     }
   }

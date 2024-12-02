@@ -1,17 +1,17 @@
 // src/components/ToothNumbers/ToothNumbers.scss
-@import "../../styles/variables";
+@use "../../styles/variables";
 
 .tooth-numbers {
   width: 60px;
-  background-color: $dark-color;
+  background-color: variables.$dark-color;
   display: flex;
   flex-direction: column;
   height: 100%;
 
   .tooth-number-button {
     flex: 1;
-    background-color: $dark-color;
-    color: $white-color;
+    background-color: variables.$dark-color;
+    color: variables.$white-color;
     border: none;
     border-bottom: 1px solid #333;
     cursor: pointer;

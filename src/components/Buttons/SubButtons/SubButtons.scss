@@ -1,6 +1,6 @@
 // src/components/Buttons/SubButtons/SubButtons.scss
 @use "sass:color";
-@import "../../../styles/variables";
+@use "../../../styles/variables";
 
 .sub-buttons {
   display: flex;
@@ -12,16 +12,16 @@
     padding: 10px 15px;
     font-size: 14px;
     border: none;
-    border-radius: $border-radius;
-    background-color: $secondary-color;
-    color: $white-color;
+    border-radius: variables.$border-radius;
+    background-color: variables.$secondary-color;
+    color: variables.$white-color;
     cursor: pointer;
-    transition: background-color $transition-duration;
+    transition: background-color variables.$transition-duration;
     width: 100%;
 
     &:hover {
       background-color: color.adjust(
-        $secondary-color,
+        variables.$secondary-color,
         $lightness: -5%,
         $space: hsl
       );

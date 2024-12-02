@@ -1,12 +1,12 @@
 // src/components/ToothView/ToothView.scss
-@import "../../styles/variables";
+@use "../../styles/variables";
 
 .tooth-view {
   display: flex;
   flex-direction: column;
-  border: 1px solid $gray-color;
+  border: 1px solid variables.$gray-color;
   border-radius: 8px;
-  background-color: $white-color;
+  background-color: variables.$white-color;
   min-width: 300px;
   position: relative;
   height: 100%;

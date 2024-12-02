@@ -1,5 +1,5 @@
 // src/index.scss
-@import "./styles/variables";
+@use "styles/variables";
 
 * {
   box-sizing: content-box;
@@ -8,7 +8,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: $font-family-base;
+  font-family: variables.$font-family-base;
   background-color: #fafafa;
 }
 

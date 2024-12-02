@@ -1,17 +1,17 @@
 // src/App.scss
-@import "./styles/variables";
+@use "styles/variables";
 
-@import "./components/Navbar/Navbar.scss";
-@import "./components/ToothNumbers/ToothNumbers.scss";
-@import "./components/ToothView/ToothView.scss";
-@import "./components/Controls/Controls.scss";
+@use "components/Navbar/Navbar.scss";
+@use "components/ToothNumbers/ToothNumbers.scss";
+@use "components/ToothView/ToothView.scss";
+@use "components/Controls/Controls.scss";
 
 // Global Styles
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: $font-family-base;
+  font-family: variables.$font-family-base;
 }
 
 body {
@@ -23,7 +23,7 @@ body {
   vertical-align: middle;
   height: 100vh;
   min-width: 100%;
-  background-color: $light-color;
+  background-color: variables.$light-color;
 
   .main-content {
     flex: 1;
