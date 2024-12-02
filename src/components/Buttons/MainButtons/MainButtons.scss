@@ -1,0 +1,35 @@
+// src/components/Buttons/MainButtons/MainButtons.scss
+@use "sass:color";
+@import "../../../styles/variables";
+
+.main-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+
+  .main-button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: $border-radius;
+    background-color: $primary-color;
+    color: $white-color;
+    cursor: pointer;
+    transition: background-color $transition-duration;
+    width: 100%;
+
+    &:hover {
+      background-color: color.adjust(
+        $primary-color,
+        $lightness: -10%,
+        $space: hsl
+      );
+    }
+
+    &.active {
+      background: #6c7a89;
+      color: $white-color;
+      border: none;
+    }
+  }
+}

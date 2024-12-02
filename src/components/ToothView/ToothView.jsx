@@ -1,6 +1,6 @@
 // src/components/ToothView/ToothView.jsx
 import React, { useContext, useEffect, useState } from "react";
-import "./ToothView.css";
+import "./ToothView.scss";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
 import surfaceData from "../../assets/surface.json";
 import toothImages from "../../assets/images";

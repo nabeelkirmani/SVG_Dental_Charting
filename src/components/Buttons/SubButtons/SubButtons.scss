@@ -1,0 +1,36 @@
+// src/components/Buttons/SubButtons/SubButtons.scss
+@use "sass:color";
+@import "../../../styles/variables";
+
+.sub-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+
+  .sub-button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: $border-radius;
+    background-color: $secondary-color;
+    color: $white-color;
+    cursor: pointer;
+    transition: background-color $transition-duration;
+    width: 100%;
+
+    &:hover {
+      background-color: color.adjust(
+        $secondary-color,
+        $lightness: -5%,
+        $space: hsl
+      );
+    }
+
+    &.active {
+      background: whitesmoke;
+      color: #6c7a89;
+      border: none;
+    }
+  }
+}

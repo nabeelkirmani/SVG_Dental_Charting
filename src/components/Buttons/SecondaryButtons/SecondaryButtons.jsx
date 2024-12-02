@@ -1,6 +1,6 @@
 // src/components/Buttons/SecondaryButtons/SecondaryButtons.jsx
 import React, { useContext } from "react";
-import "./SecondaryButtons.css";
+import "./SecondaryButtons.scss";
 import { SelectionContext } from "../../../contexts/SelectionContext";
 
 const secondaryLabels = ["Dentin", "Enamel"];

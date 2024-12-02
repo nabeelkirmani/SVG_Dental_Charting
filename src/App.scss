@@ -1,0 +1,50 @@
+// src/App.scss
+@import "./styles/variables";
+
+@import "./components/Navbar/Navbar.scss";
+@import "./components/ToothNumbers/ToothNumbers.scss";
+@import "./components/ToothView/ToothView.scss";
+@import "./components/Controls/Controls.scss";
+
+// Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family-base;
+}
+
+body {
+  display: flex;
+}
+
+.app-container {
+  display: flex;
+  vertical-align: middle;
+  height: 100vh;
+  min-width: 100%;
+  background-color: $light-color;
+
+  .main-content {
+    flex: 1;
+    display: flex;
+    padding: 1rem;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto; // Center main-content within app-container
+  }
+
+  // Responsive Design for Smaller Screens
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+
+    .main-content {
+      flex-direction: column;
+      height: auto;
+      max-width: 100%;
+      margin: 0;
+    }
+  }
+}

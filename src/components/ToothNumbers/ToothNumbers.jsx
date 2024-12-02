@@ -1,6 +1,6 @@
 // src/components/ToothNumbers/ToothNumbers.jsx
 import React, { useContext } from "react";
-import "./ToothNumbers.css";
+import "./ToothNumbers.scss";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
 
 function ToothNumbers() {

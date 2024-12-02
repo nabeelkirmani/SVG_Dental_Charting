@@ -1,6 +1,6 @@
 // src/components/Buttons/ActionButtons/ActionButtons.jsx
 import React from "react";
-import "./ActionButtons.css";
+import "./ActionButtons.scss";
 
 const actions = [
   { label: "MONITOR", className: "monitor" },

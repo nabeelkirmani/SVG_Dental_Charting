@@ -1,6 +1,6 @@
 // src/components/Controls/Controls.jsx
 import React from "react";
-import "./Controls.css";
+import "./Controls.scss";
 import MainButtons from "../Buttons/MainButtons/MainButtons.jsx";
 import SecondaryButtons from "../Buttons/SecondaryButtons/SecondaryButtons.jsx";
 import ActionButtons from "../Buttons/ActionButtons/ActionButtons.jsx";

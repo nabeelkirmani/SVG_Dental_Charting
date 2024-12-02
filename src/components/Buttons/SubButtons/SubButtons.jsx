@@ -1,6 +1,6 @@
 // src/components/Buttons/SubButtons/SubButtons.jsx
 import React, { useContext } from "react";
-import "./SubButtons.css";
+import "./SubButtons.scss";
 import { SelectionContext } from "../../../contexts/SelectionContext";
 
 const subButtonLabels = [
@@ -12,7 +12,7 @@ const subButtonLabels = [
   "Palatal",
   "Cervical Palatal",
   "Class 4 Mesial",
-  "Class 4 DIstal",
+  "Class 4 Distal",
   "Buccal Surface",
   "Palatal Surface",
 ];

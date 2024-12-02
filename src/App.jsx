@@ -1,6 +1,6 @@
 // src/App.jsx
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import ToothNumbers from "./components/ToothNumbers/ToothNumbers.jsx";
 import ToothView from "./components/ToothView/ToothView.jsx";

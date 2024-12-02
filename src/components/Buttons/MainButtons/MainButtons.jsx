@@ -1,6 +1,6 @@
 // src/components/Buttons/MainButtons/MainButtons.jsx
 import React, { useContext } from "react";
-import "./MainButtons.css";
+import "./MainButtons.scss";
 import { SelectionContext } from "../../../contexts/SelectionContext";
 
 const mainButtonLabels = [

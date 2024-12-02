@@ -1,0 +1,55 @@
+// src/components/Buttons/ActionButtons/ActionButtons.scss
+@use "sass:color";
+@import "../../../styles/variables";
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: auto;
+
+  .action-button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: $border-radius;
+    background-color: $success-color;
+    color: $white-color;
+    cursor: pointer;
+    transition: background-color $transition-duration;
+    width: 100px;
+    flex: 1;
+    margin: 0 0.5rem;
+    text-align: center;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      opacity: 0.8;
+      background-color: color.adjust(
+        $success-color,
+        $lightness: -5%,
+        $space: hsl
+      );
+    }
+
+    &.monitor {
+      background: $warning-color;
+    }
+
+    &.treat {
+      background: $danger-color;
+    }
+
+    &.save {
+      background: $info-color;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+// src/components/Buttons/SecondaryButtons/SecondaryButtons.scss
+@use "sass:color";
+@import "../../../styles/variables";
+
+.secondary-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .secondary-group {
+    display: flex;
+    flex-direction: column;
+
+    .secondary-button {
+      padding: 10px 15px;
+      font-size: 14px;
+      border: none;
+      border-radius: $border-radius;
+      background-color: $secondary-color;
+      color: $white-color;
+      cursor: pointer;
+      transition: background-color $transition-duration;
+      width: 100%;
+
+      &.active {
+        background: $white-color;
+        color: $dark-color;
+      }
+
+      &:hover {
+        background-color: color.adjust(
+          $secondary-color,
+          $lightness: -5%,
+          $space: hsl
+        );
+      }
+    }
+
+    .sub-menu {
+      margin-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      height: 100%;
+
+      .main-button {
+        padding: 0.5rem;
+        background: $white-color;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+        color: $info-color;
+        transition: background $transition-duration, color $transition-duration;
+        width: 100%;
+
+        &.active {
+          background: #6c7a89;
+          color: $white-color;
+          border: none;
+        }
+      }
+    }
+  }
+}
