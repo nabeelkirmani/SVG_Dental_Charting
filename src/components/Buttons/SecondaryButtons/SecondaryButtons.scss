@@ -50,7 +50,8 @@
         border-radius: 4px;
         cursor: pointer;
         color: variables.$info-color;
-        transition: background variables.$transition-duration, color variables.$transition-duration;
+        transition: background variables.$transition-duration,
+          color variables.$transition-duration;
         width: 100%;
 
         &.active {
