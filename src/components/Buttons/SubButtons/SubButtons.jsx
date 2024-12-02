@@ -27,24 +27,11 @@ const SubButtons = () => {
         <button
           key={label}
           className={`sub-button ${activeSubButton === label ? "active" : ""}`}
-          onClick={() => handleSubButtonClick}
+          onClick={() => handleSubButtonClick(label)}
         >
           {label}
         </button>
       ))}
-      {/* <div className="subButtons">
-        <button className="sub-button">Cervical Buccal</button>
-        <button className="sub-button">Buccal</button>
-        <button className="sub-button">Mesial</button>
-        <button className="sub-button active">Incisal</button>
-        <button className="sub-button">Distal</button>
-        <button className="sub-button">Palatal</button>
-        <button className="sub-button">Cervical Palatal</button>
-        <button className="sub-button">Class 4 Mesial</button>
-        <button className="sub-button">Class 4 Distal</button>
-        <button className="sub-button">Buccal Surface</button>
-        <button className="sub-button">Palatal Surface</button>
-      </div> */}
     </div>
   );
 };

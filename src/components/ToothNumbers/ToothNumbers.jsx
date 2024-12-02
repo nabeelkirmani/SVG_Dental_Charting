@@ -5,17 +5,19 @@ import { SelectionContext } from "../../contexts/SelectionContext.jsx";
 
 function ToothNumbers() {
   const { selectedTooth, handleToothSelect } = useContext(SelectionContext);
-  const teeth = Array.from({ length: 32 }, (_, i) => i + 1);
+  const teethNumbers = Array.from({ length: 32 }, (_, i) => i + 1);
 
   return (
     <div className="tooth-numbers">
-      {teeth.map((tooth) => (
+      {teethNumbers.map((number) => (
         <button
-          key={tooth}
-          className={selectedTooth === tooth ? "active" : ""}
-          onClick={() => handleToothSelect(tooth)}
+          key={number}
+          className={`tooth-number-button ${
+            selectedTooth === number ? "active" : ""
+          }`}
+          onClick={() => handleToothSelect(number)}
         >
-          {tooth}
+          {number}
         </button>
       ))}
     </div>

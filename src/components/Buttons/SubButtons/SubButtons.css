@@ -1,22 +1,29 @@
 /* src/components/Buttons/SubButtons/SubButtons.css */
 .sub-buttons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
 }
 
 .sub-button {
-  padding: 1rem;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6c757d;
+  color: #fff;
   cursor: pointer;
-  color: #2196f3;
-  transition: background 0.3s, color 0.3s;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.sub-button:hover {
+  background-color: #5a6268;
 }
 
 .sub-button.active {
-  background: #6c7a89;
-  color: white;
+  background: whitesmoke;
+  color: #6c7a89;
   border: none;
 }

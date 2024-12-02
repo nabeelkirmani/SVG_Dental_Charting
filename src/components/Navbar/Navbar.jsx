@@ -4,9 +4,10 @@ import "./Navbar.css";
 
 function Navbar() {
   return (
-    <nav className="navbar">
-      <div>☰</div>
-    </nav>
+    <div className="navbar">
+      {/* TODO add logo or icons here */}
+      <h2 className="navbar-title">☰</h2>
+    </div>
   );
 }
 

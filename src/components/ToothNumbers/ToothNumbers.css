@@ -1,42 +1,28 @@
 /* src/components/ToothNumbers/ToothNumbers.css */
 .tooth-numbers {
   width: 60px;
-  background: #222;
-  color: white;
-  padding: 1rem 0;
+  background-color: #000;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  font-size: 0.9rem;
-  overflow-y: auto;
-  height: 100vh;
+  height: 100%;
 }
 
-.tooth-numbers button {
-  background: none;
+.tooth-number-button {
+  flex: 1;
+  background-color: #000;
+  color: #fff;
   border: none;
-  color: white;
-  padding: 0.3rem;
+  border-bottom: 1px solid #333;
   cursor: pointer;
+  font-size: 14px;
+  padding: 0;
   width: 100%;
-  text-align: center;
 }
 
-.tooth-numbers button.active {
-  background: rgba(255, 255, 255, 0.1);
+.tooth-number-button.active {
+  background-color: #555;
 }
 
-@media (max-width: 480px) {
-  .tooth-numbers {
-    flex-direction: row;
-    width: 100%;
-    overflow-x: auto;
-    padding: 0.5rem;
-  }
-
-  .tooth-numbers button {
-    flex: 1;
-    margin: 0 0.2rem;
-  }
+.tooth-number-button:hover {
+  background-color: #333;
 }

@@ -1,22 +1,20 @@
 // src/components/Controls/Controls.jsx
 import React from "react";
 import "./Controls.css";
-import MainButtons from "../Buttons/MainButtons/MainButtons"
-import SecondaryButtons from "../Buttons/SecondaryButtons/SecondaryButtons";
-import ActionButtons from "../Buttons/ActionButtons/ActionButtons";
-import SubButtons from "../Buttons/SubButtons/SubButtons";
+import MainButtons from "../Buttons/MainButtons/MainButtons.jsx";
+import SecondaryButtons from "../Buttons/SecondaryButtons/SecondaryButtons.jsx";
+import ActionButtons from "../Buttons/ActionButtons/ActionButtons.jsx";
+import SubButtons from "../Buttons/SubButtons/SubButtons.jsx";
 
 function Controls() {
   return (
     <div className="controls">
-      <div className="secondary-controls">
+      <div className="sub-buttons-column">
         <SubButtons />
       </div>
-      <div className="primary-controls">
+      <div className="buttons-column">
         <MainButtons />
         <SecondaryButtons />
-      </div>
-      <div className="action-controls">
         <ActionButtons />
       </div>
     </div>
