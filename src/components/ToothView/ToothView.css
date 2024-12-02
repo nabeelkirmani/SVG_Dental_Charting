@@ -11,7 +11,7 @@
 }
 
 .tooth-image {
-  padding: 1vh 0;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +23,8 @@
 }
 
 .uploaded-image-front-view {
-  padding: 1vh 0;
+  padding: 0;
+  margin: 10vh 0 2.5vh 0;
   height: 38vh;
   object-fit: scale-down;
   border-radius: 8px;
@@ -31,7 +32,8 @@
 }
 
 .uploaded-image-top-view {
-  padding: 1vh 0;
+  padding: 0;
+  margin: 2.5vh 0 10vh 0;
   height: 18vh;
   object-fit: fill;
   border-radius: 8px;
