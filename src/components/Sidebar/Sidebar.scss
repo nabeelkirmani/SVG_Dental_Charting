@@ -1,15 +1,20 @@
 // src/components/Sidebar/Sidebar.scss
-.sidebar {
-  width: 64px;
-  background-color: #008fd6;
-  color: #fff;
+@import "../../styles/variables";
+
+aside {
+  flex: none;
   display: flex;
   flex-direction: column;
+  width: 64px;
+  background: $primary-color;
+  color: #fff;
 
   nav ul {
-    list-style: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 0;
-    margin: 0;
 
     li {
       text-align: center;
@@ -27,7 +32,7 @@
         text-decoration: none;
 
         &.back {
-          background-color: #33a5de;
+          background: $secondary-color;
         }
       }
     }

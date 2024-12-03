@@ -1,23 +1,23 @@
 // src/styles/_variables.scss
 
-// Color Variables
-$primary-color: #007bff;
-$secondary-color: #6c757d;
-$success-color: #28a745;
-$danger-color: #e74c3c;
-$warning-color: #f1c40f;
-$info-color: #2196f3;
-$light-color: #f5f5f5;
-$dark-color: #000;
-$gray-color: #ccc;
-$white-color: #fff;
+// Colors
+$primary-color: #008fd6;
+$secondary-color: #33a5de;
+$background-color: #fff;
+$text-color: #7a8599;
+$light-gray: #f2f4f7;
+$dark-gray: #2e333c;
+$border-color: #e6e7eb;
+$button-hover-color: #0075b0;
+$highlight-color: #ffd00a;
+$danger-color: #e13830;
+$input-border-color: #bcc1cc;
 
-// Font Variables
-$font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
-  sans-serif;
+// Fonts
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+  Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
-// Border Radius
-$border-radius: 5px;
-
-// Transition Duration
-$transition-duration: 0.3s;
+// Misc
+$border-radius: 6px;
+$transition-duration: 0.2s;
+$box-shadow: 0 2px 0 0 $border-color;

@@ -1,0 +1,110 @@
+// src/components/Zones/Zones.scss
+@import "../../styles/variables";
+
+.zones {
+  width: 40vh;
+  min-width: 304px;
+  max-width: 40%;
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr) repeat(2, 1.5fr);
+  background-color: $light-gray;
+
+  .pad {
+    position: relative;
+
+    input {
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      border: 0;
+      margin: -1px;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      padding: 0 16px;
+      border-radius: $border-radius;
+      background: $light-gray;
+      box-shadow: 0 2px 0 0 $border-color;
+      font-size: 12px;
+      font-weight: 600;
+      color: $secondary-color;
+      cursor: pointer;
+      transition: background-color $transition-duration,
+        color $transition-duration;
+
+      &:hover {
+        background-color: lighten($light-gray, 5%);
+      }
+    }
+
+    input:checked + label {
+      color: #fff;
+      background-color: $text-color;
+    }
+  }
+
+  /* Grid areas */
+  .cervical1 {
+    grid-area: cervical1;
+  }
+
+  .direction1 {
+    grid-area: direction1;
+  }
+
+  .direction2 {
+    grid-area: direction2;
+  }
+
+  .direction3 {
+    grid-area: direction3;
+  }
+
+  .direction4 {
+    grid-area: direction4;
+  }
+
+  .direction5 {
+    grid-area: direction5;
+  }
+
+  .cervical2 {
+    grid-area: cervical2;
+  }
+
+  .cusp1 {
+    grid-area: cusp1;
+  }
+
+  .cusp2 {
+    grid-area: cusp2;
+  }
+
+  .cusp3 {
+    grid-area: cusp3;
+  }
+
+  .cusp4 {
+    grid-area: cusp4;
+  }
+
+  /* Define the grid areas */
+  grid-template-areas:
+    "cervical1 cervical1 cervical1 cervical1 cervical1 cervical1"
+    ". . direction1 direction1 . ."
+    "direction2 direction2 direction3 direction3 direction4 direction4"
+    ". . direction5 direction5 . ."
+    "cervical2 cervical2 cervical2 cervical2 cervical2 cervical2"
+    "cusp1 cusp1 cusp1 cusp2 cusp2 cusp2"
+    "cusp3 cusp3 cusp3 cusp4 cusp4 cusp4";
+}

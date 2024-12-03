@@ -1,0 +1,57 @@
+// src/components/ToothWheel/ToothWheel.scss
+@import "../../styles/variables";
+
+.tooth-wheel {
+  position: relative;
+  z-index: 100;
+  flex: none;
+  display: flex;
+  overflow: hidden;
+  min-width: 176px;
+  max-width: 20.833%;
+  background: $dark-gray;
+
+  .navigation {
+    color: $text-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40px;
+    padding: 16px 0;
+
+    li {
+      font-size: 12px;
+      line-height: 16px;
+      flex: 1 1;
+      max-height: 32px;
+      text-align: center;
+
+      button {
+        background: none;
+        border: none;
+        color: inherit;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      &.active {
+        color: #fff;
+
+        button {
+          position: relative;
+
+          &:before {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            content: "";
+            left: 0;
+            border: 6px solid transparent;
+            border-left-color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}

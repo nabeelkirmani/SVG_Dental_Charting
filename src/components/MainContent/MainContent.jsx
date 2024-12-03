@@ -5,7 +5,7 @@ import "./MainContent.scss";
 
 function MainContent() {
   return (
-    <div className="main-content">
+    <div data-view="pathology" className="main-content">
       <Pathology />
     </div>
   );

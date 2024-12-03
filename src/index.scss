@@ -1,23 +1,65 @@
 // src/index.scss
-@use "styles/variables";
+@import "./styles/variables";
 
-* {
-  box-sizing: content-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
+  font-family: $font-family;
   margin: 0;
-  padding: 0;
-  font-family: variables.$font-family-base;
-  background-color: #fafafa;
+  color: $text-color;
+  background: $background-color;
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: inherit;
+  text-decoration: none;
+}
 
-  &:hover {
-    color: #535bf2;
-  }
+button,
+input {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button {
+  text-transform: none;
+}
+
+[type="button"],
+[type="submit"],
+button {
+  -webkit-appearance: button;
+}
+
+fieldset {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h2,
+p {
+  margin: 0;
+}
+
+p {
+  margin-bottom: 16px;
+}
+
+p:last-child {
+  margin-bottom: 0;
 }

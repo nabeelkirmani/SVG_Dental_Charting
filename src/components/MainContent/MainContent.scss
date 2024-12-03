@@ -1,0 +1,12 @@
+// src/components/MainContent/MainContent.scss
+@import "../../styles/variables";
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  padding: 0;
+
+  .banner {
+    font-size: medium; /* Include styles for any banners if necessary */
+  }
+}

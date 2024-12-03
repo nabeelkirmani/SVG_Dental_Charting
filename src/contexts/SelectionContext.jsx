@@ -7,6 +7,12 @@ export const SelectionProvider = ({ children }) => {
   const [selectedTooth, setSelectedTooth] = useState(22);
   const [selectedPathology, setSelectedPathology] = useState("decay");
   const [selectedZones, setSelectedZones] = useState([]);
+  const [pathologyDetails, setPathologyDetails] = useState({
+    stage: "dentin",
+    cavitation: "cavitation",
+    pulp: "involved",
+    level: "c3",
+  });
 
   const handleToothSelect = (tooth) => {
     setSelectedTooth(tooth);
@@ -24,6 +30,13 @@ export const SelectionProvider = ({ children }) => {
     );
   };
 
+  const updatePathologyDetail = (key, value) => {
+    setPathologyDetails((prevDetails) => ({
+      ...prevDetails,
+      [key]: value,
+    }));
+  };
+
   return (
     <SelectionContext.Provider
       value={{
@@ -33,6 +46,8 @@ export const SelectionProvider = ({ children }) => {
         handlePathologySelect,
         selectedZones,
         handleZoneToggle,
+        pathologyDetails,
+        updatePathologyDetail,
       }}
     >
       {children}

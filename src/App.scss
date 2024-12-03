@@ -1,50 +1,18 @@
-// src/App.scss
-@use "styles/variables";
+// src/components/App.scss
+@import "./styles/variables";
 
-@use "components/Navbar/Navbar.scss";
-@use "components/ToothNumbers/ToothNumbers.scss";
-@use "components/ToothView/ToothView.scss";
-@use "components/Controls/Controls.scss";
-
-// Global Styles
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: variables.$font-family-base;
-}
-
-body {
-  display: grid;
-}
-
-.app-container {
+.app {
   display: flex;
-  vertical-align: middle;
+  overflow: hidden;
   height: 100vh;
-  min-width: 100%;
-  background-color: variables.$light-color;
 
-  .main-content {
-    flex: 1;
-    display: flex;
-    padding: 1rem;
-    gap: 2rem;
+  > * {
+    flex: none;
+    overflow: auto;
     width: 100%;
-    max-width: 1600px;
-    margin: 0 auto; // Center main-content within app-container
   }
 
-  // Responsive Design for Smaller Screens
-  @media (max-width: 768px) {
-    flex-direction: column;
-    height: auto;
-
-    .main-content {
-      flex-direction: column;
-      height: auto;
-      max-width: 100%;
-      margin: 0;
-    }
+  [data-view="patient"] {
+    display: flex;
   }
 }
