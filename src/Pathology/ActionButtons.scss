@@ -1,0 +1,30 @@
+// src/components/Pathology/ActionButtons.scss
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 32px;
+
+    button {
+      flex: 1;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+
+      &.monitor {
+        background-color: #ffd00a;
+        color: #202633;
+      }
+
+      &.treat {
+        background-color: #e13830;
+      }
+
+      &.save {
+        background-color: #008fd6;
+      }
+    }
+  }

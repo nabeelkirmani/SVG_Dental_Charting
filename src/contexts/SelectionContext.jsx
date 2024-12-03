@@ -4,51 +4,24 @@ import React, { createContext, useState } from "react";
 export const SelectionContext = createContext();
 
 export const SelectionProvider = ({ children }) => {
-  const [selectedTooth, setSelectedTooth] = useState(1);
-  const [activeMainButton, setActiveMainButton] = useState(null);
-  const [activeSecondary, setActiveSecondary] = useState(null);
-  const [activeSubButton, setActiveSubButton] = useState(null);
-  const [activeCavitation, setActiveCavitation] = useState(null);
-  const [activePulp, setActivePulp] = useState(null);
-  const [activeClass, setActiveClass] = useState(null);
+  const [selectedTooth, setSelectedTooth] = useState(22);
+  const [selectedPathology, setSelectedPathology] = useState("decay");
+  const [selectedZones, setSelectedZones] = useState([]);
 
   const handleToothSelect = (tooth) => {
     setSelectedTooth(tooth);
-    setActiveMainButton(null);
-    setActiveSecondary(null);
-    setActiveCavitation(null);
-    setActivePulp(null);
-    setActiveClass(null);
   };
 
-  const handleMainButtonClick = (button) => {
-    setActiveMainButton((prev) => (prev === button ? null : button));
+  const handlePathologySelect = (pathology) => {
+    setSelectedPathology(pathology);
   };
 
-  const handleSecondaryClick = (type) => {
-    setActiveSecondary((prev) => (prev === type ? null : type));
-    setActiveCavitation(null);
-    setActivePulp(null);
-    setActiveClass(null);
-  };
-
-  const handleSubButtonClick = (button) => {
-    setActiveSubButton((prev) => (prev === button ? null : button));
-  };
-
-  const handleCavitationClick = (cavitation) => {
-    setActiveCavitation((prev) => (prev === cavitation ? null : cavitation));
-    setActivePulp(null);
-    setActiveClass(null);
-  };
-
-  const handlePulpClick = (pulp) => {
-    setActivePulp((prev) => (prev === pulp ? null : pulp));
-    setActiveClass(null);
-  };
-
-  const handleClassClick = (cls) => {
-    setActiveClass((prev) => (prev === cls ? null : cls));
+  const handleZoneToggle = (zone) => {
+    setSelectedZones((prevZones) =>
+      prevZones.includes(zone)
+        ? prevZones.filter((z) => z !== zone)
+        : [...prevZones, zone]
+    );
   };
 
   return (
@@ -56,18 +29,10 @@ export const SelectionProvider = ({ children }) => {
       value={{
         selectedTooth,
         handleToothSelect,
-        activeMainButton,
-        handleMainButtonClick,
-        activeSecondary,
-        handleSecondaryClick,
-        activeCavitation,
-        handleSubButtonClick,
-        activeSubButton,
-        handleCavitationClick,
-        activePulp,
-        handlePulpClick,
-        activeClass,
-        handleClassClick,
+        selectedPathology,
+        handlePathologySelect,
+        selectedZones,
+        handleZoneToggle,
       }}
     >
       {children}

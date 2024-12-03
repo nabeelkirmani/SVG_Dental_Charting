@@ -1,21 +1,19 @@
 // src/App.jsx
 import React from "react";
-import "./App.scss";
-import Navbar from "./components/Navbar/Navbar.jsx";
-import ToothNumbers from "./components/ToothNumbers/ToothNumbers.jsx";
-import ToothView from "./components/ToothView/ToothView.jsx";
-import Controls from "./components/Controls/Controls.jsx";
+import Sidebar from "./components/Sidebar/Sidebar.jsx";
+import ToothWheel from "./ToothWheel/ToothWheel.jsx";
+import MainContent from "./MainContent/MainContent.jsx";
 import { SelectionProvider } from "./contexts/SelectionContext.jsx";
+import "./App.scss";
 
 function App() {
   return (
     <SelectionProvider>
-      <div className="app-container">
-        <Navbar />
-        <ToothNumbers />
-        <div className="main-content">
-          <ToothView />
-          <Controls />
+      <div className="app">
+        <Sidebar />
+        <div className="main-view">
+          <ToothWheel />
+          <MainContent />
         </div>
       </div>
     </SelectionProvider>

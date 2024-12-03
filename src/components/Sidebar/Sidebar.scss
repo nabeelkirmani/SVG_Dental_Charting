@@ -1,0 +1,35 @@
+// src/components/Sidebar/Sidebar.scss
+.sidebar {
+  width: 64px;
+  background-color: #008fd6;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      text-align: center;
+
+      &.primary {
+        opacity: 0.5;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 64px;
+        color: #fff;
+        text-decoration: none;
+
+        &.back {
+          background-color: #33a5de;
+        }
+      }
+    }
+  }
+}

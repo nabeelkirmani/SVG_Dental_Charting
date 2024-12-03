@@ -1,0 +1,33 @@
+// src/components/Zones/Zones.scss
+.zones {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  padding: 16px;
+  background-color: #f2f4f7;
+
+  li {
+    list-style: none;
+
+    label {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: #33a5de;
+      background-color: #f2f4f7;
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #e6e7eb;
+      }
+
+      input {
+        margin-right: 8px;
+      }
+    }
+  }
+}
