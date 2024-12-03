@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import "./ToothNumbers.scss";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
 
-function ToothNumbers() {
+const ToothNumbers = () => {
   const { selectedTooth, handleToothSelect } = useContext(SelectionContext);
   const teethNumbers = Array.from({ length: 32 }, (_, i) => i + 1);
 

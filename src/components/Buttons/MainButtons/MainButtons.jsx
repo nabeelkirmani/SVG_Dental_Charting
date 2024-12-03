@@ -12,7 +12,7 @@ const mainButtonLabels = [
   "Development Disorder",
 ];
 
-function MainButtons() {
+const MainButtons = () => {
   const { activeMainButton, handleMainButtonClick } =
     useContext(SelectionContext);
 

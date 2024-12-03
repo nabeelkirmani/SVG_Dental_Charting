@@ -5,7 +5,7 @@ import { SelectionContext } from "../../contexts/SelectionContext.jsx";
 import surfaceData from "../../assets/surface.json";
 import toothImages from "../../assets/images";
 
-function ToothView() {
+const ToothView = () => {
   const { selectedTooth, activeMainButton } = useContext(SelectionContext);
   const [imageSrc, setImageSrc] = useState("");
 

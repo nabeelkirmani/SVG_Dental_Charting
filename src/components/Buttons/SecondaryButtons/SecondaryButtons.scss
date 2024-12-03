@@ -5,7 +5,8 @@
 .secondary-buttons {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 2rem 1rem;
+  max-width: 800px;
 
   .secondary-group {
     display: flex;

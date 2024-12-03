@@ -8,7 +8,7 @@ const cavitationLabels = ["Cavitation", "No Cavitation"];
 const pulpLabels = ["Pulp Involved", "Pulp Not Involved"];
 const classLabels = ["C1", "C2", "C3", "C4"];
 
-function SecondaryButtons() {
+const SecondaryButtons = () => {
   const {
     activeSecondary,
     handleSecondaryClick,

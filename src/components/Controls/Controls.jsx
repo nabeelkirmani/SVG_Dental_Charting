@@ -6,7 +6,7 @@ import SecondaryButtons from "../Buttons/SecondaryButtons/SecondaryButtons.jsx";
 import ActionButtons from "../Buttons/ActionButtons/ActionButtons.jsx";
 import SubButtons from "../Buttons/SubButtons/SubButtons.jsx";
 
-function Controls() {
+const Controls = () => {
   return (
     <div className="controls">
       <div className="sub-buttons-column">

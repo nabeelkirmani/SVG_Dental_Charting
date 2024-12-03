@@ -8,7 +8,7 @@ const actions = [
   { label: "SAVE", className: "save" },
 ];
 
-function ActionButtons() {
+const ActionButtons = () => {
   const handleAction = (action) => {
     // Implement action handlers as needed
     console.log(`${action} clicked`);

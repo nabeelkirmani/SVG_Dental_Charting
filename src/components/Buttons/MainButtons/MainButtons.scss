@@ -4,8 +4,9 @@
 
 .main-buttons {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  gap: 2rem 1rem;
+  max-width: 800px;
 
   .main-button {
     padding: 10px 15px;
@@ -17,6 +18,7 @@
     cursor: pointer;
     transition: background-color variables.$transition-duration;
     width: 100%;
+    min-width: 100px;
 
     &:hover {
       background-color: color.adjust(
