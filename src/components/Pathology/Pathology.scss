@@ -6,14 +6,49 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding: 32px 40px 0;
+  overflow: auto;
+  padding: 32px 40px;
+  padding-bottom: 0;
   background: $light-gray;
 
   .heading {
     font-weight: 300;
     color: $dark-gray;
     font-size: 28px;
+    line-height: 32px;
     margin-bottom: 24px;
+  }
+
+  .types {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 24px;
+
+    button {
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 600;
+      color: $secondary-color;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: $transition-duration;
+      height: 48px;
+      padding: 0 16px;
+      border-radius: $border-radius;
+      background: #fff;
+      box-shadow: $box-shadow;
+      cursor: pointer;
+      user-select: none;
+      border: none;
+
+      &.active {
+        color: #fff;
+        background-color: $text-color;
+      }
+    }
   }
 
   .close {
@@ -22,15 +57,12 @@
     right: 0;
     padding: 10px;
     margin: 28px;
-    color: #bcc1cc;
+    color: $input-border-color;
     font-size: 21px;
     text-decoration: none;
     line-height: 1;
-  }
-
-  .actions {
-    padding-top: 32px;
-    padding-bottom: 32px;
-    margin-top: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 }

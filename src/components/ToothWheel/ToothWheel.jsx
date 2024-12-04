@@ -2,6 +2,7 @@
 import React, { useContext } from "react";
 import "./ToothWheel.scss";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
+import CanvasComponent from "../Canvas/Canvas.jsx";
 
 const teethNumbers = [
   // Upper teeth numbers
@@ -22,7 +23,17 @@ function ToothWheel() {
           </li>
         ))}
       </ol>
-      {/* Include Canvas or Image display if necessary */}
+      <div className="viewport">
+        <div className="track">
+          <div className="teeth">
+            <div className="tooth">
+              <div className="visualization">
+                <CanvasComponent />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

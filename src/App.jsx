@@ -1,4 +1,4 @@
-// src/components/App/App.jsx
+// src/App.jsx
 import React from "react";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import ToothWheel from "./components/ToothWheel/ToothWheel.jsx";

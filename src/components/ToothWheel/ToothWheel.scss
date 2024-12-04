@@ -9,22 +9,23 @@
   overflow: hidden;
   min-width: 176px;
   max-width: 20.833%;
-  background: $dark-gray;
+  user-select: none;
 
   .navigation {
     color: $text-color;
+    background-color: $dark-gray;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 40px;
     padding: 16px 0;
+    text-align: center;
 
     li {
       font-size: 12px;
       line-height: 16px;
       flex: 1 1;
       max-height: 32px;
-      text-align: center;
 
       button {
         background: none;
@@ -37,20 +38,44 @@
 
       &.active {
         color: #fff;
+        position: relative;
 
-        button {
-          position: relative;
-
-          &:before {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            content: "";
-            left: 0;
-            border: 6px solid transparent;
-            border-left-color: $primary-color;
-          }
+        &:before {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          content: "";
+          left: 0;
+          border: 6px solid transparent;
+          border-left-color: $primary-color;
+          pointer-events: none;
         }
+      }
+    }
+  }
+
+  .viewport {
+    overflow: hidden;
+    width: 20.833vh;
+    min-width: 136px;
+    max-width: 320px;
+    border-right: 1px solid $border-color;
+    background: $light-gray;
+
+    .track {
+      /* Implement scrolling functionality */
+      cursor: grab;
+    }
+
+    .teeth {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+
+      .tooth {
+        /* Styles for individual tooth representations */
       }
     }
   }

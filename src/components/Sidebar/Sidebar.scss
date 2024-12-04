@@ -6,15 +6,15 @@ aside {
   display: flex;
   flex-direction: column;
   width: 64px;
-  background: $primary-color;
   color: #fff;
+  background: $primary-color;
 
   nav ul {
-    flex: 1;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0;
 
     li {
       text-align: center;

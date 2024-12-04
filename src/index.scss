@@ -28,14 +28,27 @@ input {
 }
 
 button {
-  text-transform: none;
+  text-transform: uppercase;
 }
 
-[type="button"],
-[type="submit"],
-button {
-  -webkit-appearance: button;
-}
+// [type="button"],
+// [type="submit"],
+// button {
+//   /* WebKit */
+//   -webkit-appearance: button;
+
+//   /* Mozilla */
+//   -moz-appearance: button;
+
+//   /* Opera */
+//   -o-appearance: button;
+
+//   /* Internet Explorer */
+//   -ms-appearance: button;
+
+//   /* CSS3 */
+//   appearance: button;
+// }
 
 fieldset {
   padding: 0;

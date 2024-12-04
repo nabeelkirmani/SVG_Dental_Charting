@@ -1,18 +1,20 @@
-// src/components/App.scss
+// src/App.scss
 @import "./styles/variables";
 
 .app {
   display: flex;
-  overflow: hidden;
-  height: 100vh;
+  // height: 100vh;
 
   > * {
-    flex: none;
+    // flex: none;
     overflow: auto;
-    width: 100%;
   }
 
   [data-view="patient"] {
+    display: flex;
+  }
+
+  [data-view="tooth"] {
     display: flex;
   }
 }
