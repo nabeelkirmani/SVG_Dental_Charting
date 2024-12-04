@@ -1,5 +1,6 @@
 // src/components/Pathology/ActionButtons.scss
-@import "../../styles/variables";
+@use "sass:color";
+@use "../../styles/variables";
 
 .actions {
   display: flex;
@@ -10,28 +11,28 @@
     flex: 1;
     padding: 12px 24px;
     border: none;
-    border-radius: $border-radius;
+    border-radius: variables.$border-radius;
     font-size: 13px;
     font-weight: 700;
     color: #fff;
     cursor: pointer;
-    transition: background-color $transition-duration;
+    transition: background-color variables.$transition-duration;
 
     &.monitor {
       color: #202633;
-      background-color: $highlight-color;
+      background-color: variables.$highlight-color;
     }
 
     &.treat {
-      background-color: $danger-color;
+      background-color: variables.$danger-color;
     }
 
     &.save {
-      background-color: $primary-color;
+      background-color: variables.$primary-color;
     }
 
     &:active {
-      background-color: darken($primary-color, 10%);
+      background-color: color.adjust(variables.$primary-color, $lightness: -10%);
     }
   }
 }

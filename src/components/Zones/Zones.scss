@@ -1,5 +1,6 @@
 // src/components/Zones/Zones.scss
-@import "../../styles/variables";
+@use "sass:color";
+@use "../../styles/variables";
 
 .zones {
   width: 40vh;
@@ -10,7 +11,7 @@
   gap: 8px;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(5, 1fr) repeat(2, 1.5fr);
-  background-color: $light-gray;
+  background-color: variables.$light-gray;
 
   .pad {
     position: relative;
@@ -32,24 +33,24 @@
       justify-content: center;
       height: 48px;
       padding: 0 16px;
-      border-radius: $border-radius;
-      background: $light-gray;
-      box-shadow: 0 2px 0 0 $border-color;
+      border-radius: variables.$border-radius;
+      background: variables.$light-gray;
+      box-shadow: 0 2px 0 0 variables.$border-color;
       font-size: 12px;
       font-weight: 600;
-      color: $secondary-color;
+      color: variables.$secondary-color;
       cursor: pointer;
-      transition: background-color $transition-duration,
-        color $transition-duration;
+      transition: background-color variables.$transition-duration,
+        color variables.$transition-duration;
 
       &:hover {
-        background-color: lighten($light-gray, 5%);
+        background-color: color.adjust(variables.$light-gray, $lightness: 5%);
       }
     }
 
     input:checked + label {
       color: #fff;
-      background-color: $text-color;
+      background-color: variables.$text-color;
     }
   }
 

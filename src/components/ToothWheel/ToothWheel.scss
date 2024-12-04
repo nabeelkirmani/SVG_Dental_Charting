@@ -1,5 +1,5 @@
 // src/components/ToothWheel/ToothWheel.scss
-@import "../../styles/variables";
+@use "../../styles/variables";
 
 .tooth-wheel {
   position: relative;
@@ -12,8 +12,8 @@
   user-select: none;
 
   .navigation {
-    color: $text-color;
-    background-color: $dark-gray;
+    color: variables.$text-color;
+    background-color: variables.$dark-gray;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,7 +47,7 @@
           content: "";
           left: 0;
           border: 6px solid transparent;
-          border-left-color: $primary-color;
+          border-left-color: variables.$primary-color;
           pointer-events: none;
         }
       }
@@ -59,8 +59,8 @@
     width: 20.833vh;
     min-width: 136px;
     max-width: 320px;
-    border-right: 1px solid $border-color;
-    background: $light-gray;
+    border-right: 1px solid variables.$border-color;
+    background: variables.$light-gray;
 
     .track {
       /* Implement scrolling functionality */

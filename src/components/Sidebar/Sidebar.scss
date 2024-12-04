@@ -1,5 +1,5 @@
 // src/components/Sidebar/Sidebar.scss
-@import "../../styles/variables";
+@use "../../styles/variables";
 
 aside {
   flex: none;
@@ -7,7 +7,7 @@ aside {
   flex-direction: column;
   width: 64px;
   color: #fff;
-  background: $primary-color;
+  background: variables.$primary-color;
 
   nav ul {
     padding: 0;
@@ -32,7 +32,7 @@ aside {
         text-decoration: none;
 
         &.back {
-          background: $secondary-color;
+          background: variables.$secondary-color;
         }
       }
     }

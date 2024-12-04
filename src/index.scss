@@ -1,17 +1,18 @@
 // src/index.scss
-@import "./styles/variables";
+@use "styles/variables";
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 
 body {
-  font-family: $font-family;
+  font-family: variables.$font-family;
   margin: 0;
-  color: $text-color;
-  background: $background-color;
+  color: variables.$text-color;
+  background: variables.$background-color;
+  display: grid;
 }
 
 a {
