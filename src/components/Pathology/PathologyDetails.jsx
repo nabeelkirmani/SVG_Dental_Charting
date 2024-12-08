@@ -2,64 +2,115 @@
 import React, { useContext } from "react";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
 import "./PathologyDetails.scss";
+import pathologyOptions from "./pathologyOptions.js";
 
 const PathologyDetails = () => {
-  const { pathologyDetails, updatePathologyDetail, selectedPathology } =
+  const { selectedPathology, pathologyDetails, updatePathologyDetail } =
     useContext(SelectionContext);
 
-  const renderOptions = (name, options) => (
-    <fieldset data-name={name} className="detail">
-      <span className="options">
-        {options.map((option) => (
-          <span
-            key={option.value}
-            className={`option ${
-              pathologyDetails[name] === option.value ? "selected" : ""
-            }`}
-          >
-            <input
-              type="radio"
-              name={name}
-              id={`${name}-${option.value}`}
-              value={option.value}
-              checked={pathologyDetails[name] === option.value}
-              onChange={() => updatePathologyDetail(name, option.value)}
-            />
-            <label htmlFor={`${name}-${option.value}`}>{option.label}</label>
-          </span>
-        ))}
-      </span>
-    </fieldset>
-  );
-
   if (!selectedPathology) {
-    return (
-      <p className="details-placeholder">Select a pathology to see details</p>
-    );
+    return <p className="details-placeholder">Pathology Detail Placeholder</p>;
   }
 
-  return (
-    <div className="details">
-      {renderOptions("stage", [
-        { value: "dentin", label: "Dentin" },
-        { value: "enamel", label: "Enamel" },
-      ])}
-      {renderOptions("cavitation", [
-        { value: "cavitation", label: "Cavitation" },
-        { value: "noCavitation", label: "No Cavitations" },
-      ])}
-      {renderOptions("pulp", [
-        { value: "involved", label: "Pulp involved" },
-        { value: "notInvolved", label: "Pulp not involved" },
-      ])}
-      {renderOptions("level", [
-        { value: "c1", label: "C1" },
-        { value: "c2", label: "C2" },
-        { value: "c3", label: "C3" },
-        { value: "c4", label: "C4" },
-      ])}
-    </div>
-  );
+  const hierarchy = pathologyOptions[selectedPathology];
+  if (!hierarchy) {
+    return null;
+  }
+
+  const renderOptions = (levelName, levelData) => {
+    let options = [];
+    let isMultiple = false;
+    if (Array.isArray(levelData)) {
+      options = levelData;
+    } else if (levelData.options) {
+      options = levelData.options;
+      isMultiple = levelData.multiple || false;
+    }
+
+    const selectedValue = pathologyDetails[levelName] || (isMultiple ? [] : "");
+
+    return (
+      <fieldset key={levelName} data-name={levelName} className="detail">
+        <legend>{levelName}</legend>
+        <span className="options">
+          {options.map((option) => {
+            const isSelected = isMultiple
+              ? selectedValue.includes(option.value)
+              : selectedValue === option.value;
+
+            return (
+              <span
+                key={option.value}
+                className={`option ${isSelected ? "selected" : ""}`}
+              >
+                <input
+                  type={isMultiple ? "checkbox" : "radio"}
+                  name={levelName}
+                  id={`${levelName}-${option.value}`}
+                  value={option.value}
+                  checked={isSelected}
+                  onChange={() => {
+                    let newValue;
+                    if (isMultiple) {
+                      if (isSelected) {
+                        newValue = selectedValue.filter(
+                          (v) => v !== option.value
+                        );
+                      } else {
+                        newValue = [...selectedValue, option.value];
+                      }
+                    } else {
+                      newValue = option.value;
+                    }
+                    updatePathologyDetail(levelName, newValue);
+                  }}
+                />
+                <label htmlFor={`${levelName}-${option.value}`}>
+                  {option.label}
+                </label>
+              </span>
+            );
+          })}
+        </span>
+      </fieldset>
+    );
+  };
+
+  const renderHierarchy = (currentLevel, depth = 0) => {
+    if (!currentLevel) {
+      return null;
+    }
+
+    const levelName = Object.keys(currentLevel)[0];
+    const levelData = currentLevel[levelName];
+
+    const renderedOptions = renderOptions(levelName, levelData);
+
+    const selectedValue = pathologyDetails[levelName];
+
+    let nextLevel = null;
+
+    if (selectedValue) {
+      if (Array.isArray(levelData)) {
+        const selectedOption = levelData.find(
+          (option) => option.value === selectedValue
+        );
+        if (selectedOption && selectedOption.next) {
+          nextLevel = selectedOption.next;
+        }
+      } else if (levelData.options && levelData.multiple) {
+      }
+    }
+
+    return (
+      <div key={depth}>
+        {renderedOptions}
+        {nextLevel && renderHierarchy(nextLevel, depth + 1)}
+      </div>
+    );
+  };
+
+  return <div className="details">{renderHierarchy(hierarchy)}</div>;
 };
 
 export default PathologyDetails;

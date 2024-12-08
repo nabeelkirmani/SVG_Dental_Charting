@@ -7,12 +7,7 @@ export const SelectionProvider = ({ children }) => {
   const [selectedTooth, setSelectedTooth] = useState(null);
   const [selectedPathology, setSelectedPathology] = useState("");
   const [selectedZones, setSelectedZones] = useState([]);
-  const [pathologyDetails, setPathologyDetails] = useState({
-    stage: "dentin",
-    cavitation: "cavitation",
-    pulp: "involved",
-    level: "c3",
-  });
+  const [pathologyDetails, setPathologyDetails] = useState({});
 
   const handleToothSelect = (tooth) => {
     setSelectedTooth(tooth);
@@ -22,6 +17,7 @@ export const SelectionProvider = ({ children }) => {
     setSelectedPathology((prevPathology) =>
       prevPathology === pathology ? "" : pathology
     );
+    setPathologyDetails({});
   };
 
   const handleZoneToggle = (zone) => {
