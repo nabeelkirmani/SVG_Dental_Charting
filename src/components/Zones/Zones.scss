@@ -16,6 +16,28 @@
   .pad {
     position: relative;
 
+    &.disabled label {
+      color: variables.$text-color;
+      background-color: variables.$light-gray;
+      border: dashed;
+      border-color: color.adjust(
+        variables.$input-border-color,
+        $lightness: 10%
+      );
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    input:disabled + label {
+      background-color: color.adjust(
+        variables.$input-border-color,
+        $lightness: 15%
+      );
+      color: color.adjust(variables.$input-border-color, $lightness: 0%);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
     input {
       position: absolute;
       clip: rect(0, 0, 0, 0);

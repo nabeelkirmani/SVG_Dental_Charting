@@ -1,0 +1,64 @@
+// src/components/Pathology/PathologyDetails.scss
+@use "../../styles/variables";
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .detail {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .options {
+      display: flex;
+      gap: 8px;
+
+      .option {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 16px;
+        border-radius: variables.$border-radius;
+        background-color: #fff;
+        box-shadow: 0 2px 0 0 variables.$border-color;
+        font-size: 12px;
+        font-weight: 600;
+        color: variables.$secondary-color;
+        cursor: pointer;
+        transition: background-color variables.$transition-duration,
+          color variables.$transition-duration;
+        line-height: 16px;
+        text-align: center;
+        user-select: none;
+        border: none;
+
+        &:hover {
+          color: #fff;
+          background-color: variables.$button-hover-color;
+        }
+
+        &.selected {
+          color: #fff;
+          background-color: variables.$text-color;
+        }
+
+        input {
+          display: none;
+        }
+
+        label {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .details-placeholder {
+    font-size: 14px;
+    font-weight: 500;
+    color: variables.$text-color;
+    text-align: center;
+  }
+}

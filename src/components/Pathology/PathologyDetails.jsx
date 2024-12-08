@@ -1,9 +1,10 @@
 // src/components/Pathology/PathologyDetails.jsx
 import React, { useContext } from "react";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
+import "./PathologyDetails.scss";
 
-function PathologyDetails() {
-  const { pathologyDetails, updatePathologyDetail } =
+const PathologyDetails = () => {
+  const { pathologyDetails, updatePathologyDetail, selectedPathology } =
     useContext(SelectionContext);
 
   const renderOptions = (name, options) => (
@@ -31,6 +32,12 @@ function PathologyDetails() {
     </fieldset>
   );
 
+  if (!selectedPathology) {
+    return (
+      <p className="details-placeholder">Select a pathology to see details</p>
+    );
+  }
+
   return (
     <div className="details">
       {renderOptions("stage", [
@@ -53,6 +60,6 @@ function PathologyDetails() {
       ])}
     </div>
   );
-}
+};
 
 export default PathologyDetails;

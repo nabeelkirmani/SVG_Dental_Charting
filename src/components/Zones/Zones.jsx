@@ -18,18 +18,23 @@ const zones = [
 ];
 
 const Zones = () => {
-  const { selectedZones, handleZoneToggle } = useContext(SelectionContext);
+  const { selectedZones, handleZoneToggle, activateZone } =
+    useContext(SelectionContext);
 
   return (
     <ul className="zones">
       {zones.map((zone) => (
-        <li key={zone.value} className={`pad ${zone.area}`}>
+        <li
+          key={zone.value}
+          className={`pad ${zone.area} ${!activateZone ? "disabled" : ""}`}
+        >
           <input
             type="checkbox"
             id={`pad-${zone.value}`}
             value={zone.value}
             checked={selectedZones.includes(zone.value)}
             onChange={() => handleZoneToggle(zone.value)}
+            disabled={!activateZone}
           />
           <label htmlFor={`pad-${zone.value}`}>{zone.label}</label>
         </li>

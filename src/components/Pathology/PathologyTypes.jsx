@@ -2,18 +2,18 @@
 import React, { useContext } from "react";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
 
-const pathologyTypes = [
-  "Decay",
-  "Fracture",
-  "Tooth Wear",
-  "Discoloration",
-  "Apical",
-  "Development Disorder",
-];
-
 const PathologyTypes = () => {
   const { selectedPathology, handlePathologyToggle } =
     useContext(SelectionContext);
+
+  const pathologyTypes = [
+    "Decay",
+    "Fracture",
+    "Tooth Wear",
+    "Discoloration",
+    "Apical",
+    "Development Disorder",
+  ];
 
   return (
     <div className="pathology-types">
@@ -26,7 +26,7 @@ const PathologyTypes = () => {
             className={isActive ? "active" : ""}
             onClick={() => handlePathologyToggle(type.toLowerCase())}
           >
-            <label htmlFor={`pad-${pathologyTypes}`}>{type}</label>
+            <label htmlFor={`pad-${type}`}>{type}</label>
           </button>
         );
       })}

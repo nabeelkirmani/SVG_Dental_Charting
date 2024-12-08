@@ -39,6 +39,9 @@ export const SelectionProvider = ({ children }) => {
     }));
   };
 
+  const activateZone =
+    selectedPathology === "decay" || selectedPathology === "tooth wear";
+
   return (
     <SelectionContext.Provider
       value={{
@@ -50,6 +53,7 @@ export const SelectionProvider = ({ children }) => {
         handleZoneToggle,
         pathologyDetails,
         updatePathologyDetail,
+        activateZone,
       }}
     >
       {children}
