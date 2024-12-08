@@ -12,22 +12,26 @@ const pathologyTypes = [
 ];
 
 const PathologyTypes = () => {
-  const { selectedPathology, handlePathologySelect } =
+  const { selectedPathology, handlePathologyToggle } =
     useContext(SelectionContext);
 
   return (
     <div className="pathology-types">
-      {pathologyTypes.map((type) => (
-        <button
-          key={type}
-          className={selectedPathology === type.toLowerCase() ? "active" : ""}
-          onClick={() => handlePathologySelect(type.toLowerCase())}
-        >
-          {type}
-        </button>
-      ))}
+      {pathologyTypes.map((type) => {
+        const isActive = selectedPathology.includes(type.toLowerCase());
+
+        return (
+          <button
+            key={type}
+            className={isActive ? "active" : ""}
+            onClick={() => handlePathologyToggle(type.toLowerCase())}
+          >
+            <label htmlFor={`pad-${pathologyTypes}`}>{type}</label>
+          </button>
+        );
+      })}
     </div>
   );
-}
+};
 
 export default PathologyTypes;

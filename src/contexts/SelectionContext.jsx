@@ -18,8 +18,10 @@ export const SelectionProvider = ({ children }) => {
     setSelectedTooth(tooth);
   };
 
-  const handlePathologySelect = (pathology) => {
-    setSelectedPathology(pathology);
+  const handlePathologyToggle = (pathology) => {
+    setSelectedPathology((prevPathology) =>
+      prevPathology === pathology ? "" : pathology
+    );
   };
 
   const handleZoneToggle = (zone) => {
@@ -43,7 +45,7 @@ export const SelectionProvider = ({ children }) => {
         selectedTooth,
         handleToothSelect,
         selectedPathology,
-        handlePathologySelect,
+        handlePathologyToggle,
         selectedZones,
         handleZoneToggle,
         pathologyDetails,

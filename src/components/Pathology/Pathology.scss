@@ -1,4 +1,5 @@
 // src/components/Pathology/Pathology.scss
+@use "sass:color";
 @use "../../styles/variables";
 
 .main {
@@ -26,23 +27,32 @@
     margin-bottom: 24px;
 
     button {
-      font-size: 12px;
-      line-height: 16px;
-      font-weight: 600;
-      color: variables.$secondary-color;
-      text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: variables.$transition-duration;
       height: 48px;
       padding: 0 16px;
       border-radius: variables.$border-radius;
-      background: #fff;
-      box-shadow: variables.$box-shadow;
+      background-color: #fff;
+      box-shadow: 0 2px 0 0 variables.$border-color;
+      font-size: 12px;
+      font-weight: 600;
+      color: variables.$secondary-color;
       cursor: pointer;
+      transition: background-color variables.$transition-duration,
+        color variables.$transition-duration;
+      line-height: 16px;
+      text-align: center;
       user-select: none;
       border: none;
+
+      &:hover {
+        color: #fff;
+        background-color: color.adjust(
+          variables.$button-hover-color,
+          $lightness: 25%
+        );
+      }
 
       &.active {
         color: #fff;

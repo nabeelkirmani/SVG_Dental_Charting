@@ -19,7 +19,7 @@
     input {
       position: absolute;
       clip: rect(0, 0, 0, 0);
-      overflow: hidden;
+      overflow: visible;
       width: 1px;
       height: 1px;
       padding: 0;
@@ -34,7 +34,7 @@
       height: 48px;
       padding: 0 16px;
       border-radius: variables.$border-radius;
-      background: variables.$light-gray;
+      background: color.adjust(variables.$light-gray, $lightness: 5%);
       box-shadow: 0 2px 0 0 variables.$border-color;
       font-size: 12px;
       font-weight: 600;
@@ -42,9 +42,25 @@
       cursor: pointer;
       transition: background-color variables.$transition-duration,
         color variables.$transition-duration;
+      line-height: 16px;
+      text-align: center;
+      user-select: none;
+      border: none;
 
       &:hover {
-        background-color: color.adjust(variables.$light-gray, $lightness: 5%);
+        color: #fff;
+        background-color: color.adjust(
+          variables.$button-hover-color,
+          $lightness: 25%
+        );
+      }
+
+      &:active {
+        color: color.adjust(variables.$secondary-color, $lightness: 25%);
+        background-color: color.adjust(
+          variables.$button-hover-color,
+          $lightness: -5%
+        );
       }
     }
 
