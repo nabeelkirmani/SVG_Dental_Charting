@@ -1,20 +1,16 @@
 // src/App.scss
-@import "./styles/variables";
+@use "styles/variables";
 
 .app {
   display: flex;
-  // height: 100vh;
+  height: 100vh;
 
-  > * {
-    // flex: none;
-    overflow: auto;
-  }
-
-  [data-view="patient"] {
+  [data-view="nav-bar"] {
     display: flex;
   }
 
-  [data-view="tooth"] {
+  [data-view="patient-view"] {
     display: flex;
+    flex: 1;
   }
 }

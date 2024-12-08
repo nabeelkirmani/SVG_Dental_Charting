@@ -1,10 +1,19 @@
 // src/index.scss
 @use "styles/variables";
 
-*,
-*::before,
-*::after {
-  box-sizing: content-box;
+// *,
+// *::before,
+// *::after {
+//   box-sizing: content-box;
+// }
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -12,7 +21,9 @@ body {
   margin: 0;
   color: variables.$text-color;
   background: variables.$background-color;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 a {

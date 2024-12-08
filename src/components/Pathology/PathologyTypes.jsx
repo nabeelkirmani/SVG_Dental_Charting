@@ -11,12 +11,12 @@ const pathologyTypes = [
   "Development Disorder",
 ];
 
-function PathologyTypes() {
+const PathologyTypes = () => {
   const { selectedPathology, handlePathologySelect } =
     useContext(SelectionContext);
 
   return (
-    <div className="types">
+    <div className="pathology-types">
       {pathologyTypes.map((type) => (
         <button
           key={type}

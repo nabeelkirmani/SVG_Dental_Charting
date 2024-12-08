@@ -3,28 +3,22 @@
 
 .tooth-wheel {
   position: relative;
-  z-index: 100;
-  flex: none;
   display: flex;
-  overflow: hidden;
-  min-width: 176px;
-  max-width: 20.833%;
   user-select: none;
 
-  .navigation {
+  .tooth-wheel-navigation {
     color: variables.$text-color;
     background-color: variables.$dark-gray;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 40px;
+    justify-content: space-between;
+    width: 50px;
     padding: 16px 0;
     text-align: center;
 
     li {
-      font-size: 12px;
+      font-size: 14px;
       line-height: 16px;
-      flex: 1 1;
       max-height: 32px;
 
       button {
@@ -50,32 +44,6 @@
           border-left-color: variables.$primary-color;
           pointer-events: none;
         }
-      }
-    }
-  }
-
-  .viewport {
-    overflow: hidden;
-    width: 20.833vh;
-    min-width: 136px;
-    max-width: 320px;
-    border-right: 1px solid variables.$border-color;
-    background: variables.$light-gray;
-
-    .track {
-      /* Implement scrolling functionality */
-      cursor: grab;
-    }
-
-    .teeth {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-
-      .tooth {
-        /* Styles for individual tooth representations */
       }
     }
   }

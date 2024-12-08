@@ -5,21 +5,23 @@ import ToothWheel from "./components/ToothWheel/ToothWheel.jsx";
 import MainContent from "./components/MainContent/MainContent.jsx";
 import { SelectionProvider } from "./contexts/SelectionContext.jsx";
 import "./App.scss";
+import Canvas from "./components/Canvas/Canvas.jsx";
 
-function App() {
+const App = () => {
   return (
     <SelectionProvider>
       <div className="app">
-        <div data-view="patient">
+        <div data-view="nav-bar">
           <Sidebar />
-          <main data-view="tooth">
-            <ToothWheel />
-            <MainContent />
-          </main>
         </div>
+        <main data-view="patient-view">
+          <ToothWheel />
+          <Canvas />
+          <MainContent />
+        </main>
       </div>
     </SelectionProvider>
   );
-}
+};
 
 export default App;

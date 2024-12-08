@@ -1,0 +1,15 @@
+//src/components/Canvas/Canvas.scss
+@use "../../styles/variables";
+
+.canvas {
+  display: flex;
+  height: 100%;
+  width: 320px;
+  border-right: 1px solid variables.$border-color;
+  background: variables.$light-gray;
+  cursor: pointer;
+
+  .visualization {
+    position: relative;
+  }
+}

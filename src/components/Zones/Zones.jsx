@@ -17,7 +17,7 @@ const zones = [
   { value: "11", label: "Palatal Surface", area: "cusp4" },
 ];
 
-function Zones() {
+const Zones = () => {
   const { selectedZones, handleZoneToggle } = useContext(SelectionContext);
 
   return (
@@ -36,6 +36,6 @@ function Zones() {
       ))}
     </ul>
   );
-}
+};
 
 export default Zones;

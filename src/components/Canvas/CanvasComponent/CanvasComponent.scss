@@ -1,0 +1,13 @@
+//src/components/Canvas/CanvasComponent/CanvasComponent.scss
+
+.teeth {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  .tooth {
+    align-items: center;
+  }
+}

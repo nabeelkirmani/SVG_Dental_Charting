@@ -4,8 +4,8 @@ import React, { createContext, useState } from "react";
 export const SelectionContext = createContext();
 
 export const SelectionProvider = ({ children }) => {
-  const [selectedTooth, setSelectedTooth] = useState(22);
-  const [selectedPathology, setSelectedPathology] = useState("decay");
+  const [selectedTooth, setSelectedTooth] = useState(null);
+  const [selectedPathology, setSelectedPathology] = useState("");
   const [selectedZones, setSelectedZones] = useState([]);
   const [pathologyDetails, setPathologyDetails] = useState({
     stage: "dentin",

@@ -2,7 +2,6 @@
 import React, { useContext } from "react";
 import "./ToothWheel.scss";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
-import CanvasComponent from "../Canvas/Canvas.jsx";
 
 const teethNumbers = [
   // Upper teeth numbers
@@ -11,31 +10,20 @@ const teethNumbers = [
   38, 37, 36, 35, 34, 33, 32, 31, 41, 42, 43, 44, 45, 46, 47, 48,
 ];
 
-function ToothWheel() {
+const ToothWheel = () => {
   const { selectedTooth, handleToothSelect } = useContext(SelectionContext);
 
   return (
     <div className="tooth-wheel">
-      <ol className="navigation">
+      <ol className="tooth-wheel-navigation">
         {teethNumbers.map((number) => (
           <li key={number} className={selectedTooth === number ? "active" : ""}>
             <button onClick={() => handleToothSelect(number)}>{number}</button>
           </li>
         ))}
       </ol>
-      <div className="viewport">
-        <div className="track">
-          <div className="teeth">
-            <div className="tooth">
-              <div className="visualization">
-                <CanvasComponent />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
-}
+};
 
 export default ToothWheel;
