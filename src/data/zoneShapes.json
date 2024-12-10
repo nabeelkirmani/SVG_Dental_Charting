@@ -1,176 +1,476 @@
 {
   "teeth": {
-    "11": {
-      "zones": {
-        "1": {
-          "name": "Cervical Buccal",
-          "Top": {
-            "type": "rect",
-            "x": 50,
-            "y": 60,
-            "width": 80,
-            "height": 40,
-            "fill": "rgba(255, 0, 0, 0.3)"
-          },
-          "Front": {
-            "type": "circle",
-            "x": 160,
-            "y": 120,
-            "radius": 25,
-            "fill": "rgba(0, 255, 0, 0.3)"
+    "11": {},
+    "12": {},
+    "13": {},
+    "14": {},
+    "15": {},
+    "16": {},
+    "17": {},
+    "18": {
+      "pathologies": {
+        "Decay": {
+          "zones": {
+            "1": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              }
+            },
+            "2": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              }
+            },
+            "3": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              }
+            },
+            "4": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              }
+            },
+            "5": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              }
+            },
+            "6": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              }
+            },
+            "7": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              }
+            },
+            "8": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              }
+            },
+            "9": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              }
+            },
+            "10": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              }
+            },
+            "11": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFB6C1"
+              }
+            }
           }
         },
-        "2": {
-          "name": "Buccal",
-          "Top": {
-            "type": "path",
-            "data": "M70 80 L130 80 L130 120 L70 120 Z",
-            "fill": "rgba(0, 0, 255, 0.3)"
-          },
-          "Front": {
-            "type": "path",
-            "data": "M80 90 L120 90 L120 150 L80 150 Z",
-            "fill": "rgba(255, 165, 0, 0.3)"
+        "Tooth Wear": {
+          "zones": {
+            "1": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              }
+            },
+            "2": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              }
+            },
+            "3": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              }
+            },
+            "4": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              }
+            },
+            "5": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              }
+            },
+            "6": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              }
+            },
+            "7": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              }
+            },
+            "8": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              }
+            },
+            "9": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              }
+            },
+            "10": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              }
+            },
+            "11": {
+              "Front": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              },
+              "Top": {
+                "type": "path",
+                "data": "M0,0 L100,0 L100,100 L0,100 Z",
+                "fill": "#FFFF00"
+              }
+            }
           }
         },
-        "3": {
-          "name": "Mesial",
-          "Top": {
-            "type": "rect",
-            "x": 140,
-            "y": 60,
-            "width": 60,
-            "height": 40,
-            "fill": "rgba(255, 192, 203, 0.3)"
+        "Fracture": {
+          "Crown Fracture": {
+            "Vertical": {
+              "Front": {
+                "type": "path",
+                "data": "M160,0 L160,50 L170,60 L150,70 L160,80 L160,576",
+                "stroke": "#000000",
+                "strokeWidth": 2
+              },
+              "Top": {
+                "type": "path",
+                "data": "M160,0 L160,50 L170,60 L150,70 L160,80 L160,576",
+                "stroke": "#000000",
+                "strokeWidth": 2
+              }
+            },
+            "Horizontal": {
+              "Front": {
+                "type": "path",
+                "data": "M0,200 L50,200 L60,190 L70,210 L80,200 L322,200",
+                "stroke": "#000000",
+                "strokeWidth": 2
+              },
+              "Top": {
+                "type": "path",
+                "data": "M160,0 L160,50 L170,60 L150,70 L160,80 L160,576",
+                "stroke": "#000000",
+                "strokeWidth": 2
+              }
+            }
           },
-          "Front": {
-            "type": "circle",
-            "x": 200,
-            "y": 120,
-            "radius": 20,
-            "fill": "rgba(128, 0, 128, 0.3)"
+          "Root Fracture": {
+            "Vertical": {
+              "Front": {
+                "type": "path",
+                "data": "M160,0 L160,50 L170,60 L150,70 L160,80 L160,576",
+                "stroke": "#000000",
+                "strokeWidth": 2
+              },
+              "Top": {
+                "type": "path",
+                "data": "M160,0 L160,50 L170,60 L150,70 L160,80 L160,576",
+                "stroke": "#000000",
+                "strokeWidth": 2
+              }
+            },
+            "Horizontal": {
+              "Front": {
+                "type": "path",
+                "data": "M0,200 L50,200 L60,190 L70,210 L80,200 L322,200",
+                "stroke": "#000000",
+                "strokeWidth": 2
+              },
+              "Top": {
+                "type": "path",
+                "data": "M160,0 L160,50 L170,60 L150,70 L160,80 L160,576",
+                "stroke": "#000000",
+                "strokeWidth": 2
+              }
+            }
+          }
+        },
+        "Discoloration": {
+          "Gray": {
+            "Front": {
+              "type": "path",
+              "data": "M0,0 L322,0 L322,576 L0,576 Z",
+              "fill": "#808080"
+            },
+            "Top": {
+              "type": "path",
+              "data": "M0,0 L322,0 L322,576 L0,576 Z",
+              "fill": "#808080"
+            }
+          },
+          "Red": {
+            "Front": {
+              "type": "path",
+              "data": "M0,0 L322,0 L322,576 L0,576 Z",
+              "fill": "#FF0000"
+            },
+            "Top": {
+              "type": "path",
+              "data": "M0,0 L322,0 L322,576 L0,576 Z",
+              "fill": "#FF0000"
+            }
+          },
+          "Yellow": {
+            "Front": {
+              "type": "path",
+              "data": "M0,0 L322,0 L322,576 L0,576 Z",
+              "fill": "#FFFF00"
+            },
+            "Top": {
+              "type": "path",
+              "data": "M0,0 L322,0 L322,576 L0,576 Z",
+              "fill": "#FFFF00"
+            }
+          }
+        },
+        "Apical": {
+          "Yes": {
+            "Front": {
+              "type": "line",
+              "points": [160, 500, 160, 576],
+              "stroke": "#FF0000",
+              "strokeWidth": 2
+            },
+            "Top": {
+              "type": "circle",
+              "x": 160,
+              "y": 550,
+              "radius": 10,
+              "stroke": "#FF0000",
+              "strokeWidth": 2
+            }
+          },
+          "No": {
+            "Front": {
+              "type": "line",
+              "points": [160, 500, 160, 576],
+              "stroke": "#FF0000",
+              "strokeWidth": 2
+            },
+            "Top": {
+              "type": "circle",
+              "x": 160,
+              "y": 550,
+              "radius": 10,
+              "stroke": "#FF0000",
+              "strokeWidth": 2
+            }
+          }
+        },
+        "Development Disorder": {
+          "Yes": {
+            "Front": {
+              "type": "path",
+              "data": "M0,0 L322,0 L322,576 L0,576 Z",
+              "fill": "#A52A2A"
+            },
+            "Top": {
+              "type": "path",
+              "data": "M0,0 L322,0 L322,576 L0,576 Z",
+              "fill": "#A52A2A"
+            }
+          },
+          "No": {
+            "Front": {
+              "type": "path",
+              "data": "M0,0 L322,0 L322,576 L0,576 Z",
+              "fill": "#A52A2A"
+            },
+            "Top": {
+              "type": "path",
+              "data": "M0,0 L322,0 L322,576 L0,576 Z",
+              "fill": "#A52A2A"
+            }
           }
         }
-      }
+      },
+      "restoration": {},
+      "probing": {},
+      "missing": {},
+      "to-be-extracted": {},
+      "reset": {}
     },
-    "12": {
-      "zones": {
-        "1": {
-          "name": "Cervical Buccal",
-          "Top": {
-            "type": "rect",
-            "x": 55,
-            "y": 65,
-            "width": 85,
-            "height": 45,
-            "fill": "rgba(255, 0, 0, 0.3)"
-          },
-          "Front": {
-            "type": "circle",
-            "x": 165,
-            "y": 125,
-            "radius": 27,
-            "fill": "rgba(0, 255, 0, 0.3)"
-          }
-        },
-        "2": {
-          "name": "Buccal",
-          "Top": {
-            "type": "path",
-            "data": "M75 85 L135 85 L135 125 L75 125 Z",
-            "fill": "rgba(0, 0, 255, 0.3)"
-          },
-          "Front": {
-            "type": "path",
-            "data": "M85 95 L125 95 L125 155 L85 155 Z",
-            "fill": "rgba(255, 165, 0, 0.3)"
-          }
-        },
-        "3": {
-          "name": "Mesial",
-          "Top": {
-            "type": "rect",
-            "x": 145,
-            "y": 65,
-            "width": 65,
-            "height": 45,
-            "fill": "rgba(255, 192, 203, 0.3)"
-          },
-          "Front": {
-            "type": "circle",
-            "x": 210,
-            "y": 125,
-            "radius": 22,
-            "fill": "rgba(128, 0, 128, 0.3)"
-          }
-        },
-        "4": {
-          "name": "Incisal",
-          "Top": {
-            "type": "path",
-            "data": "M60 50 L120 50 L90 90 Z",
-            "fill": "rgba(255, 215, 0, 0.3)"
-          },
-          "Front": {
-            "type": "path",
-            "data": "M70 70 L110 70 L90 110 Z",
-            "fill": "rgba(173, 216, 230, 0.3)"
-          }
-        }
-      }
-    },
-    "13": {
-      "zones": {
-        "1": {
-          "name": "Cervical Buccal",
-          "Top": {
-            "type": "rect",
-            "x": 60,
-            "y": 70,
-            "width": 90,
-            "height": 50,
-            "fill": "rgba(255, 0, 0, 0.3)"
-          },
-          "Front": {
-            "type": "circle",
-            "x": 170,
-            "y": 130,
-            "radius": 30,
-            "fill": "rgba(0, 255, 0, 0.3)"
-          }
-        },
-        "2": {
-          "name": "Buccal",
-          "Top": {
-            "type": "path",
-            "data": "M80 100 L150 100 L150 140 L80 140 Z",
-            "fill": "rgba(0, 0, 255, 0.3)"
-          },
-          "Front": {
-            "type": "path",
-            "data": "M90 110 L140 110 L140 170 L90 170 Z",
-            "fill": "rgba(255, 165, 0, 0.3)"
-          }
-        },
-        "3": {
-          "name": "Mesial",
-          "Top": {
-            "type": "rect",
-            "x": 155,
-            "y": 70,
-            "width": 70,
-            "height": 50,
-            "fill": "rgba(255, 192, 203, 0.3)"
-          },
-          "Front": {
-            "type": "circle",
-            "x": 220,
-            "y": 130,
-            "radius": 25,
-            "fill": "rgba(128, 0, 128, 0.3)"
-          }
-        }
-      }
-    }
+    "21": {},
+    "22": {},
+    "23": {},
+    "24": {},
+    "25": {},
+    "26": {},
+    "27": {},
+    "28": {},
+    "31": {},
+    "32": {},
+    "33": {},
+    "34": {},
+    "35": {},
+    "36": {},
+    "37": {},
+    "38": {},
+    "41": {},
+    "42": {},
+    "43": {},
+    "44": {},
+    "45": {},
+    "46": {},
+    "47": {},
+    "48": {}
   }
 }

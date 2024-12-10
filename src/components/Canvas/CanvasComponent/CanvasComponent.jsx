@@ -6,7 +6,9 @@ import {
   Layer,
   Image as KonvaImage,
   Group,
-  Shape,
+  Rect,
+  Circle,
+  Line,
   Path,
 } from "react-konva";
 import useImage from "use-image";
@@ -25,30 +27,46 @@ const ShapeRenderer = memo(({ shape }) => {
   switch (shape.type.toLowerCase()) {
     case "rect":
       return (
-        <Shape
-          sceneFunc={(context, shapeNode) => {
-            context.beginPath();
-            context.rect(shape.x, shape.y, shape.width, shape.height);
-            context.closePath();
-            context.fillStrokeShape(shapeNode);
-          }}
-          fill={shape.fill || "rgba(0,0,0,0.5)"}
+        <Rect
+          x={shape.x}
+          y={shape.y}
+          width={shape.width}
+          height={shape.height}
+          fill={shape.fill}
+          stroke={shape.stroke}
+          strokeWidth={shape.strokeWidth}
         />
       );
     case "circle":
       return (
-        <Shape
-          sceneFunc={(context, shapeNode) => {
-            context.beginPath();
-            context.arc(shape.x, shape.y, shape.radius, 0, Math.PI * 2);
-            context.closePath();
-            context.fillStrokeShape(shapeNode);
-          }}
-          fill={shape.fill || "rgba(0,0,0,0.5)"}
+        <Circle
+          x={shape.x}
+          y={shape.y}
+          radius={shape.radius}
+          fill={shape.fill}
+          stroke={shape.stroke}
+          strokeWidth={shape.strokeWidth}
+        />
+      );
+    case "line":
+      return (
+        <Line
+          points={shape.points}
+          stroke={shape.stroke}
+          strokeWidth={shape.strokeWidth}
+          lineCap="round"
+          lineJoin="round"
         />
       );
     case "path":
-      return <Path data={shape.data} fill={shape.fill || "rgba(0,0,0,0.5)"} />;
+      return (
+        <Path
+          data={shape.data}
+          fill={shape.fill}
+          stroke={shape.stroke}
+          strokeWidth={shape.strokeWidth}
+        />
+      );
     // Add more shape types as needed
     default:
       return null;
@@ -57,10 +75,12 @@ const ShapeRenderer = memo(({ shape }) => {
 
 /**
  * CanvasComponent renders the Front and Top views of the selected tooth,
- * applying respective SVG shapes based on selected zones.
+ * applying respective SVG shapes based on selected zones and pathology.
  */
 function CanvasComponent() {
-  const { selectedTooth, selectedZones } = useContext(SelectionContext);
+  const { selectedTooth, selectedZones, selectedPathology, pathologyDetails } =
+    useContext(SelectionContext);
+
   const [imageFrontView] = useImage(
     selectedTooth ? toothImagesFrontView[selectedTooth] : null
   );
@@ -74,40 +94,49 @@ function CanvasComponent() {
 
   /**
    * Effect hook that updates frontShapes and topShapes
-   * whenever selectedTooth or selectedZones change.
+   * whenever selectedTooth, selectedZones, selectedPathology, or pathologyDetails change.
    */
   useEffect(() => {
-    if (selectedTooth && zoneShapes.teeth[selectedTooth]) {
-      const toothData = zoneShapes.teeth[selectedTooth].zones;
-      const fronts = [];
-      const tops = [];
+    if (
+      selectedTooth &&
+      selectedPathology &&
+      zoneShapes.teeth[selectedTooth] &&
+      zoneShapes.teeth[selectedTooth].pathologies[selectedPathology]
+    ) {
+      const pathologyData =
+        zoneShapes.teeth[selectedTooth].pathologies[selectedPathology];
 
-      selectedZones.forEach((zoneId) => {
-        const zone = toothData[zoneId];
-        if (zone) {
-          if (zone.Front) {
-            fronts.push(zone.Front);
+      let fronts = [];
+      let tops = [];
+
+      if (selectedPathology === "decay" || selectedPathology === "tooth wear") {
+        selectedZones.forEach((zoneId) => {
+          const zone = pathologyData.zones[zoneId];
+          if (zone) {
+            if (zone.Front) fronts.push(zone.Front);
+            if (zone.Top) tops.push(zone.Top);
           }
-          if (zone.Top) {
-            tops.push(zone.Top);
+        });
+      } else {
+        // Handle other pathologies based on submenu selections
+        if (Object.keys(pathologyDetails).length > 0) {
+          const detailKey = Object.keys(pathologyDetails)[0]; // e.g., 'color'
+          const detailValue = pathologyDetails[detailKey]; // e.g., 'gray'
+          const shapeData = pathologyData[detailValue];
+          if (shapeData) {
+            if (shapeData.Front) fronts.push(shapeData.Front);
+            if (shapeData.Top) tops.push(shapeData.Top);
           }
-        } else {
-          console.warn(
-            `Zone ID ${zoneId} not found for tooth ${selectedTooth}`
-          );
         }
-      });
+      }
 
       setFrontShapes(fronts);
       setTopShapes(tops);
     } else {
-      if (selectedTooth) {
-        console.warn(`Tooth ${selectedTooth} not found in zoneShapes.json`);
-      }
       setFrontShapes([]);
       setTopShapes([]);
     }
-  }, [selectedTooth, selectedZones]);
+  }, [selectedTooth, selectedPathology, selectedZones, pathologyDetails]);
 
   return (
     <div className="teeth">
