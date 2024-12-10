@@ -1,42 +1,124 @@
-//src/components/Canvas/CanvasComponent/CanvasComponent.jsx
-import React, { useContext, useEffect, useRef } from "react";
-import { Stage, Layer, Image as KonvaImage, Group, Shape } from "react-konva";
+// src/components/Canvas/CanvasComponent/CanvasComponent.jsx
+
+import React, { useContext, useEffect, useState, memo } from "react";
+import {
+  Stage,
+  Layer,
+  Image as KonvaImage,
+  Group,
+  Shape,
+  Path,
+} from "react-konva";
 import useImage from "use-image";
 import { SelectionContext } from "../../../contexts/SelectionContext.jsx";
 import {
   toothImagesFrontView,
   toothImagesTopView,
 } from "../../../assets/images/index.js";
+import zoneShapes from "../../../data/zoneShapes.json"; // Ensure you have this JSON file
 import "./CanvasComponent.scss";
 
+/**
+ * Memoized ShapeRenderer component to prevent unnecessary re-renders.
+ */
+const ShapeRenderer = memo(({ shape }) => {
+  switch (shape.type.toLowerCase()) {
+    case "rect":
+      return (
+        <Shape
+          sceneFunc={(context, shapeNode) => {
+            context.beginPath();
+            context.rect(shape.x, shape.y, shape.width, shape.height);
+            context.closePath();
+            context.fillStrokeShape(shapeNode);
+          }}
+          fill={shape.fill || "rgba(0,0,0,0.5)"}
+        />
+      );
+    case "circle":
+      return (
+        <Shape
+          sceneFunc={(context, shapeNode) => {
+            context.beginPath();
+            context.arc(shape.x, shape.y, shape.radius, 0, Math.PI * 2);
+            context.closePath();
+            context.fillStrokeShape(shapeNode);
+          }}
+          fill={shape.fill || "rgba(0,0,0,0.5)"}
+        />
+      );
+    case "path":
+      return <Path data={shape.data} fill={shape.fill || "rgba(0,0,0,0.5)"} />;
+    // Add more shape types as needed
+    default:
+      return null;
+  }
+});
+
+/**
+ * CanvasComponent renders the Front and Top views of the selected tooth,
+ * applying respective SVG shapes based on selected zones.
+ */
 function CanvasComponent() {
   const { selectedTooth, selectedZones } = useContext(SelectionContext);
-  const [imageFrontVIew] = useImage(
+  const [imageFrontView] = useImage(
     selectedTooth ? toothImagesFrontView[selectedTooth] : null
   );
   const [imageTopView] = useImage(
     selectedTooth ? toothImagesTopView[selectedTooth] : null
   );
-  const layerRef = useRef(null);
 
-  // Define coordinates or paths for each zone
-  const zoneShapes = {
-    // Example zones with coordinates or shapes
-    // Replace with actual coordinates matching your images
-    1: { type: "rect", x: 50, y: 50, width: 100, height: 50 },
-    2: { type: "circle", x: 150, y: 100, radius: 30 },
-    // Add more zones as needed
-  };
+  // States to hold shapes for Front and Top views
+  const [frontShapes, setFrontShapes] = useState([]);
+  const [topShapes, setTopShapes] = useState([]);
+
+  /**
+   * Effect hook that updates frontShapes and topShapes
+   * whenever selectedTooth or selectedZones change.
+   */
+  useEffect(() => {
+    if (selectedTooth && zoneShapes.teeth[selectedTooth]) {
+      const toothData = zoneShapes.teeth[selectedTooth].zones;
+      const fronts = [];
+      const tops = [];
+
+      selectedZones.forEach((zoneId) => {
+        const zone = toothData[zoneId];
+        if (zone) {
+          if (zone.Front) {
+            fronts.push(zone.Front);
+          }
+          if (zone.Top) {
+            tops.push(zone.Top);
+          }
+        } else {
+          console.warn(
+            `Zone ID ${zoneId} not found for tooth ${selectedTooth}`
+          );
+        }
+      });
+
+      setFrontShapes(fronts);
+      setTopShapes(tops);
+    } else {
+      if (selectedTooth) {
+        console.warn(`Tooth ${selectedTooth} not found in zoneShapes.json`);
+      }
+      setFrontShapes([]);
+      setTopShapes([]);
+    }
+  }, [selectedTooth, selectedZones]);
 
   return (
     <div className="teeth">
       <div className="tooth">
-        {/* Render the selected tooth front view */}
+        {/* Front View Section */}
+        <h3>Front View</h3>
         <Stage width={322} height={576}>
-          <Layer ref={layerRef}>
-            {selectedTooth && imageFrontVIew && (
+          <Layer>
+            {selectedTooth && imageFrontView && (
               <KonvaImage
-                image={imageFrontVIew}
+                image={imageFrontView}
                 width={322}
                 height={576}
                 x={0}
@@ -44,56 +126,17 @@ function CanvasComponent() {
               />
             )}
             <Group>
-              {selectedZones.map((zoneId) => {
-                const shapeProps = zoneShapes[zoneId];
-                if (!shapeProps) return null;
-                if (shapeProps.type === "rect") {
-                  return (
-                    <Shape
-                      key={zoneId}
-                      sceneFunc={(context, shape) => {
-                        context.beginPath();
-                        context.rect(
-                          shapeProps.x,
-                          shapeProps.y,
-                          shapeProps.width,
-                          shapeProps.height
-                        );
-                        context.closePath();
-                        context.fillStrokeShape(shape);
-                      }}
-                      fill="rgba(255, 0, 0, 0.5)"
-                    />
-                  );
-                } else if (shapeProps.type === "circle") {
-                  return (
-                    <Shape
-                      key={zoneId}
-                      sceneFunc={(context, shape) => {
-                        context.beginPath();
-                        context.arc(
-                          shapeProps.x,
-                          shapeProps.y,
-                          shapeProps.radius,
-                          0,
-                          Math.PI * 2
-                        );
-                        context.closePath();
-                        context.fillStrokeShape(shape);
-                      }}
-                      fill="rgba(0, 255, 0, 0.5)"
-                    />
-                  );
-                }
-                // Add more shape types as needed
-                return null;
-              })}
+              {frontShapes.map((shape, index) => (
+                <ShapeRenderer key={index} shape={shape} />
+              ))}
             </Group>
           </Layer>
         </Stage>
-        {/* Render the front view of the tooth */}
+
+        {/* Top View Section */}
+        <h3>Top View</h3>
         <Stage width={322} height={576}>
-          <Layer ref={layerRef}>
+          <Layer>
             {selectedTooth && imageTopView && (
               <KonvaImage
                 image={imageTopView}
@@ -104,50 +147,9 @@ function CanvasComponent() {
               />
             )}
             <Group>
-              {selectedZones.map((zoneId) => {
-                const shapeProps = zoneShapes[zoneId];
-                if (!shapeProps) return null;
-                if (shapeProps.type === "rect") {
-                  return (
-                    <Shape
-                      key={zoneId}
-                      sceneFunc={(context, shape) => {
-                        context.beginPath();
-                        context.rect(
-                          shapeProps.x,
-                          shapeProps.y,
-                          shapeProps.width,
-                          shapeProps.height
-                        );
-                        context.closePath();
-                        context.fillStrokeShape(shape);
-                      }}
-                      fill="rgba(255, 0, 0, 0.5)"
-                    />
-                  );
-                } else if (shapeProps.type === "circle") {
-                  return (
-                    <Shape
-                      key={zoneId}
-                      sceneFunc={(context, shape) => {
-                        context.beginPath();
-                        context.arc(
-                          shapeProps.x,
-                          shapeProps.y,
-                          shapeProps.radius,
-                          0,
-                          Math.PI * 2
-                        );
-                        context.closePath();
-                        context.fillStrokeShape(shape);
-                      }}
-                      fill="rgba(0, 255, 0, 0.5)"
-                    />
-                  );
-                }
-                // Add more shape types as needed
-                return null;
-              })}
+              {topShapes.map((shape, index) => (
+                <ShapeRenderer key={index} shape={shape} />
+              ))}
             </Group>
           </Layer>
         </Stage>
