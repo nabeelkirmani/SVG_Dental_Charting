@@ -1,0 +1,176 @@
+{
+  "teeth": {
+    "11": {
+      "zones": {
+        "1": {
+          "name": "Cervical Buccal",
+          "Top": {
+            "type": "rect",
+            "x": 50,
+            "y": 60,
+            "width": 80,
+            "height": 40,
+            "fill": "rgba(255, 0, 0, 0.3)"
+          },
+          "Front": {
+            "type": "circle",
+            "x": 160,
+            "y": 120,
+            "radius": 25,
+            "fill": "rgba(0, 255, 0, 0.3)"
+          }
+        },
+        "2": {
+          "name": "Buccal",
+          "Top": {
+            "type": "path",
+            "data": "M70 80 L130 80 L130 120 L70 120 Z",
+            "fill": "rgba(0, 0, 255, 0.3)"
+          },
+          "Front": {
+            "type": "path",
+            "data": "M80 90 L120 90 L120 150 L80 150 Z",
+            "fill": "rgba(255, 165, 0, 0.3)"
+          }
+        },
+        "3": {
+          "name": "Mesial",
+          "Top": {
+            "type": "rect",
+            "x": 140,
+            "y": 60,
+            "width": 60,
+            "height": 40,
+            "fill": "rgba(255, 192, 203, 0.3)"
+          },
+          "Front": {
+            "type": "circle",
+            "x": 200,
+            "y": 120,
+            "radius": 20,
+            "fill": "rgba(128, 0, 128, 0.3)"
+          }
+        }
+      }
+    },
+    "12": {
+      "zones": {
+        "1": {
+          "name": "Cervical Buccal",
+          "Top": {
+            "type": "rect",
+            "x": 55,
+            "y": 65,
+            "width": 85,
+            "height": 45,
+            "fill": "rgba(255, 0, 0, 0.3)"
+          },
+          "Front": {
+            "type": "circle",
+            "x": 165,
+            "y": 125,
+            "radius": 27,
+            "fill": "rgba(0, 255, 0, 0.3)"
+          }
+        },
+        "2": {
+          "name": "Buccal",
+          "Top": {
+            "type": "path",
+            "data": "M75 85 L135 85 L135 125 L75 125 Z",
+            "fill": "rgba(0, 0, 255, 0.3)"
+          },
+          "Front": {
+            "type": "path",
+            "data": "M85 95 L125 95 L125 155 L85 155 Z",
+            "fill": "rgba(255, 165, 0, 0.3)"
+          }
+        },
+        "3": {
+          "name": "Mesial",
+          "Top": {
+            "type": "rect",
+            "x": 145,
+            "y": 65,
+            "width": 65,
+            "height": 45,
+            "fill": "rgba(255, 192, 203, 0.3)"
+          },
+          "Front": {
+            "type": "circle",
+            "x": 210,
+            "y": 125,
+            "radius": 22,
+            "fill": "rgba(128, 0, 128, 0.3)"
+          }
+        },
+        "4": {
+          "name": "Incisal",
+          "Top": {
+            "type": "path",
+            "data": "M60 50 L120 50 L90 90 Z",
+            "fill": "rgba(255, 215, 0, 0.3)"
+          },
+          "Front": {
+            "type": "path",
+            "data": "M70 70 L110 70 L90 110 Z",
+            "fill": "rgba(173, 216, 230, 0.3)"
+          }
+        }
+      }
+    },
+    "13": {
+      "zones": {
+        "1": {
+          "name": "Cervical Buccal",
+          "Top": {
+            "type": "rect",
+            "x": 60,
+            "y": 70,
+            "width": 90,
+            "height": 50,
+            "fill": "rgba(255, 0, 0, 0.3)"
+          },
+          "Front": {
+            "type": "circle",
+            "x": 170,
+            "y": 130,
+            "radius": 30,
+            "fill": "rgba(0, 255, 0, 0.3)"
+          }
+        },
+        "2": {
+          "name": "Buccal",
+          "Top": {
+            "type": "path",
+            "data": "M80 100 L150 100 L150 140 L80 140 Z",
+            "fill": "rgba(0, 0, 255, 0.3)"
+          },
+          "Front": {
+            "type": "path",
+            "data": "M90 110 L140 110 L140 170 L90 170 Z",
+            "fill": "rgba(255, 165, 0, 0.3)"
+          }
+        },
+        "3": {
+          "name": "Mesial",
+          "Top": {
+            "type": "rect",
+            "x": 155,
+            "y": 70,
+            "width": 70,
+            "height": 50,
+            "fill": "rgba(255, 192, 203, 0.3)"
+          },
+          "Front": {
+            "type": "circle",
+            "x": 220,
+            "y": 130,
+            "radius": 25,
+            "fill": "rgba(128, 0, 128, 0.3)"
+          }
+        }
+      }
+    }
+  }
+}
