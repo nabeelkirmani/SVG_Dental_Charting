@@ -16,8 +16,8 @@ const App = () => {
         </div>
         <main data-view="patient-view">
           <ToothWheel />
-          <Canvas />
           <MainContent />
+          <Canvas />
         </main>
       </div>
     </SelectionProvider>

@@ -1,4 +1,4 @@
-//src/components/Canvas/Canvas.scss
+// src/components/Canvas/Canvas.scss
 @use "../../styles/variables";
 
 .canvas {
@@ -8,8 +8,6 @@
   border-right: 1px solid variables.$border-color;
   background: variables.$light-gray;
   cursor: pointer;
-
-  .visualization {
-    position: relative;
-  }
+  border: 1px dashed purple;
+  position: relative;
 }

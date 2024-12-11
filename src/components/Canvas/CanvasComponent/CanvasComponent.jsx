@@ -143,13 +143,13 @@ function CanvasComponent() {
       <div className="tooth">
         {/* Front View Section */}
         <h3>Front View</h3>
-        <Stage width={322} height={576}>
+        <Stage width={322} height={380}>
           <Layer>
             {selectedTooth && imageFrontView && (
               <KonvaImage
                 image={imageFrontView}
-                width={322}
-                height={576}
+                width={122}
+                height={380}
                 x={0}
                 y={0}
               />
@@ -164,13 +164,13 @@ function CanvasComponent() {
 
         {/* Top View Section */}
         <h3>Top View</h3>
-        <Stage width={322} height={576}>
+        <Stage width={172} height={172}>
           <Layer>
             {selectedTooth && imageTopView && (
               <KonvaImage
                 image={imageTopView}
-                width={322}
-                height={576}
+                width={121}
+                height={172}
                 x={0}
                 y={0}
               />

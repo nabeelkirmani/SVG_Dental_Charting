@@ -8,7 +8,6 @@ import Zones from "../Zones/Zones.jsx";
 function Pathology() {
   return (
     <>
-      <Zones />
       <div className="main">
         <h2 className="heading">Pathology</h2>
         <a href="#" className="close">
@@ -18,6 +17,7 @@ function Pathology() {
         <PathologyDetails />
         <ActionButtons />
       </div>
+      <Zones />
     </>
   );
 }
