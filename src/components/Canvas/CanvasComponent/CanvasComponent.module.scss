@@ -1,0 +1,44 @@
+// src/components/Canvas/CanvasComponent/CanvasComponent.module.scss
+@use "sass:color";
+@use "../../../styles/variables";
+
+.teeth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 20px;
+  padding: 20px;
+}
+
+.tooth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid;
+  border-color: color.adjust(variables.$input-border-color, $lightness: 10%);
+  width: 100%;
+
+  h3 {
+    margin: 10px 0;
+  }
+
+  .konvajs-content {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+// Canvas dimensions
+:export {
+  frontViewStageWidth: 322;
+  frontViewStageHeight: 380;
+  frontViewImageWidth: 122;
+  frontViewImageHeight: 380;
+
+  topViewStageWidth: 172;
+  topViewStageHeight: 172;
+  topViewImageWidth: 121;
+  topViewImageHeight: 172;
+}
