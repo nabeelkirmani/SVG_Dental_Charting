@@ -1,13 +1,18 @@
 // src/components/Canvas/Canvas.scss
+@use "sass:color";
 @use "../../styles/variables";
 
 .canvas {
   display: flex;
   height: 100%;
-  width: 320px;
-  border-right: 1px solid variables.$border-color;
-  background: variables.$light-gray;
+  width: 40vh;
+  min-width: 320px;
+  max-width: 40%;
+  border: 1px solid;
+  border-color: color.adjust(variables.$input-border-color, $lightness: 10%);
+  background-color: color.adjust(variables.$light-gray, $lightness: -3%);
   cursor: pointer;
-  border: 1px dashed purple;
   position: relative;
+  align-items: center;
+  justify-content: center;
 }

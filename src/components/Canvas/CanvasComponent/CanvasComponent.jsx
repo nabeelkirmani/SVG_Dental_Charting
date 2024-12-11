@@ -150,18 +150,19 @@ function CanvasComponent() {
                 image={imageFrontView}
                 width={122}
                 height={380}
-                x={0}
+                x={(322 - 122) / 2}
                 y={0}
               />
             )}
-            <Group>
+            <Group x={(322 - 122) / 2}>
               {frontShapes.map((shape, index) => (
                 <ShapeRenderer key={index} shape={shape} />
               ))}
             </Group>
           </Layer>
         </Stage>
-
+      </div>
+      <div className="tooth">
         {/* Top View Section */}
         <h3>Top View</h3>
         <Stage width={172} height={172}>
@@ -171,11 +172,11 @@ function CanvasComponent() {
                 image={imageTopView}
                 width={121}
                 height={172}
-                x={0}
+                x={(172 - 121) / 2}
                 y={0}
               />
             )}
-            <Group>
+            <Group x={(172 - 121) / 2}>
               {topShapes.map((shape, index) => (
                 <ShapeRenderer key={index} shape={shape} />
               ))}

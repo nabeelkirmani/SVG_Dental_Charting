@@ -14,8 +14,8 @@
     flex-direction: column;
     width: 100%;
     background-color: variables.$dark-gray;
-    padding: 8px 16px;
-    gap: 16px;
+    padding: 4px 0;
+    gap: 8px;
 
     .upper-teeth,
     .lower-teeth {
@@ -31,8 +31,8 @@
 
     li {
       font-size: 14px;
-      line-height: 16px;
-      padding: 8px;
+      line-height: 14px;
+      padding: 4px 0;
       min-width: 40px;
 
       button {
@@ -42,7 +42,7 @@
         width: 100%;
         height: 100%;
         cursor: pointer;
-        padding: 4px 8px;
+        padding: 2px 1px;
         border-radius: variables.$border-radius;
         transition: background-color variables.$transition-duration;
 

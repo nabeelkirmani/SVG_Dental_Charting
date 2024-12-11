@@ -13,7 +13,8 @@
   grid-template-rows: repeat(5, 1fr) repeat(2, 1.5fr);
   background-color: variables.$light-gray;
   position: relative;
-  border: 1px dashed green;
+  border: 1px solid;
+  border-color: color.adjust(variables.$input-border-color, $lightness: 10%);
 
   .pad {
     position: relative;
