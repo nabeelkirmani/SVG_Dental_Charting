@@ -9,8 +9,16 @@
     display: flex;
   }
 
+  [data-view="main-container"] {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+  }
+
   [data-view="patient-view"] {
     display: flex;
     flex: 1;
+    overflow: auto;
   }
 }

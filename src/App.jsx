@@ -14,11 +14,13 @@ const App = () => {
         <div data-view="nav-bar">
           <Sidebar />
         </div>
-        <main data-view="patient-view">
+        <div data-view="main-container">
           <ToothWheel />
-          <MainContent />
-          <Canvas />
-        </main>
+          <div data-view="patient-view">
+            <MainContent />
+            <Canvas />
+          </div>
+        </div>
       </div>
     </SelectionProvider>
   );

@@ -5,21 +5,24 @@
   position: relative;
   display: flex;
   user-select: none;
+  width: 100%;
+  border-bottom: 1px solid variables.$border-color;
 
   .tooth-wheel-navigation {
     color: variables.$text-color;
     background-color: variables.$dark-gray;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
-    width: 50px;
-    padding: 16px 0;
+    width: 100%;
+    padding: 8px 16px;
     text-align: center;
 
     li {
       font-size: 14px;
       line-height: 16px;
-      max-height: 32px;
+      padding: 8px;
+      min-width: 40px;
 
       button {
         background: none;
@@ -28,6 +31,13 @@
         width: 100%;
         height: 100%;
         cursor: pointer;
+        padding: 4px 8px;
+        border-radius: variables.$border-radius;
+        transition: background-color variables.$transition-duration;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
       }
 
       &.active {
@@ -36,12 +46,12 @@
 
         &:before {
           position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
+          left: 50%;
+          bottom: -8px;
+          transform: translateX(-50%);
           content: "";
-          left: 0;
           border: 6px solid transparent;
-          border-left-color: variables.$primary-color;
+          border-bottom-color: variables.$primary-color;
           pointer-events: none;
         }
       }
