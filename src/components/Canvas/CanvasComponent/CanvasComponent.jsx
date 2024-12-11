@@ -18,7 +18,7 @@ import {
   toothImagesTopView,
 } from "../../../assets/images/index.js";
 import zoneShapes from "../../../data/zoneShapes.json"; // Ensure you have this JSON file
-import "./CanvasComponent.scss";
+import "./CanvasComponent.module.scss";
 
 /**
  * Memoized ShapeRenderer component to prevent unnecessary re-renders.
