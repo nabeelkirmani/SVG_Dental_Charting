@@ -1,5 +1,4 @@
 // src/components/Canvas/CanvasComponent/CanvasComponent.jsx
-
 import React, { useContext, useEffect, useState, memo } from "react";
 import {
   Stage,
@@ -17,12 +16,9 @@ import {
   toothImagesFrontView,
   toothImagesTopView,
 } from "../../../assets/images/index.js";
-import zoneShapes from "../../../data/zoneShapes.json"; // Ensure you have this JSON file
+import zoneShapes from "../../../data/zoneShapes.json";
 import "./CanvasComponent.module.scss";
 
-/**
- * Memoized ShapeRenderer component to prevent unnecessary re-renders.
- */
 const ShapeRenderer = memo(({ shape }) => {
   switch (shape.type.toLowerCase()) {
     case "rect":
@@ -67,19 +63,29 @@ const ShapeRenderer = memo(({ shape }) => {
           strokeWidth={shape.strokeWidth}
         />
       );
-    // Add more shape types as needed
     default:
       return null;
   }
 });
 
-/**
- * CanvasComponent renders the Front and Top views of the selected tooth,
- * applying respective SVG shapes based on selected zones and pathology.
- */
 function CanvasComponent() {
-  const { selectedTooth, selectedZones, selectedPathology, pathologyDetails } =
-    useContext(SelectionContext);
+  const {
+    selectedTooth,
+    selectedZones,
+    selectedPathology,
+    pathologyDetails,
+    frontViewPoints,
+    setFrontViewPoints,
+    topViewPoints,
+    setTopViewPoints,
+    isFrontPathClosed,
+    setIsFrontPathClosed,
+    isTopPathClosed,
+    setIsTopPathClosed,
+    activeView,
+    isDrawing,
+    updateSVGPath,
+  } = useContext(SelectionContext);
 
   const [imageFrontView] = useImage(
     selectedTooth ? toothImagesFrontView[selectedTooth] : null
@@ -88,14 +94,69 @@ function CanvasComponent() {
     selectedTooth ? toothImagesTopView[selectedTooth] : null
   );
 
-  // States to hold shapes for Front and Top views
   const [frontShapes, setFrontShapes] = useState([]);
   const [topShapes, setTopShapes] = useState([]);
 
-  /**
-   * Effect hook that updates frontShapes and topShapes
-   * whenever selectedTooth, selectedZones, selectedPathology, or pathologyDetails change.
-   */
+  const handleStageClick = (e, view) => {
+    if (!isDrawing) return;
+
+    const stage = e.target.getStage();
+    const point = stage.getPointerPosition();
+
+    const groupX = view === "front" ? (322 - 122) / 2 : (172 - 121) / 2;
+    const adjustedPoint = {
+      x: point.x - groupX,
+      y: point.y,
+    };
+
+    const isWithinBounds =
+      view === "front"
+        ? adjustedPoint.x >= 0 &&
+          adjustedPoint.x <= 122 &&
+          adjustedPoint.y >= 0 &&
+          adjustedPoint.y <= 380
+        : adjustedPoint.x >= 0 &&
+          adjustedPoint.x <= 121 &&
+          adjustedPoint.y >= 0 &&
+          adjustedPoint.y <= 172;
+
+    if (!isWithinBounds) {
+      console.log("Click outside tooth image area");
+      return;
+    }
+
+    const currentPoints = view === "front" ? frontViewPoints : topViewPoints;
+    const newPoints = [...currentPoints, adjustedPoint];
+
+    if (newPoints.length > 2) {
+      const firstPoint = newPoints[0];
+      const distance = Math.hypot(
+        adjustedPoint.x - firstPoint.x,
+        adjustedPoint.y - firstPoint.y
+      );
+      if (distance < 10) {
+        if (view === "front") {
+          setIsFrontPathClosed(true);
+          setFrontViewPoints(newPoints.slice(0, -1));
+          updateSVGPath(newPoints.slice(0, -1), true, "front");
+        } else {
+          setIsTopPathClosed(true);
+          setTopViewPoints(newPoints.slice(0, -1));
+          updateSVGPath(newPoints.slice(0, -1), true, "top");
+        }
+        return;
+      }
+    }
+
+    if (view === "front") {
+      setFrontViewPoints(newPoints);
+      updateSVGPath(newPoints, false, "front");
+    } else {
+      setTopViewPoints(newPoints);
+      updateSVGPath(newPoints, false, "top");
+    }
+  };
+
   useEffect(() => {
     if (
       selectedTooth &&
@@ -109,7 +170,10 @@ function CanvasComponent() {
       let fronts = [];
       let tops = [];
 
-      if (selectedPathology === "decay" || selectedPathology === "tooth wear") {
+      if (
+        selectedPathology.toLowerCase() === "decay" ||
+        selectedPathology.toLowerCase() === "tooth wear"
+      ) {
         selectedZones.forEach((zoneId) => {
           const zone = pathologyData.zones[zoneId];
           if (zone) {
@@ -118,10 +182,9 @@ function CanvasComponent() {
           }
         });
       } else {
-        // Handle other pathologies based on submenu selections
         if (Object.keys(pathologyDetails).length > 0) {
-          const detailKey = Object.keys(pathologyDetails)[0]; // e.g., 'color'
-          const detailValue = pathologyDetails[detailKey]; // e.g., 'gray'
+          const detailKey = Object.keys(pathologyDetails)[0];
+          const detailValue = pathologyDetails[detailKey];
           const shapeData = pathologyData[detailValue];
           if (shapeData) {
             if (shapeData.Front) fronts.push(shapeData.Front);
@@ -141,9 +204,16 @@ function CanvasComponent() {
   return (
     <div className="teeth">
       <div className="tooth">
-        {/* Front View Section */}
         <h3>Front View</h3>
-        <Stage width={322} height={380}>
+        <Stage
+          width={322}
+          height={380}
+          onClick={(e) => handleStageClick(e, "front")}
+          style={{
+            cursor:
+              isDrawing && activeView === "front" ? "crosshair" : "default",
+          }}
+        >
           <Layer>
             {selectedTooth && imageFrontView && (
               <KonvaImage
@@ -158,14 +228,38 @@ function CanvasComponent() {
               {frontShapes.map((shape, index) => (
                 <ShapeRenderer key={index} shape={shape} />
               ))}
+              {frontViewPoints.length > 0 && (
+                <Line
+                  points={frontViewPoints.flatMap((p) => [p.x, p.y])}
+                  stroke="red"
+                  strokeWidth={2}
+                  closed={isFrontPathClosed}
+                  fill={isFrontPathClosed ? "rgba(255, 0, 0, 0.2)" : undefined}
+                />
+              )}
+              {frontViewPoints.map((point, i) => (
+                <Circle
+                  key={i}
+                  x={point.x}
+                  y={point.y}
+                  radius={4}
+                  fill="blue"
+                />
+              ))}
             </Group>
           </Layer>
         </Stage>
       </div>
       <div className="tooth">
-        {/* Top View Section */}
         <h3>Top View</h3>
-        <Stage width={172} height={172}>
+        <Stage
+          width={172}
+          height={172}
+          onClick={(e) => handleStageClick(e, "top")}
+          style={{
+            cursor: isDrawing && activeView === "top" ? "crosshair" : "default",
+          }}
+        >
           <Layer>
             {selectedTooth && imageTopView && (
               <KonvaImage
@@ -179,6 +273,24 @@ function CanvasComponent() {
             <Group x={(172 - 121) / 2}>
               {topShapes.map((shape, index) => (
                 <ShapeRenderer key={index} shape={shape} />
+              ))}
+              {topViewPoints.length > 0 && (
+                <Line
+                  points={topViewPoints.flatMap((p) => [p.x, p.y])}
+                  stroke="red"
+                  strokeWidth={2}
+                  closed={isTopPathClosed}
+                  fill={isTopPathClosed ? "rgba(255, 0, 0, 0.2)" : undefined}
+                />
+              )}
+              {topViewPoints.map((point, i) => (
+                <Circle
+                  key={i}
+                  x={point.x}
+                  y={point.y}
+                  radius={4}
+                  fill="blue"
+                />
               ))}
             </Group>
           </Layer>

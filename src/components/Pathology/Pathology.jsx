@@ -4,6 +4,7 @@ import PathologyTypes from "./PathologyTypes.jsx";
 import PathologyDetails from "./PathologyDetails.jsx";
 import ActionButtons from "./ActionButtons.jsx";
 import Zones from "../Zones/Zones.jsx";
+import PathDrawer from "../PathDrawer/PathDrawer.jsx";
 
 function Pathology() {
   return (
@@ -16,6 +17,7 @@ function Pathology() {
         <PathologyTypes />
         <PathologyDetails />
         <ActionButtons />
+        <PathDrawer />
       </div>
       <Zones />
     </>

@@ -9,6 +9,15 @@ export const SelectionProvider = ({ children }) => {
   const [selectedZones, setSelectedZones] = useState([]);
   const [pathologyDetails, setPathologyDetails] = useState({});
 
+  const [frontViewPoints, setFrontViewPoints] = useState([]);
+  const [topViewPoints, setTopViewPoints] = useState([]);
+  const [isFrontPathClosed, setIsFrontPathClosed] = useState(false);
+  const [isTopPathClosed, setIsTopPathClosed] = useState(false);
+  const [frontViewSvgPath, setFrontViewSvgPath] = useState("");
+  const [topViewSvgPath, setTopViewSvgPath] = useState("");
+  const [activeView, setActiveView] = useState("front"); // 'front' or 'top'
+  const [isDrawing, setIsDrawing] = useState(false);
+
   const handleToothSelect = (tooth) => {
     setSelectedTooth(tooth);
   };
@@ -35,6 +44,61 @@ export const SelectionProvider = ({ children }) => {
     }));
   };
 
+  const handleViewChange = (view) => {
+    setActiveView(view);
+  };
+
+  const handleReset = () => {
+    if (activeView === "front") {
+      setFrontViewPoints([]);
+      setIsFrontPathClosed(false);
+      setFrontViewSvgPath("");
+    } else {
+      setTopViewPoints([]);
+      setIsTopPathClosed(false);
+      setTopViewSvgPath("");
+    }
+    setIsDrawing(true);
+  };
+
+  const handleCopyPath = () => {
+    const currentPath =
+      activeView === "front" ? frontViewSvgPath : topViewSvgPath;
+    if (!currentPath) {
+      alert("No path to copy!");
+      return;
+    }
+    navigator.clipboard
+      .writeText(currentPath)
+      .then(() => alert("Path copied to clipboard!"))
+      .catch((err) => alert("Failed to copy path"));
+  };
+
+  const updateSVGPath = (currentPoints, closed, view) => {
+    if (currentPoints.length === 0) {
+      view === "front" ? setFrontViewSvgPath("") : setTopViewSvgPath("");
+      return;
+    }
+
+    let path = `M ${currentPoints[0].x.toFixed(2)} ${currentPoints[0].y.toFixed(
+      2
+    )} `;
+    for (let i = 1; i < currentPoints.length; i++) {
+      path += `L ${currentPoints[i].x.toFixed(2)} ${currentPoints[i].y.toFixed(
+        2
+      )} `;
+    }
+    if (closed) {
+      path += "Z";
+    }
+
+    if (view === "front") {
+      setFrontViewSvgPath(path.trim());
+    } else {
+      setTopViewSvgPath(path.trim());
+    }
+  };
+
   const activateZone =
     selectedPathology === "decay" || selectedPathology === "tooth wear";
 
@@ -50,6 +114,23 @@ export const SelectionProvider = ({ children }) => {
         pathologyDetails,
         updatePathologyDetail,
         activateZone,
+        frontViewPoints,
+        setFrontViewPoints,
+        topViewPoints,
+        setTopViewPoints,
+        isFrontPathClosed,
+        setIsFrontPathClosed,
+        isTopPathClosed,
+        setIsTopPathClosed,
+        frontViewSvgPath,
+        topViewSvgPath,
+        activeView,
+        handleViewChange,
+        isDrawing,
+        setIsDrawing,
+        handleReset,
+        handleCopyPath,
+        updateSVGPath,
       }}
     >
       {children}

@@ -1,0 +1,67 @@
+// src/components/PathDrawer/PathDrawer.scss
+@use "../../styles/variables";
+
+.drawing-controls {
+  margin-top: 16px;
+  padding: 16px;
+  background: #f5f5f5;
+  border-radius: variables.$border-radius;
+
+  .view-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    button {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid variables.$border-color;
+      border-radius: variables.$border-radius;
+      background: white;
+      cursor: pointer;
+
+      &.active {
+        background: variables.$primary-color;
+        color: white;
+        border-color: variables.$primary-color;
+      }
+    }
+  }
+
+  textarea {
+    width: 100%;
+    height: 80px;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid variables.$border-color;
+    border-radius: variables.$border-radius;
+    resize: vertical;
+    font-family: monospace;
+    background: white;
+  }
+
+  .drawing-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: variables.$border-radius;
+      background: variables.$primary-color;
+      color: white;
+      cursor: pointer;
+      transition: background-color variables.$transition-duration;
+
+      &:hover {
+        background: variables.$button-hover-color;
+      }
+
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
