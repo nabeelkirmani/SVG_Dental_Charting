@@ -16,6 +16,14 @@ function CanvasComponent() {
     updateSVGPath,
     activeView,
     isDrawing,
+    frontViewPoints,
+    setFrontViewPoints,
+    topViewPoints,
+    setTopViewPoints,
+    isFrontPathClosed,
+    setIsFrontPathClosed,
+    isTopPathClosed,
+    setIsTopPathClosed,
   } = useContext(SelectionContext);
 
   const { imageFrontView, imageTopView } = useCanvasImage(selectedTooth);
@@ -26,8 +34,23 @@ function CanvasComponent() {
     pathologyDetails
   );
 
-  const frontDrawing = usePathDrawing(updateSVGPath, "front");
-  const topDrawing = usePathDrawing(updateSVGPath, "top");
+  const frontDrawing = usePathDrawing(
+    updateSVGPath,
+    "front",
+    frontViewPoints,
+    setFrontViewPoints,
+    isFrontPathClosed,
+    setIsFrontPathClosed
+  );
+
+  const topDrawing = usePathDrawing(
+    updateSVGPath,
+    "top",
+    topViewPoints,
+    setTopViewPoints,
+    isTopPathClosed,
+    setIsTopPathClosed
+  );
 
   return (
     <div className="teeth">
@@ -37,8 +60,8 @@ function CanvasComponent() {
         height={380}
         image={imageFrontView}
         shapes={frontShapes}
-        points={frontDrawing.points}
-        isPathClosed={frontDrawing.isPathClosed}
+        points={frontViewPoints}
+        isPathClosed={isFrontPathClosed}
         isDrawing={isDrawing}
         activeView={activeView}
         handleDrawing={(point) => frontDrawing.handleDrawing(point, isDrawing)}
@@ -49,8 +72,8 @@ function CanvasComponent() {
         height={172}
         image={imageTopView}
         shapes={topShapes}
-        points={topDrawing.points}
-        isPathClosed={topDrawing.isPathClosed}
+        points={topViewPoints}
+        isPathClosed={isTopPathClosed}
         isDrawing={isDrawing}
         activeView={activeView}
         handleDrawing={(point) => topDrawing.handleDrawing(point, isDrawing)}

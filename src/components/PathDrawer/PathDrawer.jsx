@@ -13,6 +13,8 @@ function PathDrawer() {
     handleCopyPath,
     activeView,
     handleViewChange,
+    handleUndo,
+    canUndo, // This is now a boolean value, not a function
   } = useContext(SelectionContext);
 
   return (
@@ -40,6 +42,9 @@ function PathDrawer() {
         <button onClick={() => setIsDrawing(true)}>Start Drawing</button>
         <button onClick={handleReset}>Reset</button>
         <button onClick={handleCopyPath}>Copy Path</button>
+        <button onClick={handleUndo} disabled={!canUndo || !isDrawing}>
+          Undo
+        </button>
       </div>
     </div>
   );

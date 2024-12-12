@@ -99,6 +99,23 @@ export const SelectionProvider = ({ children }) => {
     }
   };
 
+  const handleUndo = () => {
+    if (activeView === "front") {
+      const newPoints = frontViewPoints.slice(0, -1);
+      setFrontViewPoints(newPoints);
+      updateSVGPath(newPoints, false, "front");
+    } else {
+      const newPoints = topViewPoints.slice(0, -1);
+      setTopViewPoints(newPoints);
+      updateSVGPath(newPoints, false, "top");
+    }
+  };
+
+  const canUndo =
+    activeView === "front"
+      ? frontViewPoints.length > 0 && !isFrontPathClosed
+      : topViewPoints.length > 0 && !isTopPathClosed;
+
   const activateZone =
     selectedPathology === "decay" || selectedPathology === "tooth wear";
 
@@ -131,6 +148,8 @@ export const SelectionProvider = ({ children }) => {
         handleReset,
         handleCopyPath,
         updateSVGPath,
+        handleUndo,
+        canUndo,
       }}
     >
       {children}

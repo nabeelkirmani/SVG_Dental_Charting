@@ -1,13 +1,31 @@
 // src/hooks/usePathDrawing.js
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
-export const usePathDrawing = (updateSVGPath, view) => {
-  const [points, setPoints] = useState([]);
-  const [isPathClosed, setIsPathClosed] = useState(false);
+export const usePathDrawing = (
+  updateSVGPath,
+  view,
+  externalPoints,
+  setExternalPoints,
+  externalIsPathClosed,
+  setExternalIsPathClosed
+) => {
+  const [points, setPoints] = useState(externalPoints || []);
+  const [isPathClosed, setIsPathClosed] = useState(
+    externalIsPathClosed || false
+  );
+
+  // Sync with external state
+  useEffect(() => {
+    setPoints(externalPoints || []);
+  }, [externalPoints]);
+
+  useEffect(() => {
+    setIsPathClosed(externalIsPathClosed || false);
+  }, [externalIsPathClosed]);
 
   const handleDrawing = useCallback(
     (point, isDrawing) => {
-      if (!isDrawing) return false;
+      if (!isDrawing || isPathClosed) return false;
 
       const newPoints = [...points, point];
 
@@ -20,23 +38,36 @@ export const usePathDrawing = (updateSVGPath, view) => {
 
         if (distance < 10) {
           setIsPathClosed(true);
-          setPoints(newPoints.slice(0, -1));
-          updateSVGPath(newPoints.slice(0, -1), true, view);
+          setExternalIsPathClosed(true);
+          const finalPoints = newPoints.slice(0, -1);
+          setPoints(finalPoints);
+          setExternalPoints(finalPoints);
+          updateSVGPath(finalPoints, true, view);
           return true;
         }
       }
 
       setPoints(newPoints);
+      setExternalPoints(newPoints);
       updateSVGPath(newPoints, false, view);
       return false;
     },
-    [points, updateSVGPath, view]
+    [
+      points,
+      isPathClosed,
+      updateSVGPath,
+      view,
+      setExternalPoints,
+      setExternalIsPathClosed,
+    ]
   );
 
   const resetDrawing = useCallback(() => {
     setPoints([]);
     setIsPathClosed(false);
-  }, []);
+    setExternalPoints([]);
+    setExternalIsPathClosed(false);
+  }, [setExternalPoints, setExternalIsPathClosed]);
 
   return {
     points,

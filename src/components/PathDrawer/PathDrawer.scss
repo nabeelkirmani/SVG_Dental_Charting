@@ -59,8 +59,9 @@
       }
 
       &:disabled {
-        background: #ccc;
+        opacity: 0.5;
         cursor: not-allowed;
+        background-color: #ccc;
       }
     }
   }
