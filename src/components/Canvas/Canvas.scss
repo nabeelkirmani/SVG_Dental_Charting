@@ -4,15 +4,100 @@
 
 .canvas {
   display: flex;
-  height: 100%;
   width: 40vh;
   min-width: 320px;
-  max-width: 40%;
   border: 1px solid;
   border-color: color.adjust(variables.$input-border-color, $lightness: 10%);
   background-color: color.adjust(variables.$light-gray, $lightness: -3%);
   cursor: pointer;
   position: relative;
-  align-items: center;
+  padding: 10px 1px 10px 1px;
   justify-content: center;
+
+  .teeth {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .tooth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    border-color: color.adjust(variables.$input-border-color, $lightness: 10%);
+    width: 100%;
+    max-height: fit-content;
+
+    h3 {
+      text-align: center;
+    }
+
+    .konvajs-content {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  // Canvas dimensions
+  :export {
+    frontViewStageWidth: 322;
+    frontViewStageHeight: 380;
+    frontViewImageWidth: 122;
+    frontViewImageHeight: 380;
+
+    topViewStageWidth: 172;
+    topViewStageHeight: 172;
+    topViewImageWidth: 121;
+    topViewImageHeight: 172;
+  }
+
+  .drawing-controls {
+    margin-top: 16px;
+    padding: 16px;
+    background: #f5f5f5;
+    border-radius: 6px;
+
+    textarea {
+      width: 100%;
+      height: 80px;
+      padding: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      resize: vertical;
+      font-family: monospace;
+      background: white;
+    }
+
+    .drawing-buttons {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+
+      button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        background: #008fd6;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background: #0075b0;
+        }
+
+        &:disabled {
+          background: #ccc;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
 }

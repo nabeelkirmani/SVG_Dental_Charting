@@ -11,7 +11,7 @@
   gap: 8px;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(5, 1fr) repeat(2, 1.5fr);
-  background-color: variables.$light-gray;
+  background-color: variables.$background-color;
   position: relative;
   border: 1px solid;
   border-color: color.adjust(variables.$input-border-color, $lightness: 10%);
@@ -59,7 +59,7 @@
       height: 48px;
       padding: 0 16px;
       border-radius: variables.$border-radius;
-      background: color.adjust(variables.$light-gray, $lightness: 5%);
+      background: color.adjust(variables.$light-gray, $lightness: -5%);
       box-shadow: 0 2px 0 0 variables.$border-color;
       font-size: 12px;
       font-weight: 600;
