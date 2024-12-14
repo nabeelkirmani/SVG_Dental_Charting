@@ -19,7 +19,7 @@ const CanvasPoints = ({ points, isPathClosed }) => {
           key={i}
           x={point.x}
           y={point.y}
-          radius={4}
+          radius={2}
           fill="blue"
         />
       ))}

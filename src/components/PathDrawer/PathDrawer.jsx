@@ -14,7 +14,7 @@ function PathDrawer() {
     activeView,
     handleViewChange,
     handleUndo,
-    canUndo, // This is now a boolean value, not a function
+    canUndo,
   } = useContext(SelectionContext);
 
   return (

@@ -36,7 +36,7 @@ export const usePathDrawing = (
           point.y - firstPoint.y
         );
 
-        if (distance < 10) {
+        if (distance < 1) {
           setIsPathClosed(true);
           setExternalIsPathClosed(true);
           const finalPoints = newPoints.slice(0, -1);
