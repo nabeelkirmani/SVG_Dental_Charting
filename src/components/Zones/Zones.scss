@@ -3,9 +3,9 @@
 @use "../../styles/variables";
 
 .zones {
-  width: 40vh;
-  min-width: 304px;
-  max-width: 40%;
+  width: 20vw;
+  // min-width: 304px;
+  // max-width: 40%;
   padding: 16px;
   display: grid;
   gap: 8px;
@@ -61,7 +61,7 @@
       border-radius: variables.$border-radius;
       background: color.adjust(variables.$light-gray, $lightness: -5%);
       box-shadow: 0 2px 0 0 variables.$border-color;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 600;
       color: variables.$secondary-color;
       cursor: pointer;

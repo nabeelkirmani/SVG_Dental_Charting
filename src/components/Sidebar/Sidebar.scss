@@ -5,7 +5,7 @@ aside {
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  width: 64px;
+  width: 3vw;
   color: #fff;
   background: variables.$primary-color;
 
@@ -27,7 +27,7 @@ aside {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 64px;
+        height: 7vh;
         color: #fff;
         text-decoration: none;
 

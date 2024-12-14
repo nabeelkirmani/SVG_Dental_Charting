@@ -4,7 +4,7 @@
 
 .canvas {
   display: flex;
-  width: 40vh;
+  width: 20vw; // Sidebar: 3vw + Zones: 20vw + Canvas: 20vw => Pathology: 57vw
   min-width: 320px;
   border: 1px solid;
   border-color: color.adjust(variables.$input-border-color, $lightness: 10%);
