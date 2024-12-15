@@ -1,6 +1,6 @@
 // src/components/Canvas/components/ShapeRenderer.jsx
-import React, { memo } from 'react';
-import { Rect, Circle, Line, Path } from 'react-konva';
+import React, { memo } from "react";
+import { Rect, Circle, Line, Path } from "react-konva";
 
 const ShapeRenderer = memo(({ shape }) => {
   switch (shape.type.toLowerCase()) {

@@ -1,6 +1,6 @@
 // src/components/Canvas/components/CanvasPoints.jsx
-import React from 'react';
-import { Line, Circle } from 'react-konva';
+import React from "react";
+import { Line, Circle } from "react-konva";
 
 const CanvasPoints = ({ points, isPathClosed }) => {
   if (points.length === 0) return null;
@@ -15,13 +15,7 @@ const CanvasPoints = ({ points, isPathClosed }) => {
         fill={isPathClosed ? "rgba(255, 0, 0, 0.2)" : undefined}
       />
       {points.map((point, i) => (
-        <Circle
-          key={i}
-          x={point.x}
-          y={point.y}
-          radius={2}
-          fill="blue"
-        />
+        <Circle key={i} x={point.x} y={point.y} radius={2} fill="blue" />
       ))}
     </>
   );

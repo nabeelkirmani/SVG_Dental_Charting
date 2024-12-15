@@ -1,4 +1,4 @@
-//src/components/Pathology/PathologyOptions.js
+// src/components/Pathology/pathologyOptions.js
 
 const pathologyOptions = {
   decay: {
@@ -18,10 +18,10 @@ const pathologyOptions = {
                     label: "Pulp Involved",
                     next: {
                       level: [
-                        { value: "c1", label: "C1" },
-                        { value: "c2", label: "C2" },
-                        { value: "c3", label: "C3" },
-                        { value: "c4", label: "C4" },
+                        { value: "C1", label: "C1" },
+                        { value: "C2", label: "C2" },
+                        { value: "C3", label: "C3" },
+                        { value: "C4", label: "C4" },
                       ],
                     },
                   },
@@ -30,10 +30,10 @@ const pathologyOptions = {
                     label: "Pulp Not Involved",
                     next: {
                       level: [
-                        { value: "c1", label: "C1" },
-                        { value: "c2", label: "C2" },
-                        { value: "c3", label: "C3" },
-                        { value: "c4", label: "C4" },
+                        { value: "C1", label: "C1" },
+                        { value: "C2", label: "C2" },
+                        { value: "C3", label: "C3" },
+                        { value: "C4", label: "C4" },
                       ],
                     },
                   },
@@ -45,10 +45,10 @@ const pathologyOptions = {
               label: "No Cavitation",
               next: {
                 level: [
-                  { value: "c1", label: "C1" },
-                  { value: "c2", label: "C2" },
-                  { value: "c3", label: "C3" },
-                  { value: "c4", label: "C4" },
+                  { value: "C1", label: "C1" },
+                  { value: "C2", label: "C2" },
+                  { value: "C3", label: "C3" },
+                  { value: "C4", label: "C4" },
                 ],
               },
             },
@@ -65,10 +65,10 @@ const pathologyOptions = {
               label: "Cavitation",
               next: {
                 level: [
-                  { value: "c1", label: "C1" },
-                  { value: "c2", label: "C2" },
-                  { value: "c3", label: "C3" },
-                  { value: "c4", label: "C4" },
+                  { value: "C1", label: "C1" },
+                  { value: "C2", label: "C2" },
+                  { value: "C3", label: "C3" },
+                  { value: "C4", label: "C4" },
                 ],
               },
             },
@@ -77,10 +77,10 @@ const pathologyOptions = {
               label: "No Cavitation",
               next: {
                 level: [
-                  { value: "c1", label: "C1" },
-                  { value: "c2", label: "C2" },
-                  { value: "c3", label: "C3" },
-                  { value: "c4", label: "C4" },
+                  { value: "C1", label: "C1" },
+                  { value: "C2", label: "C2" },
+                  { value: "C3", label: "C3" },
+                  { value: "C4", label: "C4" },
                 ],
               },
             },
@@ -96,8 +96,8 @@ const pathologyOptions = {
         label: "Crown Fracture",
         next: {
           direction: [
-            { value: "vertical", label: "Vertical" },
-            { value: "horizontal", label: "Horizontal" },
+            { value: "Vertical", label: "Vertical" },
+            { value: "Horizontal", label: "Horizontal" },
           ],
         },
       },
@@ -106,8 +106,8 @@ const pathologyOptions = {
         label: "Root Fracture",
         next: {
           direction: [
-            { value: "vertical", label: "Vertical" },
-            { value: "horizontal", label: "Horizontal" },
+            { value: "Vertical", label: "Vertical" },
+            { value: "Horizontal", label: "Horizontal" },
           ],
         },
       },
@@ -121,8 +121,8 @@ const pathologyOptions = {
         next: {
           surface: {
             options: [
-              { value: "buccal", label: "Buccal" },
-              { value: "palatal", label: "Palatal" },
+              { value: "Buccal", label: "Buccal" },
+              { value: "Palatal", label: "Palatal" },
             ],
             multiple: true,
           },
@@ -134,8 +134,8 @@ const pathologyOptions = {
         next: {
           surface: {
             options: [
-              { value: "buccal", label: "Buccal" },
-              { value: "palatal", label: "Palatal" },
+              { value: "Buccal", label: "Buccal" },
+              { value: "Palatal", label: "Palatal" },
             ],
             multiple: true,
           },
@@ -145,9 +145,9 @@ const pathologyOptions = {
   },
   discoloration: {
     color: [
-      { value: "gray", label: "Gray" },
-      { value: "red", label: "Red" },
-      { value: "yellow", label: "Yellow" },
+      { value: "Gray", label: "Gray" },
+      { value: "Red", label: "Red" },
+      { value: "Yellow", label: "Yellow" },
     ],
   },
   apical: {

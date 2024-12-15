@@ -1,9 +1,9 @@
 // src/components/Canvas/components/CanvasView.jsx
-import React from 'react';
-import { Stage, Layer, Image as KonvaImage, Group } from 'react-konva';
-import ShapeRenderer from './ShapeRenderer';
-import CanvasPoints from './CanvasPoints';
-import { isWithinBounds, adjustPoint, getGroupX } from '../utils/canvasHelpers';
+import React from "react";
+import { Stage, Layer, Image as KonvaImage, Group } from "react-konva";
+import ShapeRenderer from "./ShapeRenderer";
+import CanvasPoints from "./CanvasPoints";
+import { isWithinBounds, adjustPoint, getGroupX } from "../utils/canvasHelpers";
 
 const CanvasView = ({
   view,
@@ -35,7 +35,7 @@ const CanvasView = ({
 
   return (
     <div className="tooth">
-      <h3>{view === 'front' ? 'Front View' : 'Top View'}</h3>
+      <h3>{view === "front" ? "Front View" : "Top View"}</h3>
       <Stage
         width={width}
         height={height}
@@ -48,7 +48,7 @@ const CanvasView = ({
           {image && (
             <KonvaImage
               image={image}
-              width={view === 'front' ? 122 : 121}
+              width={view === "front" ? 122 : 121}
               height={height}
               x={getGroupX(view)}
               y={0}
@@ -58,10 +58,7 @@ const CanvasView = ({
             {shapes.map((shape, index) => (
               <ShapeRenderer key={index} shape={shape} />
             ))}
-            <CanvasPoints
-              points={points}
-              isPathClosed={isPathClosed}
-            />
+            <CanvasPoints points={points} isPathClosed={isPathClosed} />
           </Group>
         </Layer>
       </Stage>

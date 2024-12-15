@@ -32,7 +32,10 @@
     }
 
     &:active {
-      background-color: color.adjust(variables.$primary-color, $lightness: -10%);
+      background-color: color.adjust(
+        variables.$primary-color,
+        $lightness: -10%
+      );
     }
   }
 }
