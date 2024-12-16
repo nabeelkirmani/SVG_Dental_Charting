@@ -1,4 +1,5 @@
 // src/components/Pathology/Pathology.jsx
+import React from "react";
 import "./Pathology.scss";
 import PathologyTypes from "./PathologyTypes.jsx";
 import PathologyDetails from "./PathologyDetails.jsx";

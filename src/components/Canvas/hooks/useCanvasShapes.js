@@ -31,27 +31,30 @@ export const useCanvasShapes = (
     let tops = [];
 
     const processShapes = (shapeData) => {
-      if (!shapeData) return;
+      if (!shapeData) {
+        console.debug("No shape data found:", shapeData);
+        return;
+      }
+      console.debug("Processing shape data:", shapeData);
       if (shapeData.Front) fronts.push(shapeData.Front);
       if (shapeData.Top) tops.push(shapeData.Top);
     };
 
-    // Helper function to capitalize the first letter
-    const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
-
     // Handle different pathology types
     switch (selectedPathology.toLowerCase()) {
       case "decay": {
-        selectedZones.forEach((zoneID) => {
-          const zone = pathologyData.zones?.[zoneID];
-          if (zone) processShapes(zone);
-        });
+        if (Array.isArray(selectedZones)) {
+          selectedZones.forEach((zoneID) => {
+            const zone = pathologyData.zones?.[zoneID];
+            if (zone) processShapes(zone);
+          });
+        }
         break;
       }
 
       case "tooth wear": {
         const { wearType, surface } = pathologyDetails;
-        if (wearType && surface) {
+        if (wearType && surface && Array.isArray(surface)) {
           surface.forEach((surfaceType) => {
             const shapeData = pathologyData[wearType]?.[surfaceType];
             if (shapeData) processShapes(shapeData);
@@ -62,49 +65,31 @@ export const useCanvasShapes = (
 
       case "fracture": {
         const { fractureType, direction } = pathologyDetails;
-        if (fractureType && direction) {
+        if (typeof fractureType === 'string' && typeof direction === 'string') {
           const shapeData = pathologyData[fractureType]?.[direction];
-          processShapes(shapeData);
+          if (shapeData) processShapes(shapeData);
         }
         break;
       }
 
       case "discoloration": {
         const { color } = pathologyDetails;
-        if (color) {
-          const capitalizedColor = capitalize(color);
-          const shapeData = pathologyData[capitalizedColor];
-          if (!shapeData) {
-            console.warn(
-              `Discoloration shape data not found for color: ${capitalizedColor}`
-            );
-          }
-          processShapes(shapeData);
+        if (typeof color === 'string') {
+          const shapeData = pathologyData[color];
+          if (shapeData) processShapes(shapeData);
         }
         break;
       }
 
-      case "apical": {
-        const { answer } = pathologyDetails;
-        if (answer) {
-          const shapeData = pathologyData[answer];
-          processShapes(shapeData);
-        }
-        break;
-      }
-
+      case "apical":
       case "development disorder": {
         const { answer } = pathologyDetails;
-        if (answer) {
+        if (typeof answer === 'string') {
           const shapeData = pathologyData[answer];
-          processShapes(shapeData);
+          if (shapeData) processShapes(shapeData);
         }
         break;
       }
-
-      default:
-        setFrontShapes([]);
-        setTopShapes([]);
     }
 
     setFrontShapes(fronts);

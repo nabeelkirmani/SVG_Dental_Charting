@@ -39,10 +39,11 @@ export const SelectionProvider = ({ children }) => {
   };
 
   const updatePathologyDetail = (key, value) => {
-    setPathologyDetails((prevDetails) => ({
-      ...prevDetails,
-      [key]: value,
-    }));
+    setPathologyDetails((prevDetails) => {
+      const newDetails = { ...prevDetails, [key]: value };
+      console.log("Updated Pathology Details: ", newDetails);
+      return newDetails;
+    });
   };
 
   const handleViewChange = (view) => {
@@ -118,28 +119,10 @@ export const SelectionProvider = ({ children }) => {
       : topViewPoints.length > 0 && !isTopPathClosed;
 
   const activateZone = (() => {
-    // Always true for decay and tooth wear
-    if (selectedPathology === "decay" || selectedPathology === "tooth wear") {
+    if (selectedPathology === "decay") {
       return true;
     }
-
-    // For other pathologies, check if we've reached a final sub-menu selection
-    switch (selectedPathology) {
-      case "fracture":
-        return pathologyDetails.direction !== undefined;
-
-      case "discoloration":
-        return pathologyDetails.color !== undefined;
-
-      case "apical":
-        return pathologyDetails.answer !== undefined;
-
-      case "development disorder":
-        return pathologyDetails.answer !== undefined;
-
-      default:
-        return false;
-    }
+    return false;
   })();
 
   return (

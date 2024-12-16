@@ -35,7 +35,6 @@ const Zones = () => {
             checked={selectedZones.includes(zone.value)}
             onChange={() => handleZoneToggle(zone.value)}
             disabled={!activateZone}
-            // TODO: fix zones from activating when they are disabled.
           />
           <label htmlFor={`pad-${zone.value}`}>{zone.label}</label>
         </li>
