@@ -23,7 +23,7 @@ const App = () => {
 
   const currentView = viewHistory[viewHistory.length - 1];
 
-  const handleSidebarPrimaryClick = () => {
+  const handlePathologyNavigation = () => {
     navigateToView("pathology");
   };
 
@@ -32,7 +32,7 @@ const App = () => {
       <div className="app">
         <div data-view="nav-bar">
           <Sidebar
-            onPrimaryClick={handleSidebarPrimaryClick}
+            onPrimaryClick={handlePathologyNavigation}
             onBackClick={goBack}
             canGoBack={viewHistory.length > 1}
           />
@@ -47,7 +47,7 @@ const App = () => {
               </div>
             </>
           ) : (
-            <Welcome />
+            <Welcome onPathologyClick={handlePathologyNavigation} />
           )}
         </div>
       </div>

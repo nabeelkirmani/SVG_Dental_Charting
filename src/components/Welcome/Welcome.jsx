@@ -2,11 +2,24 @@
 import React from "react";
 import "./Welcome.scss";
 
-const Welcome = () => {
+const Welcome = ({ onPathologyClick }) => {
   return (
     <div className="welcome">
-      <h1>Welcome to Dental Charting</h1>
-      <p>Please select an option from the sidebar to begin.</p>
+      <div className="welcome-nav">
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            onPathologyClick();
+          }}
+        >
+          Pathology
+        </a>
+      </div>
+      <div className="welcome-content">
+        <h1>Welcome to Dental Charting</h1>
+        <p>This is the Welcome Page.</p>
+      </div>
     </div>
   );
 };

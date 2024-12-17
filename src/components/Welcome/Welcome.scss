@@ -1,22 +1,48 @@
 // src/components/Welcome/Welcome.scss
+@use "sass:color";
 @use "../../styles/variables";
 
 .welcome {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: 100%;
-  text-align: center;
-  color: variables.$text-color;
 
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: variables.$primary-color;
+  .welcome-nav {
+    padding: 1rem;
+    border-bottom: 1px solid variables.$border-color;
+
+    a {
+      color: variables.$primary-color;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: variables.$border-radius;
+      transition: background-color variables.$transition-duration;
+
+      &:hover {
+        background-color: color.adjust(variables.$light-gray, $lightness: -5%);
+      }
+    }
   }
 
-  p {
-    font-size: 1.2rem;
+  .welcome-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: variables.$primary-color;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: variables.$text-color;
+    }
   }
 }
