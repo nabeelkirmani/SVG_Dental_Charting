@@ -19,8 +19,8 @@ const ShapeRenderer = memo(({ shape }) => {
         <Path
           data={shape.data}
           fill={shape.fill}
-          stroke={shape.stroke}
-          strokeWidth={shape.strokeWidth}
+          stroke={shape.stroke || "none"}
+          strokeWidth={shape.strokeWidth || 1}
         />
       );
     default:

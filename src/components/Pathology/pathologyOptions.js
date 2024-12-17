@@ -145,9 +145,9 @@ const pathologyOptions = {
   },
   discoloration: {
     color: [
-      { value: "Gray", label: "Gray" },
-      { value: "Red", label: "Red" },
-      { value: "Yellow", label: "Yellow" },
+      { value: "gray", label: "Gray" },
+      { value: "red", label: "Red" },
+      { value: "yellow", label: "Yellow" },
     ],
   },
   apical: {
@@ -156,7 +156,7 @@ const pathologyOptions = {
       { value: "no", label: "No" },
     ],
   },
-  "development disorder": {
+  developmentDisorder: {
     answer: [
       { value: "yes", label: "Yes" },
       { value: "no", label: "No" },

@@ -40,7 +40,8 @@ export const SelectionProvider = ({ children }) => {
 
   const updatePathologyDetail = (key, value) => {
     setPathologyDetails((prevDetails) => {
-      const newDetails = { ...prevDetails, [key]: value };
+      const newValue = prevDetails[key] === value ? "" : value;
+      const newDetails = { ...prevDetails, [key]: newValue };
       console.log("Updated Pathology Details: ", newDetails);
       return newDetails;
     });

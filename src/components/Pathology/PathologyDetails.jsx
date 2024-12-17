@@ -29,6 +29,18 @@ const PathologyDetails = () => {
 
     const selectedValue = pathologyDetails[levelName] || (isMultiple ? [] : "");
 
+    const handleOptionClick = (optionValue) => {
+      if (isMultiple) {
+        const newValue = selectedValue.includes(optionValue)
+          ? selectedValue.filter((v) => v !== optionValue)
+          : [...selectedValue, optionValue];
+        updatePathologyDetail(levelName, newValue);
+      } else {
+        const newValue = selectedValue === optionValue ? "" : optionValue;
+        updatePathologyDetail(levelName, newValue);
+      }
+    };
+
     return (
       <fieldset key={levelName} data-name={levelName} className="detail">
         <legend>{levelName}</legend>
@@ -42,32 +54,9 @@ const PathologyDetails = () => {
               <span
                 key={option.value}
                 className={`option ${isSelected ? "selected" : ""}`}
+                onClick={() => handleOptionClick(option.value)}
               >
-                <input
-                  type={isMultiple ? "checkbox" : "radio"}
-                  name={levelName}
-                  id={`${levelName}-${option.value}`}
-                  value={option.value}
-                  checked={isSelected}
-                  onChange={() => {
-                    let newValue;
-                    if (isMultiple) {
-                      if (isSelected) {
-                        newValue = selectedValue.filter(
-                          (v) => v !== option.value
-                        );
-                      } else {
-                        newValue = [...selectedValue, option.value];
-                      }
-                    } else {
-                      newValue = option.value;
-                    }
-                    updatePathologyDetail(levelName, newValue);
-                  }}
-                />
-                <label htmlFor={`${levelName}-${option.value}`}>
-                  {option.label}
-                </label>
+                <label>{option.label}</label>
               </span>
             );
           })}
@@ -99,6 +88,7 @@ const PathologyDetails = () => {
           nextLevel = selectedOption.next;
         }
       } else if (levelData.options && levelData.multiple) {
+        // Handle multiple selection case if needed
       }
     }
 

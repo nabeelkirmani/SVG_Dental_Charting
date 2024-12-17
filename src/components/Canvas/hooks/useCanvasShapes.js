@@ -1,5 +1,4 @@
 // src/components/Canvas/hooks/useCanvasShapes.js
-
 import { useState, useEffect } from "react";
 import zoneShapes from "../../../data/zoneShapes.json";
 
@@ -21,11 +20,16 @@ export const useCanvasShapes = (
     ) {
       setFrontShapes([]);
       setTopShapes([]);
+      console.error(
+        `Shape data for pathology "${selectedPathology}" not found.`
+      );
       return;
     }
 
     const pathologyData =
       zoneShapes.teeth[selectedTooth].pathologies[selectedPathology];
+
+    console.debug("Pathology Data Retrieved:", pathologyData);
 
     let fronts = [];
     let tops = [];
@@ -41,7 +45,7 @@ export const useCanvasShapes = (
     };
 
     // Handle different pathology types
-    switch (selectedPathology.toLowerCase()) {
+    switch (selectedPathology) {
       case "decay": {
         if (Array.isArray(selectedZones)) {
           selectedZones.forEach((zoneID) => {
@@ -52,7 +56,7 @@ export const useCanvasShapes = (
         break;
       }
 
-      case "tooth wear": {
+      case "toothWear": {
         const { wearType, surface } = pathologyDetails;
         if (wearType && surface && Array.isArray(surface)) {
           surface.forEach((surfaceType) => {
@@ -65,7 +69,7 @@ export const useCanvasShapes = (
 
       case "fracture": {
         const { fractureType, direction } = pathologyDetails;
-        if (typeof fractureType === 'string' && typeof direction === 'string') {
+        if (typeof fractureType === "string" && typeof direction === "string") {
           const shapeData = pathologyData[fractureType]?.[direction];
           if (shapeData) processShapes(shapeData);
         }
@@ -74,7 +78,7 @@ export const useCanvasShapes = (
 
       case "discoloration": {
         const { color } = pathologyDetails;
-        if (typeof color === 'string') {
+        if (typeof color === "string") {
           const shapeData = pathologyData[color];
           if (shapeData) processShapes(shapeData);
         }
@@ -82,14 +86,22 @@ export const useCanvasShapes = (
       }
 
       case "apical":
-      case "development disorder": {
+      case "developmentDisorder": {
         const { answer } = pathologyDetails;
-        if (typeof answer === 'string') {
+        if (typeof answer === "string") {
           const shapeData = pathologyData[answer];
           if (shapeData) processShapes(shapeData);
         }
         break;
       }
+
+      default:
+        setFrontShapes([]);
+        setTopShapes([]);
+        console.error(
+          `Shape data for pathology "${selectedPathology}" not found.`
+        );
+        break;
     }
 
     setFrontShapes(fronts);

@@ -2,31 +2,31 @@
 import React, { useContext } from "react";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
 
+const pathologyTypes = [
+  { label: "Decay", value: "decay" },
+  { label: "Fracture", value: "fracture" },
+  { label: "Tooth Wear", value: "toothWear" },
+  { label: "Discoloration", value: "discoloration" },
+  { label: "Apical", value: "apical" },
+  { label: "Development Disorder", value: "developmentDisorder" },
+];
+
 const PathologyTypes = () => {
   const { selectedPathology, handlePathologyToggle } =
     useContext(SelectionContext);
 
-  const pathologyTypes = [
-    "Decay",
-    "Fracture",
-    "Tooth Wear",
-    "Discoloration",
-    "Apical",
-    "Development Disorder",
-  ];
-
   return (
     <div className="pathology-types">
-      {pathologyTypes.map((type) => {
-        const isActive = selectedPathology.includes(type.toLowerCase());
+      {pathologyTypes.map(({ label, value }) => {
+        const isActive = selectedPathology === value;
 
         return (
           <button
-            key={type}
+            key={value}
             className={isActive ? "active" : ""}
-            onClick={() => handlePathologyToggle(type.toLowerCase())}
+            onClick={() => handlePathologyToggle(value)}
           >
-            <label htmlFor={`pad-${type}`}>{type}</label>
+            <label htmlFor={`pad-${value}`}>{label}</label>
           </button>
         );
       })}
