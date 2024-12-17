@@ -1,0 +1,22 @@
+// src/components/Welcome/Welcome.scss
+@use "../../styles/variables";
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  color: variables.$text-color;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: variables.$primary-color;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+}

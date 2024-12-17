@@ -19,6 +19,15 @@ aside {
     li {
       text-align: center;
 
+      &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+
+        a {
+          cursor: not-allowed;
+        }
+      }
+
       &.primary {
         opacity: 0.5;
       }
