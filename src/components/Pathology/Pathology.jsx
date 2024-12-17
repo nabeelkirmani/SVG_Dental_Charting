@@ -7,12 +7,19 @@ import ActionButtons from "./ActionButtons.jsx";
 import Zones from "../Zones/Zones.jsx";
 import PathDrawer from "../PathDrawer/PathDrawer.jsx";
 
-function Pathology() {
+function Pathology({ onClose }) {
   return (
     <>
       <div className="main">
         <h2 className="heading">Pathology</h2>
-        <a href="#" className="close">
+        <a
+          href="#"
+          className="close"
+          onClick={(e) => {
+            e.preventDefault();
+            onClose();
+          }}
+        >
           &times;
         </a>
         <PathologyTypes />

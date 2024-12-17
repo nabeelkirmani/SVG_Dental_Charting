@@ -42,7 +42,7 @@ const App = () => {
             <>
               <ToothWheel />
               <div data-view="patient-view">
-                <MainContent />
+                <MainContent onClose={goBack} />
                 <Canvas />
               </div>
             </>

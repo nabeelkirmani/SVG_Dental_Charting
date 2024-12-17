@@ -3,10 +3,10 @@ import React from "react";
 import Pathology from "../Pathology/Pathology.jsx";
 import "./MainContent.scss";
 
-const MainContent = () => {
+const MainContent = ({ onClose }) => {
   return (
     <div data-view="pathology" className="main-content">
-      <Pathology />
+      <Pathology onClose={onClose} />
     </div>
   );
 };
