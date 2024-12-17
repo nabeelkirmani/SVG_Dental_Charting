@@ -15,8 +15,9 @@ export const SelectionProvider = ({ children }) => {
   const [isTopPathClosed, setIsTopPathClosed] = useState(false);
   const [frontViewSvgPath, setFrontViewSvgPath] = useState("");
   const [topViewSvgPath, setTopViewSvgPath] = useState("");
-  const [activeView, setActiveView] = useState("front"); // 'front' or 'top'
+  const [activeView, setActiveView] = useState("front");
   const [isDrawing, setIsDrawing] = useState(false);
+  const [savedTeethData, setSavedTeethData] = useState([]);
 
   const handleToothSelect = (tooth) => {
     setSelectedTooth(tooth);
@@ -114,6 +115,36 @@ export const SelectionProvider = ({ children }) => {
     }
   };
 
+  const saveToothData = () => {
+    if (!selectedTooth) {
+      console.error("No tooth selected");
+      return;
+    }
+
+    const toothData = {
+      pathology: selectedPathology,
+      pathologyDetails,
+      zones: selectedZones,
+      shapes: {
+        front: frontViewSvgPath,
+        top: topViewSvgPath,
+      },
+    };
+
+    setSavedTeethData((prev) => ({ ...prev, [selectedTooth]: toothData }));
+
+    // Clear current selections after saving
+    setSelectedZones([]);
+    setPathologyDetails({});
+    setSelectedPathology("");
+    setFrontViewPoints([]);
+    setTopViewPoints([]);
+    setFrontViewSvgPath("");
+    setTopViewSvgPath("");
+    setIsFrontPathClosed(false);
+    setIsTopPathClosed(false);
+  };
+
   const canUndo =
     activeView === "front"
       ? frontViewPoints.length > 0 && !isFrontPathClosed
@@ -157,6 +188,8 @@ export const SelectionProvider = ({ children }) => {
         updateSVGPath,
         handleUndo,
         canUndo,
+        savedTeethData,
+        saveToothData,
       }}
     >
       {children}

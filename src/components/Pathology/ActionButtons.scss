@@ -18,16 +18,16 @@
     cursor: pointer;
     transition: background-color variables.$transition-duration;
 
-    &.monitor {
+    &.monitor-action {
       color: #202633;
       background-color: variables.$highlight-color;
     }
 
-    &.treat {
+    &.treat-action {
       background-color: variables.$danger-color;
     }
 
-    &.save {
+    &.save-action {
       background-color: variables.$primary-color;
     }
 
