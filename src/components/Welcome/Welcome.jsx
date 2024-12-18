@@ -18,7 +18,7 @@ const Welcome = ({ onPathologyClick }) => {
         </a>
       </div>
       <div className="welcome-content">
-        <TeethChart />
+        <TeethChart onToothClick={onPathologyClick} />
       </div>
     </div>
   );

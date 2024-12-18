@@ -31,6 +31,14 @@
       justify-content: center;
       align-items: center;
       width: 40px;
+      cursor: pointer;
+      padding: 2px;
+      border-radius: variables.$border-radius;
+      transition: background-color variables.$transition-duration;
+
+      &:focus-visible {
+        outline: 2px solid variables.$primary-color;
+      }
 
       img {
         max-width: 100%;
@@ -49,8 +57,24 @@
     .number {
       width: 40px;
       text-align: center;
-      font-size: 12px;
+      font-size: 16px;
       color: variables.$text-color;
+      cursor: pointer;
+      padding: 4px 0;
+      border-radius: variables.$border-radius;
+      transition: all variables.$transition-duration;
+
+      &:hover,
+      &:focus {
+        background-color: variables.$light-gray;
+        color: variables.$primary-color;
+        font-weight: 600;
+        outline: none;
+      }
+
+      &:focus-visible {
+        outline: 2px solid variables.$primary-color;
+      }
     }
   }
 }
