@@ -1,6 +1,7 @@
 // src/components/Welcome/Welcome.jsx
 import React from "react";
 import "./Welcome.scss";
+import TeethChart from "../TeethChart/TeethChart";
 
 const Welcome = ({ onPathologyClick }) => {
   return (
@@ -17,8 +18,7 @@ const Welcome = ({ onPathologyClick }) => {
         </a>
       </div>
       <div className="welcome-content">
-        <h1>Welcome to Dental Charting</h1>
-        <p>This is the Welcome Page.</p>
+        <TeethChart />
       </div>
     </div>
   );

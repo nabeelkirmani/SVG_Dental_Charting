@@ -28,21 +28,9 @@
   .welcome-content {
     flex: 1;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
     padding: 2rem;
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: variables.$primary-color;
-    }
-
-    p {
-      font-size: 1.2rem;
-      color: variables.$text-color;
-    }
+    overflow: auto;
   }
 }
