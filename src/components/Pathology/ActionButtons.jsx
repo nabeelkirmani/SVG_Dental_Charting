@@ -14,10 +14,11 @@ const ActionButtons = () => {
     }
 
     if (!selectedPathology) {
-      aleert("Please select the type of Pathology.");
+      alert("Please select a pathology type.");
       return;
     }
 
+    // If tooth & pathology are selected, call the function that does the POST request
     saveToothData();
     alert(`Data saved for tooth ${selectedTooth}`);
   };
@@ -28,10 +29,10 @@ const ActionButtons = () => {
         handleSave();
         break;
       case "Monitor":
-        console.log("Monitor action empty");
+        console.log("Monitor action");
         break;
       case "Treat":
-        console.log("Treat action empty");
+        console.log("Treat action");
         break;
       default:
         console.log(`${action} clicked`);

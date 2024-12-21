@@ -1,5 +1,5 @@
 // src/contexts/SelectionContext.jsx
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const SelectionContext = createContext();
 
@@ -9,6 +9,7 @@ export const SelectionProvider = ({ children }) => {
   const [selectedZones, setSelectedZones] = useState([]);
   const [pathologyDetails, setPathologyDetails] = useState({});
 
+  // Drawing points, etc.:
   const [frontViewPoints, setFrontViewPoints] = useState([]);
   const [topViewPoints, setTopViewPoints] = useState([]);
   const [isFrontPathClosed, setIsFrontPathClosed] = useState(false);
@@ -17,16 +18,31 @@ export const SelectionProvider = ({ children }) => {
   const [topViewSvgPath, setTopViewSvgPath] = useState("");
   const [activeView, setActiveView] = useState("front");
   const [isDrawing, setIsDrawing] = useState(false);
-  const [savedTeethData, setSavedTeethData] = useState([]);
 
+  // Local "database" of saved teeth data.
+  // This can store multiple teeth for a single patient.
+  // Key: tooth number; Value: all details for that tooth
+  const [savedTeethData, setSavedTeethData] = useState({}); // TODO: Check if it should be useState([])
+
+  // On app load, read from localStorage if present
+  useEffect(() => {
+    const dataFromStorage = localStorage.getItem("patientData");
+    if (dataFromStorage) {
+      setSavedTeethData(JSON.parse(dataFromStorage));
+    }
+  }, []);
+
+  // 1. Dentist name & Patient name (hardcoded):
+  const dentistName = "Dentist1";
+  const patientName = "Patient1";
+
+  // Handlers
   const handleToothSelect = (tooth) => {
     setSelectedTooth(tooth);
   };
 
   const handlePathologyToggle = (pathology) => {
-    setSelectedPathology((prevPathology) =>
-      prevPathology === pathology ? "" : pathology
-    );
+    setSelectedPathology((prev) => (prev === pathology ? "" : pathology));
     setPathologyDetails({});
     setSelectedZones([]);
   };
@@ -40,12 +56,10 @@ export const SelectionProvider = ({ children }) => {
   };
 
   const updatePathologyDetail = (key, value) => {
-    setPathologyDetails((prevDetails) => {
-      const newValue = prevDetails[key] === value ? "" : value;
-      const newDetails = { ...prevDetails, [key]: newValue };
-      console.log("Updated Pathology Details: ", newDetails);
-      return newDetails;
-    });
+    setPathologyDetails((prevDetails) => ({
+      ...prevDetails,
+      [key]: value,
+    }));
   };
 
   const handleViewChange = (view) => {
@@ -115,47 +129,79 @@ export const SelectionProvider = ({ children }) => {
     }
   };
 
-  const saveToothData = () => {
+  // Saving all relevant data
+  const saveToothData = async () => {
     if (!selectedTooth) {
-      console.error("No tooth selected");
+      console.error("No tooth selected, cannot save.");
       return;
     }
 
+    if (!selectedPathology) {
+      alert("Please select a pathology type first.");
+      return;
+    }
+
+    // Build the tooth record JSON to send
     const toothData = {
-      pathology: selectedPathology,
-      pathologyDetails,
-      zones: selectedZones,
+      dentist: dentistName,
+      patient: patientName,
+      toothNumber: selectedTooth,
+      pathology: selectedPathology, // e.g., "decay"
+      pathologyDetails, // e.g., { stage: "dentin", cavitation: "cavitation", ...}
+      zones: selectedZones, // e.g., [‘1’, ‘2’]
       shapes: {
         front: frontViewSvgPath,
         top: topViewSvgPath,
       },
+      timestamp: new Date().toISOString(),
     };
 
-    setSavedTeethData((prev) => ({ ...prev, [selectedTooth]: toothData }));
+    console.log("Sending toothData to server:", toothData);
 
-    // Clear current selections after saving
-    setSelectedZones([]);
-    setPathologyDetails({});
-    setSelectedPathology("");
-    setFrontViewPoints([]);
-    setTopViewPoints([]);
-    setFrontViewSvgPath("");
-    setTopViewSvgPath("");
-    setIsFrontPathClosed(false);
-    setIsTopPathClosed(false);
+    try {
+      const response = await fetch("http://localhost:3001/api/saveTooth", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(toothData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log("Server response:", result);
+      alert("Data saved successfully to server!");
+
+      // Reset local form here: // TODO: Check if clearing the UI selections is needed.
+      setSelectedZones([]);
+      setPathologyDetails({});
+      setSelectedPathology("");
+      setFrontViewPoints([]);
+      setTopViewPoints([]);
+      setFrontViewSvgPath("");
+      setTopViewSvgPath("");
+      setIsFrontPathClosed(false);
+      setIsTopPathClosed(false);
+    } catch (error) {
+      console.error("Error saving tooth data:", error);
+      alert("Error saving data. Check console or server log.");
+    }
   };
+
+  // Use savedTeethData in other components to display the patient’s history.
+  // The Welcome page can showing a list of recorded teeth and pathologies.
 
   const canUndo =
     activeView === "front"
       ? frontViewPoints.length > 0 && !isFrontPathClosed
       : topViewPoints.length > 0 && !isTopPathClosed;
 
-  const activateZone = (() => {
-    if (selectedPathology === "decay") {
-      return true;
-    }
-    return false;
-  })();
+  // Evaluate whether Zones should be enabled based on selected pathology
+  // TODO: Check if the old method of checking for Decay was better.
+  const activateZone = selectedPathology === "decay";
 
   return (
     <SelectionContext.Provider
@@ -190,6 +236,8 @@ export const SelectionProvider = ({ children }) => {
         canUndo,
         savedTeethData,
         saveToothData,
+        dentistName,
+        patientName,
       }}
     >
       {children}
