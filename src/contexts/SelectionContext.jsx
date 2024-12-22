@@ -98,9 +98,7 @@ export const SelectionProvider = ({ children }) => {
       return;
     }
 
-    let path = `M ${currentPoints[0].x.toFixed(2)} ${currentPoints[0].y.toFixed(
-      2
-    )} `;
+    let path = `M ${currentPoints[0].x.toFixed(2)} ${currentPoints[0].y.toFixed(2)} `;
     for (let i = 1; i < currentPoints.length; i++) {
       path += `L ${currentPoints[i].x.toFixed(2)} ${currentPoints[i].y.toFixed(
         2

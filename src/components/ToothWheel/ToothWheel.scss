@@ -6,8 +6,8 @@
   display: flex;
   user-select: none;
   width: 100%;
-  max-height: 7vh;
-  min-height: 7vh;
+  max-height: 10vh;
+  min-height: 10vh;
   border-bottom: 1px solid variables.$border-color;
 
   .tooth-wheel-navigation {
@@ -17,7 +17,7 @@
     width: 100%;
     background-color: variables.$dark-gray;
     padding: 0vh 2vw;
-    gap: 8px;
+    gap: 10px;
     justify-content: center;
 
     .upper-teeth,
