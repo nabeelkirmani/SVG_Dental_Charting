@@ -8,12 +8,16 @@
   height: 100%;
 
   .welcome-nav {
+    min-height: 7.5vh;
     padding: 1rem;
     border-bottom: 1px solid variables.$border-color;
+    align-items: center;
 
     a {
       color: variables.$primary-color;
-      font-weight: 600;
+      font-size: 4vh;
+      font-weight: 500;
+      text-align: center;
       text-decoration: none;
       padding: 0.5rem 1rem;
       border-radius: variables.$border-radius;
