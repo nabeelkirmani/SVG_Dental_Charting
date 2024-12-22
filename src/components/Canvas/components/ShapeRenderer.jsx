@@ -1,20 +1,26 @@
 // src/components/Canvas/components/ShapeRenderer.jsx
 import React, { memo } from "react";
-import { Line, Path } from "react-konva";
+import { Path } from "react-konva";
 
 const ShapeRenderer = memo(({ shape }) => {
+  console.log("Rendering shape:", shape);
+
   switch (shape.type.toLowerCase()) {
-    case "line":
-      return (
-        <Line
-          points={shape.points}
-          stroke={shape.stroke}
-          strokeWidth={shape.strokeWidth}
-          lineCap="round"
-          lineJoin="round"
-        />
-      );
     case "path":
+      // If the shape has only stroke properties (1D line), handle differently
+      if (shape.stroke && !shape.fill) {
+        return (
+          <Path
+            data={shape.data}
+            stroke={shape.stroke}
+            strokeWidth={shape.strokeWidth || 2}
+            lineCap="round"
+            lineJoin="round"
+            fill="transparent"
+          />
+        );
+      }
+      // Regular filled path (2D shape)
       return (
         <Path
           data={shape.data}
@@ -24,6 +30,7 @@ const ShapeRenderer = memo(({ shape }) => {
         />
       );
     default:
+      console.warn("Unknown shape type:", shape.type);
       return null;
   }
 });

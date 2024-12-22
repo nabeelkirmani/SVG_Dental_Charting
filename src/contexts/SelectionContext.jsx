@@ -131,24 +131,18 @@ export const SelectionProvider = ({ children }) => {
 
   // Saving all relevant data
   const saveToothData = async () => {
-    if (!selectedTooth) {
-      console.error("No tooth selected, cannot save.");
+    if (!selectedTooth || !selectedPathology) {
+      console.error("Missing required data");
       return;
     }
 
-    if (!selectedPathology) {
-      alert("Please select a pathology type first.");
-      return;
-    }
-
-    // Build the tooth record JSON to send
     const toothData = {
       dentist: dentistName,
       patient: patientName,
       toothNumber: selectedTooth,
-      pathology: selectedPathology, // e.g., "decay"
-      pathologyDetails, // e.g., { stage: "dentin", cavitation: "cavitation", ...}
-      zones: selectedZones, // e.g., [‘1’, ‘2’]
+      pathology: selectedPathology,
+      pathologyDetails,
+      zones: selectedZones,
       shapes: {
         front: frontViewSvgPath,
         top: topViewSvgPath,
@@ -175,7 +169,19 @@ export const SelectionProvider = ({ children }) => {
       console.log("Server response:", result);
       alert("Data saved successfully to server!");
 
-      // Reset local form here: // TODO: Check if clearing the UI selections is needed.
+      // Update local state
+      setSavedTeethData((prevData) => {
+        const updatedData = {
+          ...prevData,
+          [selectedTooth]: {
+            ...toothData,
+          },
+        };
+        localStorage.setItem("patientData", JSON.stringify(updatedData));
+        return updatedData;
+      });
+
+      // 2) Clear local selections if you’d like a fresh form
       setSelectedZones([]);
       setPathologyDetails({});
       setSelectedPathology("");
@@ -190,9 +196,6 @@ export const SelectionProvider = ({ children }) => {
       alert("Error saving data. Check console or server log.");
     }
   };
-
-  // Use savedTeethData in other components to display the patient’s history.
-  // The Welcome page can showing a list of recorded teeth and pathologies.
 
   const canUndo =
     activeView === "front"

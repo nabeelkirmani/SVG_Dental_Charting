@@ -5,7 +5,8 @@ import { SelectionContext } from "../../contexts/SelectionContext";
 import "./TeethChart.scss";
 
 const TeethChart = ({ onToothClick }) => {
-  const { handleToothSelect } = useContext(SelectionContext);
+  const { handleToothSelect, savedTeethData } = useContext(SelectionContext);
+
   const upperTeeth = [
     18, 17, 16, 15, 14, 13, 12, 11, 21, 22, 23, 24, 25, 26, 27, 28,
   ];
@@ -15,45 +16,61 @@ const TeethChart = ({ onToothClick }) => {
 
   const handleClick = (toothNum) => {
     handleToothSelect(toothNum);
-    onToothClick();
+    onToothClick?.(); // optional
   };
 
-  const ToothView = ({ toothNum, view, imageSource }) => (
-    <div
-      key={`${view}-${toothNum}`}
-      className="tooth"
-      onClick={() => handleClick(toothNum)}
-      role="button"
-      tabIndex={0}
-      onKeyPress={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          handleClick(toothNum);
-        }
-      }}
-    >
-      <img src={imageSource[toothNum]} alt={`Tooth ${toothNum}`} />
-    </div>
-  );
+  // Helper for rendering a single tooth + optional overlay
+  const ToothView = ({ toothNum, view, imageSource }) => {
+    // Pre-calc the canvas dimensions used in <CanvasView>
+    const isFront = view === "front";
+    const svgWidth = isFront ? 122 : 121;
+    const svgHeight = isFront ? 380 : 172;
 
-  const ToothNumber = ({ num }) => (
-    <div
-      className="number"
-      onClick={() => handleClick(num)}
-      role="button"
-      tabIndex={0}
-      onKeyPress={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          handleClick(num);
-        }
-      }}
-    >
-      {num}
-    </div>
-  );
+    // Check if we have saved shapes for this tooth
+    const savedInfo = savedTeethData[toothNum];
+    const toothShapes = savedInfo?.shapes;
+    const pathData = isFront ? toothShapes?.front : toothShapes?.top;
+
+    return (
+      <div
+        className="tooth"
+        style={{ position: "relative" }}
+        onClick={() => handleClick(toothNum)}
+      >
+        <img
+          src={imageSource[toothNum]}
+          alt={`Tooth ${toothNum}`}
+          width={svgWidth}
+          height={svgHeight}
+          style={{ display: "block" }}
+        />
+        {/* If there’s an SVG path saved, overlay it */}
+        {pathData && (
+          <svg
+            width={svgWidth}
+            height={svgHeight}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              pointerEvents: "none", // so clicks go “through” to the underlying <div>
+            }}
+          >
+            <path
+              d={pathData}
+              fill="rgba(255, 0, 0, 0.3)"
+              stroke="red"
+              strokeWidth={2}
+            />
+          </svg>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div className="teeth-chart">
-      {/* Upper Teeth Front View */}
+      {/* UPPER TEETH - FRONT */}
       <div className="teeth-row upper-front">
         {upperTeeth.map((toothNum) => (
           <ToothView
@@ -65,7 +82,7 @@ const TeethChart = ({ onToothClick }) => {
         ))}
       </div>
 
-      {/* Upper Teeth Top View */}
+      {/* UPPER TEETH - TOP */}
       <div className="teeth-row upper-top">
         {upperTeeth.map((toothNum) => (
           <ToothView
@@ -77,19 +94,8 @@ const TeethChart = ({ onToothClick }) => {
         ))}
       </div>
 
-      {/* Teeth Numbers */}
-      <div className="teeth-numbers upper">
-        {upperTeeth.map((num) => (
-          <ToothNumber key={num} num={num} />
-        ))}
-      </div>
-      <div className="teeth-numbers lower">
-        {lowerTeeth.map((num) => (
-          <ToothNumber key={num} num={num} />
-        ))}
-      </div>
-
-      {/* Lower Teeth Top View */}
+      {/* [ … tooth numbering, lower teeth rows, etc. … ] */}
+      {/* LOWER TEETH - TOP */}
       <div className="teeth-row lower-top">
         {lowerTeeth.map((toothNum) => (
           <ToothView
@@ -101,7 +107,7 @@ const TeethChart = ({ onToothClick }) => {
         ))}
       </div>
 
-      {/* Lower Teeth Front View */}
+      {/* LOWER TEETH - FRONT */}
       <div className="teeth-row lower-front">
         {lowerTeeth.map((toothNum) => (
           <ToothView
