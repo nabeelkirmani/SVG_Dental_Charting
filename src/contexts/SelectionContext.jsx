@@ -42,20 +42,9 @@ export const SelectionProvider = ({ children }) => {
   };
 
   const handlePathologyToggle = (pathology) => {
-    setSelectedPathology((prev) => {
-      const newPathology = prev === pathology ? "" : pathology;
-
-      // Only clear zones and pathology details if changing to a different pathology
-      if (prev !== newPathology) {
-        // Clear zones only if not switching to decay
-        if (newPathology !== "decay") {
-          setSelectedZones([]);
-        }
-        setPathologyDetails({});
-      }
-
-      return newPathology;
-    });
+    setSelectedPathology((prev) => (prev === pathology ? "" : pathology));
+    setPathologyDetails({});
+    setSelectedZones([]);
   };
 
   const handleZoneToggle = (zone) => {
@@ -147,32 +136,18 @@ export const SelectionProvider = ({ children }) => {
       return;
     }
 
-    // Get the existing data for this tooth
-    const existingToothData = savedTeethData[selectedTooth] || {};
-    const existingPathologies = existingToothData.pathologies || {};
-
-    // Create a new pathology entry for the current selection
-    const newPathologyData = {
-      zones: selectedZones,
-      pathologyDetails: pathologyDetails,
-      shapes: {
-        front: frontViewSvgPath,
-        top: topViewSvgPath,
-      },
-    };
-
-    // Merge the new pathology with existing pathologies
-    const updatedPathologies = {
-      ...existingPathologies,
-      [selectedPathology]: newPathologyData,
-    };
-
     const toothData = {
       dentist: dentistName,
       patient: patientName,
       toothNumber: selectedTooth,
+      pathology: selectedPathology,
+      pathologyDetails,
+      zones: selectedZones,
+      shapes: {
+        front: frontViewSvgPath,
+        top: topViewSvgPath,
+      },
       timestamp: new Date().toISOString(),
-      pathologies: updatedPathologies,
     };
 
     console.log("Sending toothData to server:", toothData);
@@ -198,11 +173,24 @@ export const SelectionProvider = ({ children }) => {
       setSavedTeethData((prevData) => {
         const updatedData = {
           ...prevData,
-          [selectedTooth]: toothData,
+          [selectedTooth]: {
+            ...toothData,
+          },
         };
         localStorage.setItem("patientData", JSON.stringify(updatedData));
         return updatedData;
       });
+
+      // 2) Clear local selections if you’d like a fresh form
+      setSelectedZones([]);
+      setPathologyDetails({});
+      setSelectedPathology("");
+      setFrontViewPoints([]);
+      setTopViewPoints([]);
+      setFrontViewSvgPath("");
+      setTopViewSvgPath("");
+      setIsFrontPathClosed(false);
+      setIsTopPathClosed(false);
     } catch (error) {
       console.error("Error saving tooth data:", error);
       alert("Error saving data. Check console or server log.");

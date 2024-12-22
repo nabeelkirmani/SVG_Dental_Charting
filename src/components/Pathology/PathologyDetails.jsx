@@ -9,7 +9,7 @@ const PathologyDetails = () => {
     useContext(SelectionContext);
 
   if (!selectedPathology) {
-    return <p className="details-placeholder">Select a pathology type</p>;
+    return <p className="details-placeholder">Pathology Detail Placeholder</p>;
   }
 
   const hierarchy = pathologyOptions[selectedPathology];
@@ -65,21 +65,39 @@ const PathologyDetails = () => {
     );
   };
 
-  const renderHierarchy = (currentLevel) => {
-    if (!currentLevel) return null;
+  const renderHierarchy = (currentLevel, depth = 0) => {
+    if (!currentLevel) {
+      return null;
+    }
 
-    return Object.entries(currentLevel).map(([levelName, levelData]) => (
-      <div key={levelName}>
-        {renderOptions(levelName, levelData)}
-        {pathologyDetails[levelName] &&
-          levelData.find?.((opt) => opt.value === pathologyDetails[levelName])
-            ?.next &&
-          renderHierarchy(
-            levelData.find((opt) => opt.value === pathologyDetails[levelName])
-              .next
-          )}
+    const levelName = Object.keys(currentLevel)[0];
+    const levelData = currentLevel[levelName];
+
+    const renderedOptions = renderOptions(levelName, levelData);
+
+    const selectedValue = pathologyDetails[levelName];
+
+    let nextLevel = null;
+
+    if (selectedValue) {
+      if (Array.isArray(levelData)) {
+        const selectedOption = levelData.find(
+          (option) => option.value === selectedValue
+        );
+        if (selectedOption && selectedOption.next) {
+          nextLevel = selectedOption.next;
+        }
+      } else if (levelData.options && levelData.multiple) {
+        // Handle multiple selection case if needed
+      }
+    }
+
+    return (
+      <div key={depth}>
+        {renderedOptions}
+        {nextLevel && renderHierarchy(nextLevel, depth + 1)}
       </div>
-    ));
+    );
   };
 
   return <div className="details">{renderHierarchy(hierarchy)}</div>;

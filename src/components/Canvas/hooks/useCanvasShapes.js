@@ -1,6 +1,7 @@
 // src/components/Canvas/hooks/useCanvasShapes.js
 import { useState, useEffect } from "react";
 import zoneShapes from "../../../data/zoneShapes.json";
+import { smoothPath } from "../utils/canvasHelpers";
 
 export const useCanvasShapes = (
   selectedTooth,
@@ -10,10 +11,6 @@ export const useCanvasShapes = (
 ) => {
   const [frontShapes, setFrontShapes] = useState([]);
   const [topShapes, setTopShapes] = useState([]);
-  const [shapesHistory, setShapesHistory] = useState({
-    front: [],
-    top: [],
-  });
 
   useEffect(() => {
     if (
@@ -22,105 +19,123 @@ export const useCanvasShapes = (
       !zoneShapes.teeth[selectedTooth] ||
       !zoneShapes.teeth[selectedTooth].pathologies[selectedPathology]
     ) {
+      setFrontShapes([]);
+      setTopShapes([]);
+      console.log("No shape data found for:", {
+        selectedTooth,
+        selectedPathology,
+      });
       return;
     }
 
     const pathologyData =
       zoneShapes.teeth[selectedTooth].pathologies[selectedPathology];
 
-    let newFrontShapes = [];
-    let newTopShapes = [];
+    console.log("Processing pathology data:", pathologyData);
+
+    let fronts = [];
+    let tops = [];
 
     const processShapes = (shapeData) => {
-      if (!shapeData) return;
+      if (!shapeData) {
+        console.log("No shape data found");
+        return;
+      }
+      console.log("Processing shape data:", shapeData);
 
       if (shapeData.Front) {
-        newFrontShapes.push(shapeData.Front);
+        fronts.push(shapeData.Front);
       }
       if (shapeData.Top) {
-        newTopShapes.push(shapeData.Top);
+        tops.push(shapeData.Top);
       }
     };
 
-    switch (selectedPathology) {
-      case "decay": {
-        if (Array.isArray(selectedZones)) {
-          selectedZones.forEach((zoneID) => {
-            const zone = pathologyData.zones?.[zoneID];
-            if (zone) processShapes(zone);
-          });
-        }
-        break;
-      }
+    // Handle fracture for 1D
+    if (selectedPathology === "fracture") {
+      const { fractureType, direction } = pathologyDetails;
+      console.log("Processing fracture:", { fractureType, direction });
 
-      case "toothWear": {
-        const { wearType, surface } = pathologyDetails;
-        if (wearType && surface && Array.isArray(surface)) {
-          surface.forEach((surfaceType) => {
-            const shapeData = pathologyData[wearType]?.[surfaceType];
-            if (shapeData) processShapes(shapeData);
-          });
+      // Update this section to match the JSON structure
+      if (fractureType && direction) {
+        const shapeData = pathologyData[fractureType]?.[direction];
+        console.log("Fracture shape data:", {
+          fractureType,
+          direction,
+          shapeData,
+        });
+        if (shapeData) {
+          processShapes(shapeData);
         }
-        break;
       }
-
-      case "fracture": {
-        const { fractureType, direction } = pathologyDetails;
-        if (fractureType && direction) {
-          const shapeData = pathologyData[fractureType]?.[direction];
-          if (shapeData) {
-            processShapes(shapeData);
+    } else {
+      switch (selectedPathology) {
+        case "decay": {
+          if (Array.isArray(selectedZones)) {
+            selectedZones.forEach((zoneID) => {
+              const zone = pathologyData.zones?.[zoneID];
+              if (zone) processShapes(zone);
+            });
           }
+          break;
         }
-        break;
-      }
 
-      case "discoloration": {
-        const { color } = pathologyDetails;
-        if (typeof color === "string") {
-          const shapeData = pathologyData[color];
-          if (shapeData) processShapes(shapeData);
+        case "toothWear": {
+          const { wearType, surface } = pathologyDetails;
+          if (wearType && surface && Array.isArray(surface)) {
+            surface.forEach((surfaceType) => {
+              const shapeData = pathologyData[wearType]?.[surfaceType];
+              if (shapeData) processShapes(shapeData);
+            });
+          }
+          break;
         }
-        break;
-      }
 
-      case "apical":
-      case "developmentDisorder": {
-        const { answer } = pathologyDetails;
-        if (typeof answer === "string") {
-          const shapeData = pathologyData[answer];
-          if (shapeData) processShapes(shapeData);
+        case "fracture": {
+          const { fractureType, direction } = pathologyDetails;
+          if (
+            typeof fractureType === "string" &&
+            typeof direction === "string"
+          ) {
+            const shapeData = pathologyData[fractureType]?.[direction];
+            if (shapeData) processShapes(shapeData);
+          }
+          break;
         }
-        break;
+
+        case "discoloration": {
+          const { color } = pathologyDetails;
+          if (typeof color === "string") {
+            const shapeData = pathologyData[color];
+            if (shapeData) processShapes(shapeData);
+          }
+          break;
+        }
+
+        case "apical":
+        case "developmentDisorder": {
+          const { answer } = pathologyDetails;
+          if (typeof answer === "string") {
+            const shapeData = pathologyData[answer];
+            if (shapeData) processShapes(shapeData);
+          }
+          break;
+        }
+
+        default:
+          setFrontShapes([]);
+          setTopShapes([]);
+          console.error(
+            `Shape data for pathology "${selectedPathology}" not found.`
+          );
+          break;
       }
     }
 
-    // Add new shapes to history
-    if (newFrontShapes.length > 0) {
-      setShapesHistory((prev) => ({
-        ...prev,
-        front: [...prev.front, ...newFrontShapes],
-      }));
-    }
-    if (newTopShapes.length > 0) {
-      setShapesHistory((prev) => ({
-        ...prev,
-        top: [...prev.top, ...newTopShapes],
-      }));
-    }
-
-    // Set current shapes to include both history and new shapes
-    setFrontShapes([...shapesHistory.front, ...newFrontShapes]);
-    setTopShapes([...shapesHistory.top, ...newTopShapes]);
+    console.log("Setting shapes:", { fronts, tops });
+    setFrontShapes(fronts);
+    setTopShapes(tops);
   }, [selectedTooth, selectedPathology, selectedZones, pathologyDetails]);
-
-  // Clear history when tooth changes
-  useEffect(() => {
-    setShapesHistory({
-      front: [],
-      top: [],
-    });
-  }, [selectedTooth]);
 
   return { frontShapes, topShapes };
 };
