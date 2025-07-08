@@ -1,5 +1,14 @@
 # React + Vite
 
+# First run
+choco install nodejs-lts -y # or use the .MSI installer on the Node.js website
+# Inside the project, in the home folder of the project, run the following commands one by one:
+npm install
+
+# Running the application:
+npm run dev
+
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
