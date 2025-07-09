@@ -48,16 +48,19 @@ This will launch the application in development mode with Hot Module Replacement
 - **Completed Tooth**:
   - 18
 
-- **Pending Tooth**:
+- **Pending Tooth**: (Due to project being paused)
   - Remaining teeth (11-17, 21-28, 31-38, 41-48) which will be copied from the completed tooth (18) to maintain consistency in design and functionality.
 
 - **Completed Features**:
   - Decay
   - Discoloration
   - Fracture
+  - Apical
+  - Tooth Wear
+  - Development Disorder
 
 - **Pending Features**: (Due to project being paused)
-  - Additional pathology types
+  - Additional pathology sub-types
   - Enhanced drawing tools
   - User authentication and data persistence
 
