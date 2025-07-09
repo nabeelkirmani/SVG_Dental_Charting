@@ -13,6 +13,7 @@ export const usePathDrawing = (
   const [isPathClosed, setIsPathClosed] = useState(
     externalIsPathClosed || false
   );
+  const [drawingMode, setDrawingMode] = useState("normal");
 
   // Sync with external state
   useEffect(() => {
@@ -25,36 +26,48 @@ export const usePathDrawing = (
 
   const handleDrawing = useCallback(
     (point, isDrawing) => {
-      if (!isDrawing || isPathClosed) return false;
+      if (!isDrawing) return false;
 
-      const newPoints = [...points, point];
+      const newPoints = [...points];
 
-      if (newPoints.length > 2) {
-        const firstPoint = newPoints[0];
-        const distance = Math.hypot(
-          point.x - firstPoint.x,
-          point.y - firstPoint.y
-        );
+      if (drawingMode === "zigzag") {
+        if (newPoints.length >= 2) {
+          newPoints[1] = point; // Update end point
+        } else {
+          newPoints.push(point);
+        }
+      } else {
+        // Normal drawing mode
+        newPoints.push(point);
 
-        if (distance < 1) {
-          setIsPathClosed(true);
-          setExternalIsPathClosed(true);
-          const finalPoints = newPoints.slice(0, -1);
-          setPoints(finalPoints);
-          setExternalPoints(finalPoints);
-          updateSVGPath(finalPoints, true, view);
-          return true;
+        if (newPoints.length > 2 && !isPathClosed) {
+          const firstPoint = newPoints[0];
+          const distance = Math.hypot(
+            point.x - firstPoint.x,
+            point.y - firstPoint.y
+          );
+
+          if (distance < 1) {
+            setIsPathClosed(true);
+            setExternalIsPathClosed(true);
+            const finalPoints = newPoints.slice(0, -1);
+            setPoints(finalPoints);
+            setExternalPoints(finalPoints);
+            updateSVGPath(finalPoints, true, view);
+            return true;
+          }
         }
       }
 
       setPoints(newPoints);
       setExternalPoints(newPoints);
-      updateSVGPath(newPoints, false, view);
+      updateSVGPath(newPoints, false, view, drawingMode);
       return false;
     },
     [
       points,
       isPathClosed,
+      drawingMode,
       updateSVGPath,
       view,
       setExternalPoints,
@@ -62,19 +75,24 @@ export const usePathDrawing = (
     ]
   );
 
-  const resetDrawing = useCallback(() => {
+  const setDrawingType = useCallback((mode) => {
+    setDrawingMode(mode);
     setPoints([]);
     setIsPathClosed(false);
-    setExternalPoints([]);
-    setExternalIsPathClosed(false);
-  }, [setExternalPoints, setExternalIsPathClosed]);
+  }, []);
 
   return {
     points,
     isPathClosed,
     handleDrawing,
-    resetDrawing,
-    setPoints,
-    setIsPathClosed,
+    drawingMode,
+    setDrawingType,
+    resetDrawing: useCallback(() => {
+      setPoints([]);
+      setIsPathClosed(false);
+      setExternalPoints([]);
+      setExternalIsPathClosed(false);
+      setDrawingMode("normal");
+    }, [setExternalPoints, setExternalIsPathClosed]),
   };
 };
