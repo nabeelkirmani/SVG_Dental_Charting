@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
 
+/** Array of available pathology types with labels and values */
 const pathologyTypes = [
   { label: "Decay", value: "decay" },
   { label: "Fracture", value: "fracture" },
@@ -11,6 +12,11 @@ const pathologyTypes = [
   { label: "Development Disorder", value: "developmentDisorder" },
 ];
 
+/**
+ * PathologyTypes component for selecting different types of dental pathologies
+ * Displays buttons for each pathology type with active state indication
+ * @returns {JSX.Element} List of pathology type buttons
+ */
 const PathologyTypes = () => {
   const { selectedPathology, handlePathologyToggle } =
     useContext(SelectionContext);

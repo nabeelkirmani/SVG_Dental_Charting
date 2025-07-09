@@ -7,6 +7,12 @@ import TeethChart from "../TeethChart/TeethChart";
 // TODO: Uncomment when savedTeethEntries is implemented
 // import { SelectionContext } from "../../contexts/SelectionContext";
 
+/**
+ * Welcome component displaying the main dental chart and patient information
+ * @param {Object} props - Component props
+ * @param {Function} props.onPathologyClick - Callback function when pathology is clicked
+ * @returns {JSX.Element} Welcome component with dental chart and patient history
+ */
 const Welcome = ({ onPathologyClick }) => {
   // TODO: Uncomment when savedTeethEntries is implemented
   // const { savedTeethData } = useContext(SelectionContext);

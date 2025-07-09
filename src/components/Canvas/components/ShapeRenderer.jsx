@@ -2,6 +2,13 @@
 import { memo } from "react";
 import { Path } from "react-konva";
 
+/**
+ * ShapeRenderer component for rendering different types of shapes on Konva canvas
+ * Currently supports path shapes with stroke and fill properties
+ * @param {Object} props - Component props
+ * @param {Object} props.shape - Shape object with type, data, and styling properties
+ * @returns {JSX.Element|null} Konva Path component or null if unknown shape type
+ */
 const ShapeRenderer = memo(({ shape }) => {
   console.log("Rendering shape:", shape);
 

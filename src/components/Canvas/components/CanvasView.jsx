@@ -4,6 +4,22 @@ import ShapeRenderer from "./ShapeRenderer";
 import CanvasPoints from "./CanvasPoints";
 import { isWithinBounds, adjustPoint, getGroupX } from "../utils/canvasHelpers";
 
+/**
+ * CanvasView component for rendering tooth images with interactive drawing capabilities
+ * Displays tooth image, shapes, and drawing points on a Konva Stage
+ * @param {Object} props - Component props
+ * @param {string} props.view - Current view type ('front' or 'top')
+ * @param {number} props.width - Canvas width
+ * @param {number} props.height - Canvas height
+ * @param {HTMLImageElement} props.image - Tooth image to display
+ * @param {Array} props.shapes - Array of shape objects to render
+ * @param {Array} props.points - Array of drawing points
+ * @param {boolean} props.isPathClosed - Whether the current path is closed
+ * @param {boolean} props.isDrawing - Whether drawing mode is active
+ * @param {string} props.activeView - Currently active view ('front' or 'top')
+ * @param {Function} props.handleDrawing - Function to handle drawing interactions
+ * @returns {JSX.Element} Konva Stage with tooth image and drawing capabilities
+ */
 const CanvasView = ({
   view,
   width,
@@ -16,6 +32,10 @@ const CanvasView = ({
   activeView,
   handleDrawing,
 }) => {
+  /**
+   * Handles click events on the Konva stage for drawing
+   * @param {Object} e - Konva event object
+   */
   const handleStageClick = (e) => {
     if (!isDrawing) return;
 

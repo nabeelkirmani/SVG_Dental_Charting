@@ -1,8 +1,18 @@
 // src/contexts/SelectionContext.jsx
 import { createContext, useState, useEffect } from "react";
 
+/**
+ * Context for managing dental charting selections and state
+ */
 export const SelectionContext = createContext();
 
+/**
+ * Provider component for the SelectionContext
+ * Manages all dental charting state including tooth selection, pathology data, drawing points, and persistence
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Child components to provide context to
+ * @returns {JSX.Element} Provider component with context value
+ */
 export const SelectionProvider = ({ children }) => {
   const [selectedTooth, setSelectedTooth] = useState(null);
   const [selectedPathology, setSelectedPathology] = useState("");
@@ -37,16 +47,28 @@ export const SelectionProvider = ({ children }) => {
   const patientName = "Patient1";
 
   // Handlers
+  /**
+   * Handles tooth selection
+   * @param {number} tooth - The tooth number to select
+   */
   const handleToothSelect = (tooth) => {
     setSelectedTooth(tooth);
   };
 
+  /**
+   * Handles pathology type selection/deselection
+   * @param {string} pathology - The pathology type to toggle
+   */
   const handlePathologyToggle = (pathology) => {
     setSelectedPathology((prev) => (prev === pathology ? "" : pathology));
     setPathologyDetails({});
     setSelectedZones([]);
   };
 
+  /**
+   * Handles zone selection/deselection
+   * @param {string} zone - The zone to toggle
+   */
   const handleZoneToggle = (zone) => {
     setSelectedZones((prevZones) =>
       prevZones.includes(zone)
@@ -55,6 +77,11 @@ export const SelectionProvider = ({ children }) => {
     );
   };
 
+  /**
+   * Updates a specific pathology detail
+   * @param {string} key - The detail key to update
+   * @param {*} value - The new value for the detail
+   */
   const updatePathologyDetail = (key, value) => {
     setPathologyDetails((prevDetails) => ({
       ...prevDetails,
@@ -62,10 +89,17 @@ export const SelectionProvider = ({ children }) => {
     }));
   };
 
+  /**
+   * Handles view change between front and top views
+   * @param {string} view - The view to switch to ('front' or 'top')
+   */
   const handleViewChange = (view) => {
     setActiveView(view);
   };
 
+  /**
+   * Resets the drawing state for the current view
+   */
   const handleReset = () => {
     if (activeView === "front") {
       setFrontViewPoints([]);
@@ -79,6 +113,9 @@ export const SelectionProvider = ({ children }) => {
     setIsDrawing(true);
   };
 
+  /**
+   * Copies the current SVG path to clipboard
+   */
   const handleCopyPath = () => {
     const currentPath =
       activeView === "front" ? frontViewSvgPath : topViewSvgPath;
@@ -92,6 +129,12 @@ export const SelectionProvider = ({ children }) => {
       .catch(() => alert("Failed to copy path"));
   };
 
+  /**
+   * Updates the SVG path string based on current drawing points
+   * @param {Array} currentPoints - Array of drawing points with x, y coordinates
+   * @param {boolean} closed - Whether the path should be closed (add 'Z' command)
+   * @param {string} view - View type ('front' or 'top')
+   */
   const updateSVGPath = (currentPoints, closed, view) => {
     if (currentPoints.length === 0) {
       view === "front" ? setFrontViewSvgPath("") : setTopViewSvgPath("");
@@ -115,6 +158,9 @@ export const SelectionProvider = ({ children }) => {
     }
   };
 
+  /**
+   * Removes the last drawing point from the current view
+   */
   const handleUndo = () => {
     if (activeView === "front") {
       const newPoints = frontViewPoints.slice(0, -1);
@@ -127,7 +173,10 @@ export const SelectionProvider = ({ children }) => {
     }
   };
 
-  // Saving all relevant data
+  /**
+   * Saves tooth data to server and local storage
+   * @returns {Promise<void>} Promise that resolves when save is complete
+   */
   const saveToothData = async () => {
     if (!selectedTooth || !selectedPathology) {
       console.error("Missing required data");

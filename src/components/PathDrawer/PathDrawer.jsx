@@ -3,6 +3,11 @@ import { useContext } from "react";
 import "./PathDrawer.scss";
 import { SelectionContext } from "../../contexts/SelectionContext";
 
+/**
+ * PathDrawer component providing drawing controls and SVG path display
+ * Includes view selection, path display, and drawing control buttons
+ * @returns {JSX.Element} Drawing controls interface
+ */
 function PathDrawer() {
   const {
     frontViewSvgPath,

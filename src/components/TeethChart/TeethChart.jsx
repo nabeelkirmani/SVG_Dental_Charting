@@ -4,6 +4,13 @@ import { toothImagesFrontView, toothImagesTopView } from "../../assets/images";
 import { SelectionContext } from "../../contexts/SelectionContext";
 import "./TeethChart.scss";
 
+/**
+ * TeethChart component displaying the full dental chart with front and top views
+ * Shows all teeth with their images and overlays saved pathology drawings
+ * @param {Object} props - Component props
+ * @param {Function} props.onToothClick - Callback function when a tooth is clicked
+ * @returns {JSX.Element} Complete dental chart with upper and lower teeth
+ */
 const TeethChart = ({ onToothClick }) => {
   const { handleToothSelect, savedTeethData } = useContext(SelectionContext);
 
@@ -14,12 +21,23 @@ const TeethChart = ({ onToothClick }) => {
     48, 47, 46, 45, 44, 43, 42, 41, 31, 32, 33, 34, 35, 36, 37, 38,
   ];
 
+  /**
+   * Handles tooth click by selecting the tooth and calling the callback
+   * @param {number} toothNum - The tooth number that was clicked
+   */
   const handleClick = (toothNum) => {
     handleToothSelect(toothNum);
     onToothClick?.(); // optional
   };
 
-  // Helper for rendering a single tooth + optional overlay
+  /**
+   * Helper component for rendering a single tooth with optional pathology overlay
+   * @param {Object} props - Component props
+   * @param {number} props.toothNum - The tooth number
+   * @param {string} props.view - The view type ('front' or 'top')
+   * @param {Object} props.imageSource - Object containing tooth images
+   * @returns {JSX.Element} Single tooth view with image and optional SVG overlay
+   */
   const ToothView = ({ toothNum, view, imageSource }) => {
     // Pre-calc the canvas dimensions used in <CanvasView>
     const isFront = view === "front";
