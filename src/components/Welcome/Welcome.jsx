@@ -1,14 +1,16 @@
 // src/components/Welcome/Welcome.jsx
 
-import React, { useContext } from "react";
+// TODO: Uncomment when savedTeethEntries is implemented
+// import { useContext } from "react";
 import "./Welcome.scss";
 import TeethChart from "../TeethChart/TeethChart";
-import { SelectionContext } from "../../contexts/SelectionContext";
+// TODO: Uncomment when savedTeethEntries is implemented
+// import { SelectionContext } from "../../contexts/SelectionContext";
 
 const Welcome = ({ onPathologyClick }) => {
-  const { savedTeethData } = useContext(SelectionContext);
-
-  const savedTeethEntries = Object.values(savedTeethData) || [];
+  // TODO: Uncomment when savedTeethEntries is implemented
+  // const { savedTeethData } = useContext(SelectionContext);
+  // const savedTeethEntries = Object.values(savedTeethData) || [];
 
   return (
     <div className="welcome">
