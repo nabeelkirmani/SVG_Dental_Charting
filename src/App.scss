@@ -1,14 +1,26 @@
 // src/App.scss
 @use "styles/variables";
 
+////
+/// @group Layout
+/// @description Main container for the Dental Charting application, setting up the overall layout structure.
+/// @access public
 .app {
   display: flex;
   height: 100vh;
 
+  ////
+  /// @group Layout
+  /// @description Container for the navigation bar, ensuring it is displayed as a flex container.
+  /// @access public
   [data-view="nav-bar"] {
     display: flex;
   }
 
+  ////
+  /// @group Layout
+  /// @description Main content container, organizing the primary views of the application.
+  /// @access public
   [data-view="main-container"] {
     display: flex;
     flex-direction: column;
@@ -19,6 +31,10 @@
     }
   }
 
+  ////
+  /// @group Layout
+  /// @description Container for patient-specific views, allowing for scrollable content.
+  /// @access public
   [data-view="patient-view"] {
     display: flex;
     flex: 1;

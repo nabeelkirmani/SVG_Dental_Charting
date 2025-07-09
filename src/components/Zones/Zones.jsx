@@ -3,6 +3,14 @@ import React, { useContext } from "react";
 import "./Zones.scss";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
 
+/**
+ * Array of zone objects representing different areas on a tooth for dental charting.
+ * Each zone has a unique value, a descriptive label, and an associated area identifier.
+ * @type {Array<Object>}
+ * @property {string} value - Unique identifier for the zone.
+ * @property {string} label - Descriptive name of the zone.
+ * @property {string} area - Identifier for the area on the tooth diagram.
+ */
 const zones = [
   { value: "1", label: "Cervical Buccal", area: "cervical1" },
   { value: "2", label: "Buccal", area: "direction1" },
@@ -17,7 +25,19 @@ const zones = [
   { value: "11", label: "Palatal Surface", area: "cusp4" },
 ];
 
+/**
+ * Zones component for selecting specific areas on a tooth in dental charting.
+ * Renders a list of zones as checkboxes for user interaction.
+ * @returns {JSX.Element} The rendered list of zone options for selection.
+ */
 const Zones = () => {
+  /**
+   * Context values from SelectionContext for managing zone selections.
+   * @type {Object}
+   * @property {Array<string>} selectedZones - Array of selected zone values.
+   * @property {Function} handleZoneToggle - Function to toggle the selection of a zone.
+   * @property {boolean} activateZone - Indicates if zone selection is enabled.
+   */
   const { selectedZones, handleZoneToggle, activateZone } =
     useContext(SelectionContext);
 

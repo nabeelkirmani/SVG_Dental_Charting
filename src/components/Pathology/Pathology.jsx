@@ -7,6 +7,13 @@ import ActionButtons from "./ActionButtons.jsx";
 import Zones from "../Zones/Zones.jsx";
 import PathDrawer from "../PathDrawer/PathDrawer.jsx";
 
+/**
+ * Pathology component for managing pathology-related content.
+ * Renders various sub-components for pathology types, details, actions, and drawing.
+ * @param {Object} props - The props for the Pathology component.
+ * @param {Function} props.onClose - Callback function triggered to close the pathology view.
+ * @returns {JSX.Element} The rendered pathology content with interactive elements.
+ */
 function Pathology({ onClose }) {
   return (
     <>
