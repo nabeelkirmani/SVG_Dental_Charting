@@ -1,5 +1,5 @@
 // src/components/TeethChart/TeethChart.jsx
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { toothImagesFrontView, toothImagesTopView } from "../../assets/images";
 import { SelectionContext } from "../../contexts/SelectionContext";
 import "./TeethChart.scss";

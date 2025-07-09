@@ -1,5 +1,5 @@
 // src/components/ToothWheel/ToothWheel.jsx
-import React, { useContext } from "react";
+import { useContext } from "react";
 import "./ToothWheel.scss";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
 

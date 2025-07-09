@@ -1,6 +1,6 @@
 // src/components/Canvas/Canvas.jsx
 import "./Canvas.scss";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
 import { useCanvasImage } from "./hooks/useCanvasImage";
 import { useCanvasShapes } from "./hooks/useCanvasShapes";

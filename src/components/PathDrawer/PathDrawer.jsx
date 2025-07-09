@@ -1,5 +1,5 @@
 // src/components/PathDrawer/PathDrawer.jsx
-import React, { useContext } from "react";
+import { useContext } from "react";
 import "./PathDrawer.scss";
 import { SelectionContext } from "../../contexts/SelectionContext";
 

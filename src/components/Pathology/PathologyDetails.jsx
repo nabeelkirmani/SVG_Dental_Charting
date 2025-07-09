@@ -1,5 +1,5 @@
 // src/components/Pathology/PathologyDetails.jsx
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { SelectionContext } from "../../contexts/SelectionContext.jsx";
 import "./PathologyDetails.scss";
 import pathologyOptions from "./pathologyOptions.js";

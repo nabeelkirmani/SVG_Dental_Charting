@@ -1,5 +1,4 @@
 // src/components/Canvas/components/CanvasPoints.jsx
-import React from "react";
 import { Line, Circle } from "react-konva";
 
 const CanvasPoints = ({ points, isPathClosed }) => {

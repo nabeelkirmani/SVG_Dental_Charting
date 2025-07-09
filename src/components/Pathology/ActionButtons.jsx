@@ -1,5 +1,5 @@
 // src/components/Pathology/ActionButtons.jsx
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { SelectionContext } from "../../contexts/SelectionContext";
 import "./ActionButtons.scss";
 

@@ -1,5 +1,4 @@
 // src/components/Sidebar/Sidebar.jsx
-import React from "react";
 import "./Sidebar.scss";
 
 /**

@@ -1,5 +1,5 @@
 // src/components/Canvas/components/ShapeRenderer.jsx
-import React, { memo } from "react";
+import { memo } from "react";
 import { Path } from "react-konva";
 
 const ShapeRenderer = memo(({ shape }) => {
@@ -34,5 +34,7 @@ const ShapeRenderer = memo(({ shape }) => {
       return null;
   }
 });
+
+ShapeRenderer.displayName = "ShapeRenderer";
 
 export default ShapeRenderer;

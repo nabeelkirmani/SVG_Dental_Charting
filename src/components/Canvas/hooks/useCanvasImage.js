@@ -1,5 +1,5 @@
 // src/components/Canvas/hooks/useCanvasImage.js
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import useImage from "use-image";
 import {
   toothImagesFrontView,

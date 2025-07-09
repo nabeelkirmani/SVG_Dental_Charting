@@ -1,5 +1,5 @@
 // src/contexts/SelectionContext.jsx
-import React, { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const SelectionContext = createContext();
 
@@ -89,7 +89,7 @@ export const SelectionProvider = ({ children }) => {
     navigator.clipboard
       .writeText(currentPath)
       .then(() => alert("Path copied to clipboard!"))
-      .catch((err) => alert("Failed to copy path"));
+      .catch(() => alert("Failed to copy path"));
   };
 
   const updateSVGPath = (currentPoints, closed, view) => {

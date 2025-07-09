@@ -1,5 +1,4 @@
 // src/components/Canvas/components/CanvasView.jsx
-import React from "react";
 import { Stage, Layer, Image as KonvaImage, Group } from "react-konva";
 import ShapeRenderer from "./ShapeRenderer";
 import CanvasPoints from "./CanvasPoints";

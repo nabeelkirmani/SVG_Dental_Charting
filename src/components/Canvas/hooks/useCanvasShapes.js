@@ -1,7 +1,7 @@
 // src/components/Canvas/hooks/useCanvasShapes.js
 import { useState, useEffect } from "react";
 import zoneShapes from "../../../data/zoneShapes.json";
-import { smoothPath } from "../utils/canvasHelpers";
+// import { smoothPath } from "../utils/canvasHelpers";
 
 export const useCanvasShapes = (
   selectedTooth,
