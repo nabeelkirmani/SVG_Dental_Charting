@@ -1,6 +1,10 @@
 // src/components/Sidebar/Sidebar.scss
 @use "../../styles/variables";
 
+////
+/// @group Sidebar
+/// @description Container for the sidebar navigation, setting its layout and base styling.
+/// @access public
 aside {
   flex: 0 0 auto;
   display: flex;
@@ -9,6 +13,10 @@ aside {
   color: #fff;
   background: variables.$primary-color;
 
+  ////
+  /// @group Sidebar
+  /// @description Navigation list container within the sidebar, organizing navigation items vertically.
+  /// @access public
   nav ul {
     padding: 0;
     margin: 0;
@@ -16,9 +24,17 @@ aside {
     flex-direction: column;
     justify-content: center;
 
+    ////
+    /// @group Sidebar
+    /// @description Individual navigation item in the sidebar, centered for visual alignment.
+    /// @access public
     li {
       text-align: center;
 
+      ////
+      /// @group Sidebar
+      /// @description Disabled state for navigation items, reducing visibility and interaction.
+      /// @access public
       &.disabled {
         opacity: 0.5;
         pointer-events: none;
@@ -28,10 +44,18 @@ aside {
         }
       }
 
+      ////
+      /// @group Sidebar
+      /// @description Primary action items in the sidebar, styled with reduced opacity for distinction.
+      /// @access public
       &.primary {
         opacity: 0.5;
       }
 
+      ////
+      /// @group Sidebar
+      /// @description Navigation link styling within the sidebar, centered and styled for interaction.
+      /// @access public
       a {
         display: flex;
         align-items: center;
@@ -40,6 +64,10 @@ aside {
         color: #fff;
         text-decoration: none;
 
+        ////
+        /// @group Sidebar
+        /// @description Back navigation link, styled with a distinct background color.
+        /// @access public
         &.back {
           background: variables.$secondary-color;
         }

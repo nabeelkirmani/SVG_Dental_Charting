@@ -2,6 +2,15 @@
 import React from "react";
 import "./Sidebar.scss";
 
+/**
+ * Sidebar component for application navigation.
+ * Provides navigation controls including back and primary action buttons.
+ * @param {Object} props - The props for the Sidebar component.
+ * @param {Function} props.onPrimaryClick - Callback function triggered on primary action button click.
+ * @param {Function} props.onBackClick - Callback function triggered on back button click.
+ * @param {boolean} props.canGoBack - Indicates if the back navigation is possible.
+ * @returns {JSX.Element} The rendered sidebar with navigation options.
+ */
 const Sidebar = ({ onPrimaryClick, onBackClick, canGoBack }) => {
   return (
     <aside>

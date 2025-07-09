@@ -2,6 +2,10 @@
 @use "sass:color";
 @use "../../styles/variables";
 
+////
+/// @group Zones
+/// @description Main container for the Zones component, organizing tooth zones in a grid layout for selection.
+/// @access public
 .zones {
   width: 20vw;
   // min-width: 304px;
@@ -16,6 +20,10 @@
   border: 1px solid;
   border-color: color.adjust(variables.$input-border-color, $lightness: 10%);
 
+  ////
+  /// @group Zones
+  /// @description Individual zone item container, styled for interactive selection.
+  /// @access public
   .pad {
     position: relative;
 
@@ -41,6 +49,10 @@
       box-shadow: none;
     }
 
+    ////
+    /// @group Zones
+    /// @description Hidden input element for zone selection, positioned off-screen for accessibility.
+    /// @access public
     input {
       position: absolute;
       clip: rect(0, 0, 0, 0);
@@ -52,6 +64,10 @@
       margin: -1px;
     }
 
+    ////
+    /// @group Zones
+    /// @description Label for zone selection, styled as a button for user interaction.
+    /// @access public
     label {
       display: flex;
       align-items: center;
@@ -96,50 +112,98 @@
   }
 
   /* Grid areas */
+  ////
+  /// @group Zones
+  /// @description Grid area class for Cervical Buccal zone positioning.
+  /// @access public
   .cervical1 {
     grid-area: cervical1;
   }
 
+  ////
+  /// @group Zones
+  /// @description Grid area class for Buccal zone positioning.
+  /// @access public
   .direction1 {
     grid-area: direction1;
   }
 
+  ////
+  /// @group Zones
+  /// @description Grid area class for Mesial zone positioning.
+  /// @access public
   .direction2 {
     grid-area: direction2;
   }
 
+  ////
+  /// @group Zones
+  /// @description Grid area class for Incisal zone positioning.
+  /// @access public
   .direction3 {
     grid-area: direction3;
   }
 
+  ////
+  /// @group Zones
+  /// @description Grid area class for Distal zone positioning.
+  /// @access public
   .direction4 {
     grid-area: direction4;
   }
 
+  ////
+  /// @group Zones
+  /// @description Grid area class for Palatal zone positioning.
+  /// @access public
   .direction5 {
     grid-area: direction5;
   }
 
+  ////
+  /// @group Zones
+  /// @description Grid area class for Cervical Palatal zone positioning.
+  /// @access public
   .cervical2 {
     grid-area: cervical2;
   }
 
+  ////
+  /// @group Zones
+  /// @description Grid area class for Class 4 Mesial zone positioning.
+  /// @access public
   .cusp1 {
     grid-area: cusp1;
   }
 
+  ////
+  /// @group Zones
+  /// @description Grid area class for Class 4 Distal zone positioning.
+  /// @access public
   .cusp2 {
     grid-area: cusp2;
   }
 
+  ////
+  /// @group Zones
+  /// @description Grid area class for Buccal Surface zone positioning.
+  /// @access public
   .cusp3 {
     grid-area: cusp3;
   }
 
+  ////
+  /// @group Zones
+  /// @description Grid area class for Palatal Surface zone positioning.
+  /// @access public
   .cusp4 {
     grid-area: cusp4;
   }
 
+  ////
+  /// @group Zones
+  /// @description Defines the grid layout structure for positioning different zones on the tooth diagram.
+  /// @access public
   /* Define the grid areas */
   grid-template-areas:
     "cervical1 cervical1 cervical1 cervical1 cervical1 cervical1"

@@ -2,6 +2,10 @@
 @use "sass:color";
 @use "../../styles/variables";
 
+////
+/// @group Pathology
+/// @description Main container for the Pathology component, organizing the layout for pathology content.
+/// @access public
 .main {
   position: relative;
   flex-grow: 1;
@@ -12,6 +16,10 @@
   padding-bottom: 0;
   background: variables.$light-gray;
 
+  ////
+  /// @group Pathology
+  /// @description Heading style for the Pathology section, providing a clear title.
+  /// @access public
   .heading {
     font-weight: 300;
     color: variables.$dark-gray;
@@ -20,12 +28,20 @@
     margin-bottom: 24px;
   }
 
+  ////
+  /// @group Pathology
+  /// @description Container for pathology type buttons, arranged in a grid layout for selection.
+  /// @access public
   .pathology-types {
     display: grid;
     gap: 8px;
     grid-template-columns: repeat(3, 1fr);
     margin-bottom: 24px;
 
+    ////
+    /// @group Pathology
+    /// @description Button styling for pathology types, interactive with hover and active states.
+    /// @access public
     button {
       display: flex;
       align-items: center;
@@ -61,6 +77,10 @@
     }
   }
 
+  ////
+  /// @group Pathology
+  /// @description Close button for the Pathology view, positioned for easy access to dismiss the view.
+  /// @access public
   .close {
     position: absolute;
     top: 0;

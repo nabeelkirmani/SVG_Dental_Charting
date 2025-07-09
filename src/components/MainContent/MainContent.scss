@@ -1,11 +1,19 @@
 // src/components/MainContent/MainContent.scss
 @use "../../styles/variables";
 
+////
+/// @group MainContent
+/// @description Main content container for the application, providing layout structure for pathology views.
+/// @access public
 .main-content {
   flex-grow: 1;
   display: flex;
   padding: 0;
 
+  ////
+  /// @group MainContent
+  /// @description Banner element within the main content, styled for informational display.
+  /// @access public
   .banner {
     font-size: medium;
   }
